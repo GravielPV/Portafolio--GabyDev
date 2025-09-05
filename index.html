@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <style>
+    /* Glassmorphism navbar */
+    .navbar {
+      position: sticky; top: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(16px) saturate(1.2);
+      border-bottom: 1.5px solid rgba(14,165,233,0.08);
+      box-shadow: 0 2px 24px 0 rgba(16,185,129,0.07);
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(-32px);
+      transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1), background 0.35s, box-shadow 0.35s;
+    }
+    .navbar.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .navbar.scrolled {
+      background: rgba(255,255,255,0.96);
+      box-shadow: 0 6px 32px 0 rgba(16,185,129,0.13);
+      border-bottom: 1.5px solid rgba(14,165,233,0.13);
+    }
+    /* Nav links gradiente y glow */
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+      overflow: hidden;
+      color: #334155;
+      background: none;
+      transition: color 0.22s;
+    }
+    .nav-link.active, .nav-link:focus {
+      color: #0ea5e9;
+      text-shadow: 0 2px 12px #0ea5e955;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -2px;
+      height: 2.5px;
+      background: linear-gradient(90deg, #0ea5e9 0%, #10b981 100%);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transition: transform 0.28s cubic-bezier(.4,0,.2,1);
+      z-index: 1;
+      box-shadow: 0 2px 8px #0ea5e955;
+    }
+    .nav-link:hover::after, .nav-link.active::after {
+      transform: scaleX(1);
+    }
+    .nav-link:hover {
+      color: #10b981;
+      text-shadow: 0 2px 16px #10b98155;
+    }
+    /* Botón contactar: gradiente animado y glow */
+    .btn-nav {
+      background: linear-gradient(90deg, #0ea5e9 0%, #10b981 100%);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px #0ea5e922;
+      transition: background 0.22s, box-shadow 0.22s, transform 0.18s;
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
+      animation: btn-pulse 2.2s infinite alternate;
+    }
+    .btn-nav::before {
+      content: "";
+      position: absolute;
+      left: -60%; top: 0; width: 220%; height: 100%;
+      background: linear-gradient(120deg, #0ea5e9 0%, #10b981 50%, #0ea5e9 100%);
+      opacity: 0.18;
+      filter: blur(12px);
+      animation: btn-gradient-move 3.5s linear infinite;
+      z-index: 1;
+    }
+    .btn-nav:hover, .btn-nav:focus {
+      background: linear-gradient(90deg, #10b981 0%, #0ea5e9 100%);
+      color: #fff;
+      transform: scale(1.07);
+      box-shadow: 0 4px 24px #10b98133;
+    }
+    @keyframes btn-pulse {
+      0% { box-shadow: 0 2px 12px #0ea5e922; }
+      100% { box-shadow: 0 6px 32px #10b98144; }
+    }
+    @keyframes btn-gradient-move {
+      0% { left: -60%; }
+      100% { left: 0%; }
+    }
+    /* Scrollspy highlight */
+    .nav-link.scrollspy-active {
+      color: #10b981;
+      text-shadow: 0 2px 16px #10b98177;
+    }
+  </style>
+  <style>
+    /* Navbar animada y dinámica */
+    .navbar {
+      transition: box-shadow 0.35s, background 0.35s, backdrop-filter 0.35s;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(6px);
+    }
+    .navbar.scrolled {
+      box-shadow: 0 4px 24px 0 rgba(16,185,129,0.08);
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+    }
+    .nav-link {
+      position: relative;
+      transition: color 0.22s;
+      font-weight: 500;
+      overflow: hidden;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -2px;
+      height: 2.5px;
+      background: linear-gradient(90deg, #0ea5e9 0%, #10b981 100%);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transition: transform 0.28s cubic-bezier(.4,0,.2,1);
+      z-index: 1;
+    }
+    .nav-link:hover::after, .nav-link:focus::after {
+      transform: scaleX(1);
+    }
+    .nav-link:hover, .nav-link:focus {
+      color: #0ea5e9;
+      animation: nav-bounce 0.38s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes nav-bounce {
+      0% { transform: translateY(0); }
+      30% { transform: translateY(-4px); }
+      60% { transform: translateY(2px); }
+      100% { transform: translateY(0); }
+    }
+    .btn-nav {
+      transition: background 0.22s, box-shadow 0.22s, transform 0.18s;
+      box-shadow: 0 2px 8px #0ea5e922;
+    }
+    .btn-nav:hover, .btn-nav:focus {
+      background: linear-gradient(90deg, #10b981 0%, #0ea5e9 100%);
+      color: #fff;
+      transform: scale(1.06);
+      box-shadow: 0 4px 16px #10b98133;
+    }
+  </style>
+  <style>
+    /* Animación de contador y entrada para stats */
+    .hero-stats .stat { opacity: 0; transform: translateY(30px) scale(0.98); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); will-change: opacity, transform; }
+    .hero-stats .stat.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .stat-number.animated {
+      animation: stat-pop 0.7s cubic-bezier(.4,0,.2,1);
+      background: linear-gradient(90deg, #0ea5e9 30%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+    @keyframes stat-pop {
+      0% { transform: scale(0.7); opacity: 0; }
+      60% { transform: scale(1.15); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GabyDev | Desarrollo Web Profesional & Soluciones Digitales</title>
+  <meta name="description" content="Desarrollador Full Stack especializado en crear experiencias web excepcionales. Soluciones digitales innovadoras para empresas modernas en República Dominicana y LATAM.">
+  <meta name="keywords" content="desarrollo web, full stack developer, soluciones digitales, aplicaciones web, e-commerce, República Dominicana, LATAM">
+  <meta name="author" content="GabyDev - Gabriel Pimentel">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gabydev.com/">
+  <meta property="og:title" content="GabyDev | Desarrollo Web Profesional & Soluciones Digitales">
+  <meta property="og:description" content="Desarrollador Full Stack especializado en crear experiencias web excepcionales para empresas modernas.">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="GabyDev | Desarrollo Web Profesional & Soluciones Digitales">
+  <meta property="twitter:description" content="Desarrollador Full Stack especializado en crear experiencias web excepcionales para empresas modernas.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  
+  <!-- Back4App SDK -->
+  <script src="https://npmcdn.com/parse@4.2.0/dist/parse.min.js"></script>
+  
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Scroll reveal animación global, nivel senior */
+    .reveal-on-scroll { opacity: 0; transform: translateY(40px) scale(0.98); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); will-change: opacity, transform; }
+    .reveal-on-scroll.visible { opacity: 1; transform: translateY(0) scale(1); }
+  /* Parallax eliminado: las imágenes de las tarjetas de proyectos permanecen estáticas */
+  .proyecto-image .demo-placeholder { }
+    /* Hover cards */
+    .proyecto, .service-card, .plan { transition: box-shadow 0.3s, transform 0.3s; }
+    .proyecto:hover, .service-card:hover, .plan:hover { box-shadow: 0 16px 40px rgba(16,185,129,0.18), 0 0 32px #0ea5e944; transform: translateY(-10px) scale(1.03); }
+    /* Ripple en botones */
+    .btn, .btn-primary, .btn-secondary, .btn-outline { position: relative; overflow: hidden; }
+    .btn:active::after, .btn-primary:active::after, .btn-secondary:active::after, .btn-outline:active::after {
+      content: ""; position: absolute; left: 50%; top: 50%; width: 120%; height: 120%; background: rgba(16,185,129,0.18); border-radius: 50%; transform: translate(-50%,-50%) scale(0); animation: ripple-btn 0.5s linear forwards; pointer-events: none;
+    }
+    @keyframes ripple-btn { to { transform: translate(-50%,-50%) scale(1); opacity: 0; } }
+    /* Glow animado en botón flotante */
+    #floating-contact-btn { box-shadow: 0 0 0 0 #10b98188, 0 4px 16px rgba(14,165,233,0.18); animation: glow-float 2.5s infinite alternate; }
+    @keyframes glow-float { 0% { box-shadow: 0 0 0 0 #10b98144, 0 4px 16px rgba(14,165,233,0.18); } 100% { box-shadow: 0 0 16px 8px #10b98144, 0 4px 16px rgba(14,165,233,0.18); } }
+    /* Transición en tags y features */
+    .proyecto-tags .tag, .proyecto-features .feature { transition: background 0.3s, color 0.3s, box-shadow 0.3s; }
+    .proyecto-tags .tag:hover, .proyecto-features .feature:hover { background: #10b981; color: #fff; box-shadow: 0 2px 8px #10b98144; cursor: pointer; }
+  </style>
+  <!-- Loader Animado -->
+  <style>
+    #page-loader {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 99999;
+      transition: opacity 0.6s cubic-bezier(.4,0,.2,1);
+    }
+    .loader-spinner {
+      width: 64px; height: 64px;
+      border: 8px solid #fff;
+      border-top: 8px solid #f59e0b;
+      border-radius: 50%;
+      animation: spinLoader 1.2s linear infinite;
+      box-shadow: 0 0 32px #fff8, 0 0 64px #f59e0b88;
+    }
+    @keyframes spinLoader {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    #page-loader.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="page-loader"><div class="loader-spinner"></div></div>
+  <script>
+    // Navbar animación de entrada y glassmorphism
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbar = document.querySelector('.navbar');
+      setTimeout(() => navbar.classList.add('visible'), 200);
+      function navScrollEffect() {
+        if (window.scrollY > 24) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      }
+      window.addEventListener('scroll', navScrollEffect);
+      navScrollEffect();
+    });
+    // Scrollspy para resaltar sección activa
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = [
+        { id: 'servicios', link: null },
+        { id: 'portafolio', link: null },
+        { id: 'proceso', link: null },
+        { id: 'precios', link: null },
+        { id: 'contacto', link: null }
+      ];
+      sections.forEach(s => {
+        s.link = document.querySelector('.nav-link[href="#' + s.id + '"]');
+      });
+      function onScrollSpy() {
+        let scrollPos = window.scrollY + 80;
+        let found = false;
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const sec = document.getElementById(sections[i].id);
+          if (sec && sec.offsetTop <= scrollPos) {
+            sections.forEach(s => s.link && s.link.classList.remove('scrollspy-active'));
+            if (sections[i].link) sections[i].link.classList.add('scrollspy-active');
+            found = true;
+            break;
+          }
+        }
+        if (!found) sections.forEach(s => s.link && s.link.classList.remove('scrollspy-active'));
+      }
+      window.addEventListener('scroll', onScrollSpy);
+      onScrollSpy();
+    });
+  </script>
+  <script>
+    // Navbar animada al hacer scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbar = document.querySelector('.navbar');
+      function navScrollEffect() {
+        if (window.scrollY > 24) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      }
+      window.addEventListener('scroll', navScrollEffect);
+      navScrollEffect();
+    });
+  </script>
+  <script>
+    // Animación de stats: contador y entrada, cada vez que se vean al hacer scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const statEls = document.querySelectorAll('.hero-stats .stat');
+      const statNumbers = [
+        { el: statEls[0]?.querySelector('.stat-number'), value: 50, suffix: '+' },
+        { el: statEls[1]?.querySelector('.stat-number'), value: 300, prefix: '+', suffix: '%' },
+        { el: statEls[2]?.querySelector('.stat-number'), value: 7, suffix: ' días' }
+      ];
+      function animateStats() {
+        statEls.forEach((el, i) => {
+          setTimeout(() => el.classList.add('visible'), i * 120);
+        });
+        // Contador animado
+        statNumbers.forEach((stat, idx) => {
+          if (!stat.el) return;
+          stat.el.classList.add('animated');
+          let start = 0;
+          let end = stat.value;
+          let duration = 1200;
+          let startTime = null;
+          function animateCount(ts) {
+            if (!startTime) startTime = ts;
+            let progress = Math.min((ts - startTime) / duration, 1);
+            let current = Math.floor(progress * (end - start) + start);
+            if (idx === 1) {
+              stat.el.textContent = (stat.prefix || '') + current + (stat.suffix || '');
+            } else {
+              stat.el.textContent = current + (stat.suffix || '');
+            }
+            if (progress < 1) {
+              requestAnimationFrame(animateCount);
+            } else {
+              if (idx === 1) {
+                stat.el.textContent = (stat.prefix || '') + end + (stat.suffix || '');
+              } else {
+                stat.el.textContent = end + (stat.suffix || '');
+              }
+            }
+          }
+          requestAnimationFrame(animateCount);
+        });
+      }
+      // IntersectionObserver para disparar animación cada vez que se vean
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateStats();
+          }
+        });
+      }, { threshold: 0.4 });
+      statEls.forEach(el => statsObserver.observe(el));
+      // Resetear animación cuando dejan de verse
+      const resetObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, idx) => {
+          if (!entry.isIntersecting) {
+            statEls[idx].classList.remove('visible');
+            if (statNumbers[idx]?.el) statNumbers[idx].el.textContent = idx === 1 ? '+0%' : '0' + (statNumbers[idx].suffix || '');
+            if (statNumbers[idx]?.el) statNumbers[idx].el.classList.remove('animated');
+          }
+        });
+      }, { threshold: 0 });
+      statEls.forEach(el => resetObserver.observe(el));
+    });
+  </script>
+  <script>
+    // Senior-level scroll reveal: IntersectionObserver, stagger, all elements
+    document.addEventListener('DOMContentLoaded', function() {
+      // Selecciona todos los elementos relevantes para animar
+      const revealEls = [
+        ...document.querySelectorAll('section, header.hero, footer, .service-card, .plan, .proyecto, .timeline-item, .stat, .proyecto-tags .tag, .proyecto-features .feature, .btn, .btn-primary, .btn-secondary, .btn-outline')
+      ];
+      revealEls.forEach(el => el.classList.add('reveal-on-scroll'));
+      // IntersectionObserver para animar solo lo visible
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry, idx) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, idx * 60); // stagger
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(el => observer.observe(el));
+    });
+  // Parallax eliminado: las imágenes de las tarjetas de proyectos permanecen estáticas
+  </script>
+  <!-- Top Progress Line -->
+  <div class="scroll-progress-line" id="scroll-progress"></div>
+  
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo" tabindex="0" role="button" aria-label="Logo GabyDev - Desarrollador Web" title="🚀 Efectos dinámicos - Haz click para experiencia completa">
+        <span class="logo-text" data-text="Gaby">Gaby</span>
+        <span class="logo-accent" data-text="Dev">Dev</span>
+        <div class="logo-particles-container" aria-hidden="true"></div>
+        <script>
+        // Scroll suave al inicio al hacer clic en el logo
+        document.addEventListener('DOMContentLoaded', function() {
+          const navLogo = document.querySelector('.nav-logo');
+          if (navLogo) {
+            navLogo.addEventListener('click', function(e) {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+          }
+        });
+        </script>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="#portafolio" class="nav-link">Portafolio</a></li>
+        <li><a href="#proceso" class="nav-link">Proceso</a></li>
+        <li><a href="#precios" class="nav-link">Precios</a></li>
+        <li><a href="#contacto" class="nav-link btn-nav">Contactar</a></li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-wrapper">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-text">✨ Desarrollador Web Disponible</span>
+          </div>
+          <h1 class="hero-title">
+            Creo <span class="typing-element">sitios web profesionales</span> para todo tipo de negocio
+          </h1>
+          <p class="hero-description">
+            Desde menús digitales QR para restaurantes hasta tiendas online completas. 
+            Desarrollo soluciones web que realmente funcionan y proyectan profesionalismo.
+          </p>
+          <div class="hero-cta">
+            <a href="#contacto" class="btn btn-primary">
+              <span>Ver Mis Servicios</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m9 18 6-6-6-6"/>
+              </svg>
+            </a>
+            <a href="#portafolio" class="btn btn-secondary">Ver Mi Trabajo</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Clientes Satisfechos</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">+300%</span>
+              <span class="stat-label">Más Ventas Online</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">7 días</span>
+              <span class="stat-label">Entrega Promedio</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="floating-cards parallax-element" data-speed="0.3">
+            <div class="card card-1 glow-on-hover">
+              <div class="card-header">
+                <div class="dots">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <div class="card-content">
+                <div class="line"></div>
+                <div class="line short"></div>
+                <div class="line"></div>
+              </div>
+            </div>
+            <div class="card card-2 glow-on-hover">
+              <div class="chart">
+                <div class="bar" style="height: 40%"></div>
+                <div class="bar" style="height: 70%"></div>
+                <div class="bar" style="height: 55%"></div>
+                <div class="bar" style="height: 85%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Resto del contenido profesional con GabyDev... -->
+  <section class="servicios" id="servicios">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Mis Especialidades</span>
+        <h2>Creo Sitios Web Que Impulsan Tu Negocio</h2>
+        <p class="section-description">
+          Desde landing pages hasta aplicaciones complejas, desarrollo soluciones web profesionales adaptadas a cada tipo de negocio
+        </p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card vertical-layout">
+          <div class="service-header vertical-header">
+            <div class="service-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <h3>Páginas Web Profesionales</h3>
+          </div>
+          <p>Sitios web corporativos, landing pages y portafolios que proyectan profesionalismo y generan confianza en tu marca.</p>
+          <div class="service-benefits">
+            <span class="benefit">✅ Diseño profesional</span>
+            <span class="benefit">✅ Optimización SEO</span>
+            <span class="benefit">✅ Formularios de contacto</span>
+          </div>
+        </div>
+        
+        <div class="service-card vertical-layout">
+          <div class="service-header vertical-header">
+            <div class="service-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                <polyline points="9,22 9,12 15,12 15,22"/>
+              </svg>
+            </div>
+            <h3>Menús Digitales para Restaurantes</h3>
+          </div>
+          <p>Menús digitales interactivos con código QR, catálogos de productos y sistemas de pedidos para restaurantes modernos.</p>
+          <div class="service-benefits">
+            <span class="benefit">✅ Código QR incluido</span>
+            <span class="benefit">✅ Actualización fácil</span>
+            <span class="benefit">✅ Compatible móviles</span>
+          </div>
+        </div>
+        
+        <div class="service-card vertical-layout">
+          <div class="service-header vertical-header">
+            <div class="service-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"/>
+                <circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+              </svg>
+            </div>
+            <h3>Tiendas Online & E-commerce</h3>
+          </div>
+          <p>Plataformas de ventas online completas con catálogos, carrito de compras, sistemas de pago y gestión de inventario.</p>
+          <div class="service-benefits">
+            <span class="benefit">✅ Pagos integrados</span>
+            <span class="benefit">✅ Gestión productos</span>
+            <span class="benefit">✅ Panel administrativo</span>
+          </div>
+        </div>
+        
+        <div class="service-card vertical-layout">
+          <div class="service-header vertical-header">
+            <div class="service-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/>
+                <polyline points="14,2 14,8 20,8"/>
+              </svg>
+            </div>
+            <h3>Landing Pages de Alto Impacto</h3>
+          </div>
+          <p>Páginas de aterrizaje optimizadas para conversión, perfectas para campañas publicitarias y captación de leads.</p>
+          <div class="service-benefits">
+            <span class="benefit">✅ Alta conversión</span>
+            <span class="benefit">✅ Carga rápida</span>
+            <span class="benefit">✅ Diseño persuasivo</span>
+          </div>
+        </div>
+        
+        <div class="service-card vertical-layout">
+          <div class="service-header vertical-header">
+            <div class="service-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <h3>Aplicaciones Web Personalizadas</h3>
+          </div>
+          <p>Sistemas web a medida para automatizar procesos, gestionar clientes, inventarios y operaciones específicas de tu negocio.</p>
+          <div class="service-benefits">
+            <span class="benefit">✅ Funcionalidad única</span>
+            <span class="benefit">✅ Automatización</span>
+            <span class="benefit">✅ Escalable</span>
+          </div>
+        </div>
+        
+        <div class="service-card vertical-layout">
+          <div class="service-header vertical-header">
+            <div class="service-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                <polyline points="3.27,6.96 12,12.01 20.73,6.96"/>
+                <line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </div>
+            <h3>Portafolios & Sitios Personales</h3>
+          </div>
+          <p>Portafolios profesionales para artistas, fotógrafos, profesionales y emprendedores que quieren destacar su trabajo.</p>
+          <div class="service-benefits">
+            <span class="benefit">✅ Galería optimizada</span>
+            <span class="benefit">✅ Diseño elegante</span>
+            <span class="benefit">✅ Fácil actualización</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portafolio" id="portafolio">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Mi Trabajo</span>
+        <h2>Proyectos Que Demuestran Mi Experiencia</h2>
+        <p class="section-description">
+          Una muestra de los diferentes tipos de sitios web que he creado para diversos sectores y necesidades
+        </p>
+      </div>
+      
+    <div class="portfolio-grid">
+      <article class="proyecto">
+        <div class="proyecto-image">
+        <div class="demo-placeholder demo-restaurant" style="
+          background: linear-gradient(135deg, rgba(245, 158, 11, 0.85), rgba(217, 119, 6, 0.85)), url('https://res.cloudinary.com/datuczhbk/image/upload/v1755201080/Mixto_pollo_y_res_b8yvl5.jpg');
+          background-size: cover;
+          background-position: center;
+          background-attachment: fixed;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        " onclick="window.open('https://pasteles-en-hoja-margarita.netlify.app/', '_blank')"
+        onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.3)'"
+        onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+          <div style="
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            padding: 1rem;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+          ">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+              <polyline points="9,22 9,12 15,12 15,22"/>
+            </svg>
+            <span style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8); font-weight: 600;"> Menu Digital + QR</span>
+          </div>
+        </div>
+        <div class="proyecto-overlay">
+          <div class="proyecto-links">
+            <a href="https://pasteles-en-hoja-margarita.netlify.app/" target="_blank" class="btn-icon" aria-label="Ver sitio web">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+              <polyline points="15,3 21,3 21,9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+            </a>
+          </div>
+        </div>
+        </div>
+        <div class="proyecto-content">
+        <div class="proyecto-tags">
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">📱 Responsive</span>
+          <span class="tag">🟢 WhatsApp</span>
+          <span class="tag">🍽️ Menú Digital</span>
+        </div>
+        <h3>🍃 Pasteles en Hoja Margarita</h3>
+        <p>Menú digital interactivo para restaurante dominicano. Incluye catálogo de productos, información de contacto, horarios y pedidos directos por WhatsApp. Perfecto para mostrar tus platos favoritos y facilitar pedidos online. 🥟📲</p>
+        <div class="proyecto-features">
+          <span class="feature">🍽️ Menú digital completo</span>
+          <span class="feature">📱 Pedidos por WhatsApp</span>
+          <span class="feature">📍 Información de ubicación</span>
+          <span class="feature">⏰ Horarios actualizados</span>
+        </div>
+        </div>
+      </article>
+        
+        <article class="proyecto">
+          <div class="proyecto-image">
+            <div class="demo-placeholder demo-ecommerce" style="
+              background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(5, 150, 105, 0.9)), url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');
+              background-size: cover;
+              background-position: center;
+              background-attachment: fixed;
+              cursor: pointer;
+              transition: all 0.3s ease;
+            " onclick="window.open('https://allstorage.shop/', '_blank')"
+            onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.3)'"
+            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+              <div style="
+                background: rgba(0, 0, 0, 0.4);
+                border-radius: 12px;
+                padding: 1rem;
+                backdrop-filter: blur(8px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                pointer-events: none;
+              ">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="9" cy="21" r="1"/>
+                  <circle cx="20" cy="21" r="1"/>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+                </svg>
+                <span style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">🛒 E-Commerce</span>
+              </div>
+            </div>
+            <div class="proyecto-overlay">
+              <div class="proyecto-links">
+            <a href="https://allstorage.shop/" target="_blank" class="btn-icon" aria-label="Ver sitio web">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                <polyline points="15,3 21,3 21,9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+              </div>
+            </div>
+          </div>
+          <div class="proyecto-content">
+            <div class="proyecto-tags">
+              <span class="tag">WordPress</span>
+              <span class="tag">🛒 WooCommerce</span>
+            <span class="tag">🔎 Google</span>
+              <span class="tag">🗄️ MySQL</span>
+              <span class="tag">🔍 SEO</span>
+            </div>
+            <h3>All Storage Shop - Tienda Online Profesional</h3>
+            <p>Diseñada y desarrollada en WordPress + WooCommerce.  Tienda online optimizada para velocidad , seguridad 🔒 y facilidad de gestión 🧑‍💻.</p>
+            <div class="proyecto-features">
+              <span class="feature">🔍 Optimización SEO</span>
+              <span class="feature">💳 Pagos en línea</span>
+              <span class="feature">⚡ Carga rápida</span>
+              <span class="feature">🧑‍💻 Gestión sencilla</span>
+            </div>
+          </div>
+        </article>
+        
+        <article class="proyecto">
+          <div class="proyecto-image">
+            <div class="demo-placeholder" style="
+              background: linear-gradient(135deg, rgba(16, 185, 129, 0.85), rgba(59, 130, 246, 0.85)), url('https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&w=800&q=80');
+              background-size: cover;
+              background-position: center;
+              background-attachment: fixed;
+              cursor: pointer;
+              transition: all 0.3s ease;
+            " onclick="window.open('https://crm-gaby-dev.netlify.app', '_blank')"
+            onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.3)'"
+            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+              <div style="
+                background: rgba(0, 0, 0, 0.4);
+                border-radius: 12px;
+                padding: 1rem;
+                backdrop-filter: blur(8px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                pointer-events: none;
+              ">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="4"/>
+                  <path d="M8 9h8M8 13h6M8 17h4"/>
+                </svg>
+                <span style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8); font-weight: 600;">CRM Doctores</span>
+              </div>
+            </div>
+            <div class="proyecto-overlay">
+              <div class="proyecto-links">
+                <a href="https://crm-gaby-dev.netlify.app" target="_blank" class="btn-icon" aria-label="Ver sitio web">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                    <polyline points="15,3 21,3 21,9"/>
+                    <line x1="10" y1="14" x2="21" y2="3"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="proyecto-content">
+            <div class="proyecto-tags">
+              <span class="tag">React</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">Responsive</span>
+            </div>
+            <h3>CRM para Doctores</h3>
+            <p>Aplicación CRM moderna desarrollada en React para la gestión de pacientes, citas y expedientes médicos. Permite a doctores organizar su agenda, historial de pacientes y tareas administrativas de forma eficiente y segura.</p>
+            <div class="proyecto-features">
+              <span class="feature">👨‍⚕️ Gestión de pacientes</span>
+              <span class="feature">📅 Agenda de citas</span>
+              <span class="feature">🔒 Seguridad de datos</span>
+              <span class="feature">� Reportes y estadísticas</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="proceso" id="proceso">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Proceso</span>
+        <h2>PROCESO PARA ADQUIRIR TU PÁGINA WEB CONMIGO</h2>
+        <p class="section-description">
+          Proceso paso a paso garantizado: desde tu primer contacto hasta tener tu página web funcionando y generando resultados
+        </p>
+      </div>
+      
+      <div class="process-timeline">
+        <div class="timeline-item" data-step="1">
+          <div class="timeline-icon">
+            <span class="step-number">1</span>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header" onclick="toggleStep(1)">
+              <h3>Contacto Inicial y Consulta Gratuita</h3>
+              <span class="toggle-arrow">▼</span>
+            </div>
+            <div class="timeline-details">
+              <p><strong>Qué sucede:</strong> Me contactas por WhatsApp o email describiendo tu proyecto. Programamos una videollamada de 30 minutos para entender exactamente qué necesitas. Te explico mi proceso, resuelvo todas tus dudas y te doy un presupuesto transparente.</p>
+              <span class="timeline-duration">24 horas</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-step="2" style="opacity: 0.3; pointer-events: none;">
+          <div class="timeline-icon">
+            <span class="step-number">2</span>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header" onclick="toggleStep(2)">
+              <h3>Propuesta Detallada y Contrato</h3>
+              <span class="toggle-arrow">▼</span>
+            </div>
+            <div class="timeline-details">
+              <p><strong>Qué obtienes:</strong> Una propuesta completa con mockups iniciales, cronograma detallado, precio final y términos claros. Una vez aceptas, firmamos contrato digital y recibes el 50% de anticipo. ¡Empezamos oficialmente!</p>
+              <span class="timeline-duration">1-2 días</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-step="3" style="opacity: 0.3; pointer-events: none;">
+          <div class="timeline-icon">
+            <span class="step-number">3</span>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header" onclick="toggleStep(3)">
+              <h3>Diseño y Revisiones</h3>
+              <span class="toggle-arrow">▼</span>
+            </div>
+            <div class="timeline-details">
+              <p><strong>Proceso colaborativo:</strong> Creo el diseño completo de tu página web. Te envío previews para tu revisión y feedback. Incluye hasta 3 rondas de cambios para asegurar que quede exactamente como lo imaginas.</p>
+              <span class="timeline-duration">3-4 días</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-step="4" style="opacity: 0.3; pointer-events: none;">
+          <div class="timeline-icon">
+            <span class="step-number">4</span>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header" onclick="toggleStep(4)">
+              <h3>Desarrollo y Programación</h3>
+              <span class="toggle-arrow">▼</span>
+            </div>
+            <div class="timeline-details">
+              <p><strong>Tu página cobra vida:</strong> Programo toda la funcionalidad: formularios, WhatsApp, animaciones, optimización para móviles, velocidad de carga. Te mando updates cada 2 días para que veas el progreso en tiempo real.</p>
+              <span class="timeline-duration">4-7 días</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-step="5" style="opacity: 0.3; pointer-events: none;">
+          <div class="timeline-icon">
+            <span class="step-number">5</span>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header" onclick="toggleStep(5)">
+              <h3>Pruebas y Optimización Final</h3>
+              <span class="toggle-arrow">▼</span>
+            </div>
+            <div class="timeline-details">
+              <p><strong>Perfeccionamos todo:</strong> Testeo exhaustivo en todos los dispositivos, optimización SEO, configuración de Google Analytics, pruebas de velocidad y funcionalidad. Tu página queda 100% lista para generar resultados.</p>
+              <span class="timeline-duration">1-2 días</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-step="6" style="opacity: 0.3; pointer-events: none;">
+          <div class="timeline-icon">
+            <span class="step-number">6</span>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header" onclick="toggleStep(6)">
+              <h3>Entrega y Capacitación</h3>
+              <span class="toggle-arrow">▼</span>
+            </div>
+            <div class="timeline-details">
+              <p><strong>¡Tu página está lista!</strong> Recibe tu página web funcionando, dominio configurado, tutorial en video para administrarla, guía de mantenimiento y 30 días de soporte gratuito. Pagas el 50% restante solo cuando estés 100% satisfecho.</p>
+              <span class="timeline-duration">1 día</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="precios" id="precios">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Paquetes</span>
+        <h2>Soluciones Web Para Cada Necesidad</h2>
+        <p class="section-description">
+          Precios transparentes y justos. Cada proyecto incluye diseño profesional, programación y soporte completo
+        </p>
+      </div>
+      
+      <div class="pricing-grid">
+        <div class="plan">
+          <div class="plan-header">
+            <h3>Menú Digital QR</h3>
+            <div class="plan-price">
+              <span class="currency">RD$</span>
+              <span class="amount">5,000</span>
+            </div>
+            <p class="plan-description">Perfecto para restaurantes y cafeterías</p>
+          </div>
+          <div class="plan-features">
+            <ul>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                Menú digital interactivo
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                Código QR personalizado
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                Pedidos por WhatsApp
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                Actualizaciones fáciles
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                Entrega en 5 días
+              </li>
+            </ul>
+          </div>
+          <a href="#contacto" class="btn btn-outline package-btn" data-package="Menú Digital QR" data-price="RD$5,000">Lo Quiero</a>
+        </div>
+        
+        <div class="plan">
+          <div class="plan-header">
+            <h3>Landing Page Pro</h3>
+            <div class="plan-price">
+              <span class="currency">RD$</span>
+              <span class="amount">8,000</span>
+            </div>
+            <p class="plan-description">Ideal para captar clientes potenciales</p>
+          </div>
+          <div class="plan-features">
+            <ul>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                Diseño orientado a conversión
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                Formularios avanzados
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                Integración WhatsApp
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                Google Analytics incluido
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                Optimización SEO básica
+              </li>
+            </ul>
+          </div>
+          <a href="#contacto" class="btn btn-outline package-btn" data-package="Landing Page Pro" data-price="RD$8,000">Empezar</a>
+        </div>
+        
+        <div class="plan plan-popular">
+          <div class="popular-badge">Más Vendido</div>
+          <div class="plan-header">
+            <h3>Tienda Online</h3>
+            <div class="plan-price">
+              <span class="currency">RD$</span>
+              <span class="amount">13,000</span>
+            </div>
+            <p class="plan-description">Sitio web profesional multipalabra</p>
+          </div>
+          <div class="plan-features">
+            <ul>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                Hasta 8 páginas incluidas
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                Diseño 100% personalizado
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                Panel de administración
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                Blog/noticias integrado
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                SEO avanzado incluido
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                Capacitación incluida
+              </li>
+            </ul>
+          </div>
+          <a href="#contacto" class="btn btn-primary package-btn" data-package="Tienda Online" data-price="RD$13,000">¡Lo Quiero!</a>
+        </div>
+      </div>
+      
+      <div class="pricing-note">
+        <p>🤔<strong>¿Necesitas algo diferente?</strong> Cuéntame tu proyecto específico y te haré una cotización personalizada. Portafolios, aplicaciones web, sistemas a medida - todo es posible.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contacto" id="contacto">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Contacto</span>
+        <h2>¿Listo para Hacer Crecer tu Negocio?</h2>
+        <p class="section-description">
+          Cuéntame tu idea y te ayudo a convertirla en realidad. Respuesta garantizada en menos de 24 horas.
+        </p>
+      </div>
+      
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="method-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+                </svg>
+              </div>
+              <div class="method-content">
+                <h3>WhatsApp</h3>
+                <p>Respuesta inmediata</p>
+                <a href="https://wa.me/18295639556" target="_blank" class="contact-link">
+                  +1 (829) 563-9556
+                </a>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="method-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div class="method-content">
+                <h3>Email</h3>
+                <p>Proyectos detallados</p>
+                <a href="mailto:peraltavasquez100@gmail.com" class="contact-link">
+                  peraltavasquez100@gmail.com
+                </a>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="method-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12,6 12,12 16,14"/>
+                </svg>
+              </div>
+              <div class="method-content">
+                <h3>Horario de Atención</h3>
+                <p>Lun - Vie: 9:00 AM - 6:00 PM</p>
+                <span class="contact-link">Zona Horaria EST</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form-wrapper animated-glass">
+          <form id="form-contacto" class="contact-form animated-form">
+            <div class="form-group animated-field">
+              <input type="text" id="nombre" name="nombre" required autocomplete="name" placeholder=" ">
+              <label for="nombre">Tu Nombre *</label>
+            </div>
+            <div class="form-group animated-field" style="animation-delay:0.08s">
+              <input type="text" id="contacto" name="contacto" required autocomplete="email" placeholder=" ">
+              <label for="contacto">WhatsApp o Email *</label>
+            </div>
+            <div class="form-group animated-field" style="animation-delay:0.16s">
+              <textarea id="mensaje" name="mensaje" rows="8" required placeholder=" "></textarea>
+              <label for="mensaje">Cuéntame tu Proyecto *</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full animated-btn">
+              <span>Quiero Mi Proyecto</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22,2 15,22 11,13 2,9 22,2"/>
+              </svg>
+              <span class="btn-particles"></span>
+            </button>
+            <div id="form-status" class="form-status"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <span class="logo-text">Gaby</span>
+            <span class="logo-accent">Dev</span>
+          </div>
+          <p class="footer-description">
+            Transformo ideas en experiencias digitales exitosas. Desarrollo web profesional que impulsa tu negocio hacia el siguiente nivel.
+          </p>
+          <div class="footer-links">
+            <a href="https://wa.me/18295639556" target="_blank" class="footer-link social-whatsapp" data-social="whatsapp">
+              <div class="social-icon-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.891 3.488"/>
+                </svg>
+                <div class="social-ripple"></div>
+              </div>
+              <span class="social-text">WhatsApp</span>
+              <div class="social-tooltip">¡Hablemos por WhatsApp! 💬</div>
+            </a>
+            
+            <a href="https://github.com/GravielPV" target="_blank" class="footer-link social-github" data-social="github">
+              <div class="social-icon-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                <div class="social-ripple"></div>
+              </div>
+              <span class="social-text">GitHub</span>
+              <div class="social-tooltip">Ve mis proyectos en GitHub 🚀</div>
+            </a>
+            
+            <a href="https://www.linkedin.com/in/graviel-peralta-19356b173/" target="_blank" class="footer-link social-linkedin" data-social="linkedin">
+              <div class="social-icon-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                <div class="social-ripple"></div>
+              </div>
+              <span class="social-text">LinkedIn</span>
+              <div class="social-tooltip">Conectemos profesionalmente 💼</div>
+            </a>
+            
+            <a href="mailto:peraltavasquez100@gmail.com" class="footer-link social-email" data-social="email">
+              <div class="social-icon-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <div class="social-ripple"></div>
+              </div>
+              <span class="social-text">Email</span>
+              <div class="social-tooltip">Envíame un email 📧</div>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-services">
+          <h4>Especialidades</h4>
+          <ul>
+            <li>Sitios Web Corporativos</li>
+            <li>Tiendas Online (E-commerce)</li>
+            <li>Aplicaciones Web</li>
+            <li>Menús Digitales</li>
+            <li>Landing Pages</li>
+          </ul>
+        </div>
+        
+        <div class="footer-contact">
+          <h4>Contacto</h4>
+          <ul>
+            <li>WhatsApp: +1 (829) 563-9556</li>
+            <li>Disponible 7 días</li>
+            <li>Respuesta en 24h</li>
+            <li>República Dominicana</li>
+            <li>Proyectos Internacionales</li>
+            <li>Consulta Gratuita</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <div class="footer-copyright">
+            <p>&copy; 2025 <strong>Graviel Peralta (GabyDev)</strong> - Transformo ideas en realidad digital exitosa</p>
+            <p class="footer-location">Desde República Dominicana para el mundo • Tu próximo proyecto empieza aquí</p>
+          </div>
+          <button id="admin-panel-btn" class="admin-btn" title="Panel de Administración">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 20h9"/>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+            Panel Administrativo
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script src="app.js"></script>
+<script src="admin-dashboard.js"></script>
+
+<!-- Botón flotante de contacto tipo chatbot -->
+<div id="floating-contact-btn" title="Enviar mensaje rápido">
+  <span class="chatbot-icon">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M8 15h8M9 9h.01M15 9h.01"/>
+    </svg>
+  </span>
+  <span class="chatbot-label">Contactar</span>
+</div>
+
+<!-- Mini chat flotante -->
+<div id="floating-chat-modal" style="display:none;">
+  <form id="floating-chat-form">
+    <div class="chat-modal-header">Enviar mensaje</div>
+    <div class="form-group">
+      <input type="text" id="chat-nombre" name="nombre" placeholder="Tu Nombre *" required>
+    </div>
+    <div class="form-group">
+      <input type="text" id="chat-contacto" name="contacto" placeholder="WhatsApp o Email *" required>
+    </div>
+    <div class="form-group">
+      <textarea id="chat-mensaje" name="mensaje" rows="5" placeholder="Cuéntame tu Proyecto *&#10;¿Qué necesitas? ¿Sitio web, tienda online, aplicación? Cuéntame tu idea y presupuesto aproximado..." required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin-top:10px;">
+      <span>Quiero Mi Proyecto</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="22" y1="2" x2="11" y2="13"/>
+        <polygon points="22,2 15,22 11,13 2,9 22,2"/>
+      </svg>
+    </button>
+    <span class="chat-modal-close" title="Cerrar">×</span>
+    <div class="chat-modal-status"></div>
+  </form>
+</div>
+
+<style>
+#floating-chat-modal {
+  position: fixed;
+  bottom: 90px;
+  right: 32px;
+  z-index: 100000;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(14,165,233,0.18), 0 0 32px #10b98144;
+  width: 320px;
+  max-width: 95vw;
+  padding: 22px 18px 18px 18px;
+  animation: chat-modal-in 0.7s cubic-bezier(.4,0,.2,1);
+}
+.chat-modal-header {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #0ea5e9;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+.form-group input,
+.form-group textarea {
+  padding: 12px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #f8fafc;
+  color: #222;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #0ea5e9;
+  background: #fff;
+  outline: none;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #64748b;
+  font-weight: 500;
+}
+.chat-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 1.5rem;
+  color: #0ea5e9;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+.chat-modal-close:hover {
+  color: #ef4444;
+}
+.chat-modal-status {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  text-align: center;
+  color: #10b981;
+}
+@keyframes chat-modal-in {
+  0% { opacity: 0; transform: translateY(40px) scale(0.7); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+</style>
+
+<style>
+#floating-contact-btn {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 99999;
+  background: linear-gradient(120deg, #0ea5e9 0%, #10b981 100%);
+  color: #fff;
+  border-radius: 32px;
+  box-shadow: 0 4px 16px rgba(14,165,233,0.18), 0 0 16px #10b98144;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.22s cubic-bezier(.4,0,.2,1), opacity 0.3s;
+  animation: float-in 1.2s cubic-bezier(.4,0,.2,1);
+  opacity: 1;
+}
+#floating-contact-btn.hide-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+#floating-contact-btn:hover {
+  transform: scale(1.06) translateY(-2px);
+  box-shadow: 0 8px 24px rgba(14,165,233,0.22), 0 0 24px #10b98166;
+}
+.chatbot-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.18);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  box-shadow: 0 1px 4px rgba(14,165,233,0.10);
+}
+.chatbot-icon svg {
+  color: #fff;
+  filter: drop-shadow(0 1px 4px #0ea5e9aa);
+}
+.chatbot-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.10);
+}
+@keyframes float-in {
+  0% { opacity: 0; transform: translateY(40px) scale(0.7); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (max-width: 600px) {
+  #floating-contact-btn { right: 8px; bottom: 8px; padding: 6px 10px; font-size: 0.88rem; }
+  .chatbot-icon { width: 22px; height: 22px; }
+}
+</style>
+
+<script>
+// Abrir/cerrar el mini chat flotante
+const chatBtn = document.getElementById('floating-contact-btn');
+const chatModal = document.getElementById('floating-chat-modal');
+const chatClose = document.querySelector('.chat-modal-close');
+const chatForm = document.getElementById('floating-chat-form');
+const chatStatus = document.querySelector('.chat-modal-status');
+
+// Abrir el modal al hacer clic en el botón flotante
+chatBtn.addEventListener('click', function() {
+  chatModal.style.display = 'block';
+  chatStatus.textContent = '';
+});
+
+// Cerrar el modal al hacer clic en la X
+chatClose.addEventListener('click', function() {
+  chatModal.style.display = 'none';
+  chatStatus.textContent = '';
+});
+
+// Cerrar el modal al hacer clic fuera de él
+window.addEventListener('mousedown', function(e) {
+  if (chatModal.style.display === 'block' && !chatModal.contains(e.target) && e.target !== chatBtn) {
+    chatModal.style.display = 'none';
+    chatStatus.textContent = '';
+  }
+});
+
+// Ocultar el botón flotante cuando la sección de contacto está visible
+function isContactVisible() {
+  const contacto = document.getElementById('contacto');
+  if (!contacto) return false;
+  const rect = contacto.getBoundingClientRect();
+  return rect.top < window.innerHeight && rect.bottom > 0;
+}
+
+function toggleFloatingBtnVisibility() {
+  if (isContactVisible()) {
+    chatBtn.classList.add('hide-btn');
+  } else {
+    chatBtn.classList.remove('hide-btn');
+  }
+}
+
+window.addEventListener('scroll', toggleFloatingBtnVisibility);
+window.addEventListener('resize', toggleFloatingBtnVisibility);
+document.addEventListener('DOMContentLoaded', toggleFloatingBtnVisibility);
+
+// Enviar mensaje al dashboard como cliente
+chatForm.onsubmit = async function(e) {
+  e.preventDefault();
+  chatStatus.textContent = '';
+  chatForm.querySelectorAll('.error-message').forEach(e => e.remove());
+  const nombre = chatForm.nombre.value.trim();
+  const contacto = chatForm.contacto.value.trim();
+  const mensaje = chatForm.mensaje.value.trim();
+
+  // Validación igual al formulario principal
+  function showFieldError(field, message) {
+    field.style.borderColor = '#ef4444';
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
+    errorDiv.style.cssText = 'color:#ef4444;font-size:0.85rem;margin-top:2px;';
+    field.parentElement.appendChild(errorDiv);
+    field.addEventListener('input', function() {
+      field.style.borderColor = '';
+      if (errorDiv.parentElement) errorDiv.remove();
+    }, { once: true });
+  }
+  let valid = true;
+  if (!nombre || nombre.length < 2) {
+    showFieldError(chatForm.nombre, 'El nombre debe tener al menos 2 caracteres');
+    valid = false;
+  }
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^[\+]?\d[\d\s\-\(\)]{7,}$/;
+  if (!contacto || (!emailRegex.test(contacto) && !phoneRegex.test(contacto))) {
+    showFieldError(chatForm.contacto, 'Ingresa un email válido o número de teléfono');
+    valid = false;
+  }
+  if (!mensaje || mensaje.length < 10) {
+    showFieldError(chatForm.mensaje, 'Describe tu proyecto con más detalle (mínimo 10 caracteres)');
+    valid = false;
+  }
+  if (!valid) return;
+
+  // Verificar límite de mensajes
+  chatStatus.textContent = 'Verificando...';
+  try {
+    if (window.dbManager) {
+      const limitCheck = await dbManager.checkMessageLimit(contacto);
+      if (!limitCheck.allowed) {
+        showNotification(`Has alcanzado el límite diario de mensajes (4/4). Intenta mañana o contáctame directamente por WhatsApp.`, 'warning');
+        chatStatus.textContent = 'Límite diario alcanzado.';
+        return;
+      }
+      if (limitCheck.count > 0) {
+        showNotification(`Mensaje ${limitCheck.count + 1}/4 enviado. Te quedan ${limitCheck.remainingAttempts - 1} intentos hoy.`, 'info');
+      }
+
+      chatStatus.textContent = 'Enviando...';
+      // Detectar si el mensaje viene de un paquete
+      const isPackageMessage = mensaje.includes('Me interesa el paquete');
+      let packageName = null;
+      if (isPackageMessage) {
+        const packageMatch = mensaje.match(/Me interesa el paquete "([^"]+)"/);
+        packageName = packageMatch ? packageMatch[1] : null;
+      }
+
+      // Guardar en base de datos
+      const saveResult = await dbManager.saveMessage({
+        name: nombre,
+        contact: contacto,
+        message: mensaje,
+        package: packageName
+      });
+
+      if (saveResult.success) {
+        showNotification('¡Mensaje enviado correctamente!', 'success');
+        chatStatus.textContent = '¡Mensaje enviado correctamente!';
+        chatForm.reset();
+        setTimeout(() => {
+          chatModal.style.display = 'none';
+          chatStatus.textContent = '';
+        }, 1200);
+        if (limitCheck.remainingAttempts - 1 <= 1) {
+          setTimeout(() => {
+            showNotification(`⚠️ Solo te queda ${limitCheck.remainingAttempts - 1} intento más hoy. Para consultas adicionales, contáctame directamente por WhatsApp.`, 'warning');
+          }, 3000);
+        }
+      } else {
+        showNotification('Error al enviar el mensaje. Intenta nuevamente o contáctame directamente.', 'error');
+        chatStatus.textContent = 'Error: ' + (saveResult.error || 'No se pudo enviar');
+      }
+    } else {
+      showNotification('Error: No se pudo conectar al sistema.', 'error');
+      chatStatus.textContent = 'Error: No se pudo conectar al sistema.';
+    }
+  } catch (err) {
+    showNotification('Error al procesar el mensaje. Intenta nuevamente o contáctame directamente.', 'error');
+    chatStatus.textContent = 'Error: ' + err.message;
+  }
+};
+</script>
+<script>
+// Loader animado al inicio
+window.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    document.getElementById('page-loader').classList.add('fade-out');
+  }, 1200);
+});
+
+// Animaciones de entrada personalizadas por sección
+document.addEventListener('DOMContentLoaded', function() {
+  const animatedSections = [
+    '.hero', '.servicios', '.portafolio', '.proceso', '.precios', '.contacto', 'footer'
+  ];
+  animatedSections.forEach((selector, i) => {
+    const el = document.querySelector(selector);
+    if (el) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(40px) scale(0.98)';
+      setTimeout(() => {
+        el.style.transition = 'opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1)';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0) scale(1)';
+      }, 400 + i * 200);
+    }
+  });
+});
+
+// Micro-interacciones en botones y cards
+document.addEventListener('DOMContentLoaded', function() {
+  // Botones
+  document.querySelectorAll('.btn, .btn-primary, .btn-secondary, .btn-outline').forEach(btn => {
+    btn.addEventListener('mouseenter', function() {
+      btn.style.transform = 'scale(1.06)';
+      btn.style.boxShadow = '0 8px 32px rgba(14,165,233,0.15)';
+    });
+    btn.addEventListener('mouseleave', function() {
+      btn.style.transform = '';
+      btn.style.boxShadow = '';
+    });
+    btn.addEventListener('mousedown', function() {
+      btn.style.transform = 'scale(0.97)';
+    });
+    btn.addEventListener('mouseup', function() {
+      btn.style.transform = 'scale(1.06)';
+    });
+  });
+  // Cards
+  document.querySelectorAll('.service-card, .plan, .proyecto').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      card.style.transform = 'translateY(-10px) scale(1.03)';
+
+      card.style.boxShadow = '0 16px 40px rgba(16,185,129,0.13)';
+    });
+    card.addEventListener('mouseleave', function() {
+      card.style.transform = '';
+      card.style.boxShadow = '';
+    });
+    card.addEventListener('mousedown', function() {
+      card.style.transform = 'scale(0.98)';
+    });
+    card.addEventListener('mouseup', function() {
+      card.style.transform = 'translateY(-10px) scale(1.03)';
+    });
+  });
+});
+</script>
+</body>
+</html>
