@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portafolio de proyectos web - Sitios desarrollados por Graviel Peralta">
-    <meta name="keywords" content="proyectos web, portafolio, desarrollo web, ecommerce, aplicaciones, graviel peralta">
+    <meta name="description" content="Proyectos reales desarrollados por Graviel Peralta - CRM médico, tiendas online, menús digitales y más">
+    <meta name="keywords" content="proyectos web, desarrollo, portfolio, graviel peralta, crm, ecommerce, menu digital">
     <meta name="author" content="Graviel Peralta">
-    <title>Proyectos | Graviel Peralta - Desarrollo Web Profesional</title>
+    <title>Proyectos | Graviel Peralta - Desarrollador Web</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
@@ -89,12 +89,9 @@
     <section id="projects" class="projects" style="padding-top: 120px;">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <span class="section-subtitle" data-translate="projects-subtitle">Mi trabajo</span>
-                <h2 class="section-title" data-translate="projects-title">Proyectos Destacados</h2>
+             
+                <h2 class="section-title" data-translate="projects-title">Proyectos Reales</h2>
                 <div class="section-line"></div>
-                <p style="max-width: 600px; margin: 2rem auto 0; color: var(--text-muted); text-align: center; font-size: 1.1rem;" data-translate="projects-description">
-                    Algunos proyectos que destacan mis habilidades técnicas y capacidad de resolución de problemas.
-                </p>
             </div>
             
             <!-- Project Filter -->
@@ -107,225 +104,192 @@
             </div>
             
             <div class="projects-grid">
-                <!-- Proyecto 1 -->
-                <div class="project-card" data-category="ecommerce" data-aos="fade-up" data-aos-delay="200">
+                <!-- Proyecto 1: CRM para Doctores -->
+                <div class="project-card" data-category="app" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-image">
-                        <img src="assets/project1.jpg" alt="Tienda Online Fashion Store" loading="lazy">
+                        <img src="FotoProyecto/CRM/2-pagina principal.png" alt="CRM para Doctores - Sistema de Gestión Médica" loading="lazy">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link" data-project="1">
+                                <button class="project-link preview" onclick="openScreenshot('crm')" title="Ver Screenshot">
                                     <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="#" class="project-link external" target="_blank">
+                                </button>
+                                <a href="https://crm-gaby-dev.netlify.app/" class="project-link external" target="_blank" title="Ver Proyecto">
                                     <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link github" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-category">E-commerce</div>
-                        <h3>Fashion Store Online</h3>
-                        <p>E-commerce completo con carrito de compras y sistema de pagos.</p>
-                        <div class="project-tech">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                            <span>PHP</span>
-                            <span>MySQL</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Proyecto 2 -->
-                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="300">
-                    <div class="project-image">
-                        <img src="assets/project2.jpg" alt="Restaurante La Cocina" loading="lazy">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" data-project="2">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="#" class="project-link external" target="_blank">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link github" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-category">Sitio Web</div>
-                        <h3>Restaurante La Cocina</h3>
-                        <p>Sitio web profesional para restaurante con menú interactivo y reservas online.</p>
-                        <div class="project-tech">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                            <span>Bootstrap</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Proyecto 3 -->
-                <div class="project-card" data-category="app" data-aos="fade-up" data-aos-delay="400">
-                    <div class="project-image">
-                        <img src="assets/project3.jpg" alt="Sistema de Inventario" loading="lazy">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" data-project="3">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="#" class="project-link external" target="_blank">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link github" target="_blank">
-                                    <i class="fab fa-github"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
                         <div class="project-category">Aplicación Web</div>
-                        <h3>Sistema de Inventario</h3>
-                        <p>Aplicación web para gestión de inventarios con control de stock y reportes.</p>
+                        <h3 data-translate="project-crm-title">CRM para Doctores</h3>
+                        <p data-translate="project-crm-desc">Sistema completo de gestión médica para doctores. Incluye gestión de pacientes, citas, expedientes médicos y reportes. Interfaz moderna y segura desarrollada en React.</p>
                         <div class="project-tech">
                             <span>React</span>
-                            <span>Node.js</span>
-                            <span>MongoDB</span>
-                            <span>Express</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Proyecto 4 -->
-                <div class="project-card" data-category="menu" data-aos="fade-up" data-aos-delay="500">
-                    <div class="project-image">
-                        <img src="assets/project4.jpg" alt="Menú Digital QR" loading="lazy">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" data-project="4">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="#" class="project-link external" target="_blank">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link github" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-category">Menú QR</div>
-                        <h3>Menú Digital QR</h3>
-                        <p>Menú digital interactivo con código QR y integración con WhatsApp.</p>
-                        <div class="project-tech">
+                            <span>JavaScript</span>
                             <span>HTML5</span>
                             <span>CSS3</span>
-                            <span>JavaScript</span>
-                            <span>QR API</span>
+                            <span>Responsive</span>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Proyecto 5 -->
-                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="600">
+                <!-- Proyecto 2: All Storage Shop -->
+                <div class="project-card" data-category="ecommerce" data-aos="fade-up" data-aos-delay="300">
                     <div class="project-image">
-                        <img src="assets/project5.jpg" alt="Portafolio Fotógrafo" loading="lazy">
+                        <img src="FotoProyecto/ALLSTORAGE/1-pagina principal.png" alt="All Storage Shop - Tienda Online de Moda" loading="lazy">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link" data-project="5">
+                                <button class="project-link preview" onclick="openScreenshot('allstorage')" title="Ver Screenshot">
                                     <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="#" class="project-link external" target="_blank">
+                                </button>
+                                <a href="https://allstorage.shop/" class="project-link external" target="_blank" title="Ver Tienda">
                                     <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link github" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-category">Portafolio</div>
-                        <h3>Portafolio Fotógrafo</h3>
-                        <p>Portafolio profesional para fotógrafo con galería optimizada y lightbox.</p>
-                        <div class="project-tech">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                            <span>Lightbox</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Proyecto 6 -->
-                <div class="project-card" data-category="ecommerce" data-aos="fade-up" data-aos-delay="700">
-                    <div class="project-image">
-                        <img src="assets/project6.jpg" alt="Marketplace Digital" loading="lazy">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" data-project="6">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="#" class="project-link external" target="_blank">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link github" target="_blank">
-                                    <i class="fab fa-github"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
                         <div class="project-category">E-commerce</div>
-                        <h3>Marketplace Digital</h3>
-                        <p>Plataforma de ventas multivendedor con sistema de comisiones y chat interno.</p>
+                        <h3 data-translate="project-allstorage-title">All Storage Shop</h3>
+                        <p data-translate="project-allstorage-desc">Tienda online profesional de moda y belleza. Incluye catálogo de productos, carrito de compras, sistema de pagos, panel administrativo y optimización SEO. Diseñada para alta conversión.</p>
                         <div class="project-tech">
-                            <span>Vue.js</span>
-                            <span>Laravel</span>
+                            <span>WordPress</span>
+                            <span>WooCommerce</span>
                             <span>MySQL</span>
-                            <span>Socket.io</span>
+                            <span>SEO</span>
+                            <span>Google Analytics</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 3: Pasteles en Hoja Margarita -->
+                <div class="project-card" data-category="menu" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-image">
+                        <img src="FotoProyecto/RESTAURANTE/1-PRINCIPAL.png" alt="Pasteles en Hoja Margarita - Menú Digital" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <button class="project-link preview" onclick="openScreenshot('restaurant')" title="Ver Screenshot">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <a href="https://pasteles-en-hoja-margarita.netlify.app/" class="project-link external" target="_blank" title="Ver Menú">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Menú Digital</div>
+                        <h3 data-translate="project-restaurant-title">Pasteles en Hoja Margarita</h3>
+                        <p data-translate="project-restaurant-desc">Menú digital interactivo para restaurante dominicano. Incluye catálogo de platos, información de contacto, horarios y sistema de pedidos directos por WhatsApp. Perfecto para mostrar la gastronomía local.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Responsive</span>
+                            <span>WhatsApp API</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 4: Gaby Dev Portfolio -->
+                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="500">
+                    <div class="project-image">
+                        <img src="FotoProyecto/PAGINAWEB/1-Principal.png" alt="Gaby Dev - Página de Servicios Web" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <button class="project-link preview" onclick="openScreenshot('gabydev')" title="Ver Screenshot">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <a href="https://gravielpv.github.io/Gaby-Dev/" class="project-link external" target="_blank" title="Ver Página">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Landing Page</div>
+                        <h3 data-translate="project-gabydev-title">Gaby Dev - Servicios Web</h3>
+                        <p data-translate="project-gabydev-desc">Landing page profesional para servicios de desarrollo web. Incluye portafolio de trabajos, proceso de contratación, paquetes de precios y formulario de contacto optimizado para conversión.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>GitHub Pages</span>
+                            <span>SEO</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 5: Pomodoro Timer -->
+                <div class="project-card" data-category="app" data-aos="fade-up" data-aos-delay="600">
+                    <div class="project-image">
+                        <img src="FotoProyecto/POMODORO/1-principal banco.png" alt="Pomodoro Timer - Aplicación de Productividad" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <button class="project-link preview" onclick="openScreenshot('pomodoro')" title="Ver Screenshot">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <a href="https://gravielpv.github.io/Pomodoro-GabyDev/" class="project-link external" target="_blank" title="Usar App">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Aplicación Web</div>
+                        <h3 data-translate="project-pomodoro-title">Pomodoro Timer</h3>
+                        <p data-translate="project-pomodoro-desc">Aplicación web de productividad basada en la técnica Pomodoro. Incluye temporizador personalizable, lista de tareas, música de fondo y estadísticas de sesiones. Perfecta para mejorar el enfoque y la productividad.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Local Storage</span>
+                            <span>PWA</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 6: Yahve Nisi Publicaciones -->
+                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="700">
+                    <div class="project-image">
+                        <img src="FotoProyecto/AGENCIA/1-principal.png" alt="Yahve Nisi - Agencia de Impresión" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <button class="project-link preview" onclick="openScreenshot('yahve')" title="Ver Screenshot">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <a href="https://gravielpv.github.io/Yahve-nisi/" class="project-link external" target="_blank" title="Ver Página">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Sitio Corporativo</div>
+                        <h3 data-translate="project-yahve-title">Yahve Nisi Publicaciones</h3>
+                        <p data-translate="project-yahve-desc">Sitio web corporativo para agencia de impresión. Incluye portafolio de trabajos, servicios de impresión digital, galería de proyectos, formulario de contacto y integración con redes sociales.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Cloudinary</span>
+                            <span>GitHub Pages</span>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Statistics -->
-            <div class="project-stats" style="margin-top: 4rem; padding: 3rem; background: var(--card-bg); border-radius: var(--border-radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);" data-aos="fade-up">
-                <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
-                    <div class="stat-item">
-                        <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">25+</div>
-                        <div class="stat-label" style="color: var(--text-muted); font-size: 1.1rem;">Proyectos Completados</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">20+</div>
-                        <div class="stat-label" style="color: var(--text-muted); font-size: 1.1rem;">Clientes Satisfechos</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">2+</div>
-                        <div class="stat-label" style="color: var(--text-muted); font-size: 1.1rem;">Años de Experiencia</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- CTA Section -->
-            <div class="projects-cta" style="text-align: center; margin-top: 4rem; padding: 3rem; background: var(--card-bg); border-radius: var(--border-radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);" data-aos="fade-up">
-                <h3 style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.8rem;">¿Interesado en trabajar conmigo?</h3>
-                <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">
-                    Estos proyectos demuestran mi capacidad técnica y enfoque en resultados.
-                </p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <!-- Call to Action -->
+            <div class="cta-section" data-aos="fade-up" data-aos-delay="800">
+                <h3 data-translate="projects-cta-title">¿Te interesa algún proyecto?</h3>
+                <p data-translate="projects-cta-desc">Conversemos sobre cómo podemos crear algo increíble juntos.</p>
+                <div class="cta-buttons">
                     <a href="contact.html" class="btn btn-primary">
-                        <span>Contactar</span>
+                        <span data-translate="btn-contact">Contactar</span>
                         <i class="fas fa-envelope"></i>
                     </a>
                     <a href="skills.html" class="btn btn-outline">
-                        <span>Ver Habilidades</span>
+                        <span data-translate="btn-skills">Ver Habilidades</span>
                         <i class="fas fa-code"></i>
                     </a>
                 </div>
@@ -333,12 +297,37 @@
         </div>
     </section>
 
-    <!-- Project Modal -->
-    <div id="projectModal" class="project-modal">
+    <!-- Screenshot Modal -->
+    <div id="screenshotModal" class="screenshot-modal">
         <div class="modal-content">
-            <span class="modal-close">&times;</span>
+            <span class="modal-close" onclick="closeScreenshot()">&times;</span>
+            <div class="modal-header">
+                <h3 id="modalTitle">Vista Previa del Proyecto</h3>
+                <div class="image-counter">
+                    <span id="currentImageNumber">1</span> / <span id="totalImages">1</span>
+                </div>
+            </div>
             <div class="modal-body">
-                <!-- Content will be loaded dynamically -->
+                <div class="screenshot-carousel">
+                    <button class="carousel-btn prev-btn" onclick="prevImage()" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="screenshot-container">
+                        <img id="screenshotImage" src="" alt="Screenshot del proyecto" loading="lazy">
+                    </div>
+                    <button class="carousel-btn next-btn" onclick="nextImage()" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="carousel-indicators" id="carouselIndicators">
+                    <!-- Los indicadores se generan dinámicamente -->
+                </div>
+                <div class="modal-actions">
+                    <button id="visitProject" class="btn btn-primary" target="_blank">
+                        <span data-translate="btn-visit">Visitar Proyecto</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

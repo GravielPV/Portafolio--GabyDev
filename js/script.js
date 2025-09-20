@@ -887,6 +887,10 @@ function initLanguageSelector() {
     }
 }
 
+function getCurrentLanguage() {
+    return localStorage.getItem('portfolio-language') || 'es';
+}
+
 function translatePage(lang) {
     const translations = {
         es: {
@@ -928,15 +932,32 @@ function translatePage(lang) {
             'service-database-desc': 'Diseño y optimización de bases de datos SQL y NoSQL',
             
             // Projects Page
-            'projects-title': 'Proyectos',
-            'projects-subtitle': 'Mi Trabajo',
-            'projects-description': 'Una selección de mis proyectos más destacados',
+            'projects-title': 'Proyectos Reales',
+            'projects-subtitle': 'Mi trabajo',
+            'projects-description': 'Proyectos desarrollados para clientes reales. Cada uno resuelve problemas específicos del negocio.',
             'filter-all': 'Todos',
-            'filter-web': 'Web',
+            'filter-web': 'Sitios Web',
             'filter-mobile': 'Móvil',
-            'filter-fullstack': 'Full Stack',
+            'filter-fullstack': 'Aplicaciones',
             'btn-live': 'Ver Proyecto',
             'btn-code': 'Ver Código',
+            
+            // Real Projects
+            'project-crm-title': 'CRM para Doctores',
+            'project-crm-desc': 'Sistema completo de gestión médica para doctores. Incluye gestión de pacientes, citas, expedientes médicos y reportes. Interfaz moderna y segura desarrollada en React.',
+            'project-allstorage-title': 'All Storage Shop',
+            'project-allstorage-desc': 'Tienda online profesional de moda y belleza. Incluye catálogo de productos, carrito de compras, sistema de pagos, panel administrativo y optimización SEO. Diseñada para alta conversión.',
+            'project-restaurant-title': 'Pasteles en Hoja Margarita',
+            'project-restaurant-desc': 'Menú digital interactivo para restaurante dominicano. Incluye catálogo de platos, información de contacto, horarios y sistema de pedidos directos por WhatsApp. Perfecto para mostrar la gastronomía local.',
+            'project-gabydev-title': 'Gaby Dev - Servicios Web',
+            'project-gabydev-desc': 'Landing page profesional para servicios de desarrollo web. Incluye portafolio de trabajos, proceso de contratación, paquetes de precios y formulario de contacto optimizado para conversión.',
+            'project-pomodoro-title': 'Pomodoro Timer',
+            'project-pomodoro-desc': 'Aplicación web de productividad basada en la técnica Pomodoro. Incluye temporizador personalizable, lista de tareas, música de fondo y estadísticas de sesiones. Perfecta para mejorar el enfoque y la productividad.',
+            'project-yahve-title': 'Yahve Nisi Publicaciones',
+            'project-yahve-desc': 'Sitio web corporativo para agencia de impresión. Incluye portafolio de trabajos, servicios de impresión digital, galería de proyectos, formulario de contacto y integración con redes sociales.',
+            'projects-cta-title': '¿Te interesa algún proyecto?',
+            'projects-cta-desc': 'Conversemos sobre cómo podemos crear algo increíble juntos.',
+            'btn-skills': 'Ver Habilidades',
             
             // Skills Page
             'skills-title': 'Habilidades',
@@ -980,7 +1001,10 @@ function translatePage(lang) {
             'footer-services': 'Servicios',
             'footer-links': 'Enlaces',
             'footer-contact': 'Contacto',
-            'footer-rights': 'Todos los derechos reservados.'
+            'footer-rights': 'Todos los derechos reservados.',
+            
+            // CV Download
+            'cv-download-success': '¡Descarga de CV iniciada! Revisa tu carpeta de descargas.'
         },
         en: {
             // Navigation
@@ -1021,15 +1045,32 @@ function translatePage(lang) {
             'service-database-desc': 'Design and optimization of SQL and NoSQL databases',
             
             // Projects Page
-            'projects-title': 'Projects',
+            'projects-title': 'Real Projects',
             'projects-subtitle': 'My Work',
-            'projects-description': 'A selection of my most outstanding projects',
+            'projects-description': 'Projects developed for real clients. Each one solves specific business problems.',
             'filter-all': 'All',
-            'filter-web': 'Web',
+            'filter-web': 'Websites',
             'filter-mobile': 'Mobile',
-            'filter-fullstack': 'Full Stack',
+            'filter-fullstack': 'Applications',
             'btn-live': 'View Project',
             'btn-code': 'View Code',
+            
+            // Real Projects
+            'project-crm-title': 'CRM for Doctors',
+            'project-crm-desc': 'Complete medical management system for doctors. Includes patient management, appointments, medical records and reports. Modern and secure interface developed in React.',
+            'project-allstorage-title': 'All Storage Shop',
+            'project-allstorage-desc': 'Professional online fashion and beauty store. Includes product catalog, shopping cart, payment system, admin panel and SEO optimization. Designed for high conversion.',
+            'project-restaurant-title': 'Pasteles en Hoja Margarita',
+            'project-restaurant-desc': 'Interactive digital menu for Dominican restaurant. Includes dish catalog, contact information, schedules and direct ordering system via WhatsApp. Perfect for showcasing local cuisine.',
+            'project-gabydev-title': 'Gaby Dev - Web Services',
+            'project-gabydev-desc': 'Professional landing page for web development services. Includes portfolio of work, hiring process, pricing packages and contact form optimized for conversion.',
+            'project-pomodoro-title': 'Pomodoro Timer',
+            'project-pomodoro-desc': 'Productivity web application based on the Pomodoro technique. Includes customizable timer, task list, background music and session statistics. Perfect for improving focus and productivity.',
+            'project-yahve-title': 'Yahve Nisi Publications',
+            'project-yahve-desc': 'Corporate website for printing agency. Includes portfolio of work, digital printing services, project gallery, contact form and social media integration.',
+            'projects-cta-title': 'Interested in any project?',
+            'projects-cta-desc': 'Let\'s talk about how we can create something amazing together.',
+            'btn-skills': 'View Skills',
             
             // Skills Page
             'skills-title': 'Skills',
@@ -1073,7 +1114,10 @@ function translatePage(lang) {
             'footer-services': 'Services',
             'footer-links': 'Links',
             'footer-contact': 'Contact',
-            'footer-rights': 'All rights reserved.'
+            'footer-rights': 'All rights reserved.',
+            
+            // CV Download
+            'cv-download-success': 'CV download started! Check your downloads folder.'
         }
     };
 
@@ -1135,3 +1179,275 @@ function updateDynamicElements(lang, translations) {
         footerCopyright.textContent = `© ${currentYear} Graviel Peralta. ${translations['footer-rights']}`;
     }
 }
+
+// ===== CV DOWNLOAD FUNCTIONALITY =====
+function downloadCV() {
+    const currentLang = getCurrentLanguage();
+    let cvPath, fileName;
+    
+    if (currentLang === 'en') {
+        cvPath = 'assets/CV_Graviel_Peralta_Harvard_EN.pdf';
+        fileName = 'CV_Graviel_Peralta_English.pdf';
+    } else {
+        cvPath = 'assets/CV_Graviel_Peralta- Español-ESTILO HARVAR.pdf';
+        fileName = 'CV_Graviel_Peralta_Español.pdf';
+    }
+    
+    // Crear elemento de descarga temporal
+    const link = document.createElement('a');
+    link.href = cvPath;
+    link.download = fileName;
+    link.target = '_blank';
+    
+    // Agregar al DOM temporalmente y hacer clic
+    document.body.appendChild(link);
+    link.click();
+    
+    // Remover el elemento temporal
+    document.body.removeChild(link);
+    
+    // Mostrar notificación de descarga con traducciones
+    const translations = {
+        es: { 'cv-download-success': '¡Descarga de CV iniciada! Revisa tu carpeta de descargas.' },
+        en: { 'cv-download-success': 'CV download started! Check your downloads folder.' }
+    };
+    
+    showNotification(translations[currentLang]['cv-download-success'], 'success');
+}
+
+// ===== SCREENSHOT MODAL FUNCTIONALITY =====
+const screenshots = {
+    crm: {
+        title: 'CRM para Doctores',
+        titleEn: 'CRM for Doctors',
+        images: [
+            'FotoProyecto/CRM/1-login.png',
+            'FotoProyecto/CRM/2-pagina principal.png',
+            'FotoProyecto/CRM/3-paciente.png',
+            'FotoProyecto/CRM/4-citas.png',
+            'FotoProyecto/CRM/5-facturacion.png',
+            'FotoProyecto/CRM/6-comunicacion.png',
+            'FotoProyecto/CRM/7-administracion.png',
+            'FotoProyecto/CRM/8-reportes.png'
+        ],
+        url: 'https://crm-gaby-dev.netlify.app/'
+    },
+    allstorage: {
+        title: 'All Storage Shop',
+        titleEn: 'All Storage Shop',
+        images: [
+            'FotoProyecto/ALLSTORAGE/1-pagina principal.png',
+            'FotoProyecto/ALLSTORAGE/2-pagina principal.png',
+            'FotoProyecto/ALLSTORAGE/3-categoria.png',
+            'FotoProyecto/ALLSTORAGE/4-contacto.png'
+        ],
+        url: 'https://allstorage.shop/'
+    },
+    restaurant: {
+        title: 'Pasteles en Hoja Margarita',
+        titleEn: 'Pasteles en Hoja Margarita',
+        images: [
+            'FotoProyecto/RESTAURANTE/1-PRINCIPAL.png',
+            'FotoProyecto/RESTAURANTE/2-COMIDA.png',
+            'FotoProyecto/RESTAURANTE/3-BEBIDAS.png',
+            'FotoProyecto/RESTAURANTE/4-VARIADOS.png'
+        ],
+        url: 'https://pasteles-en-hoja-margarita.netlify.app/'
+    },
+    gabydev: {
+        title: 'Gaby Dev - Servicios Web',
+        titleEn: 'Gaby Dev - Web Services',
+        images: [
+            'FotoProyecto/PAGINAWEB/1-Principal.png',
+            'FotoProyecto/PAGINAWEB/2-segundaPa.png',
+            'FotoProyecto/PAGINAWEB/3-precios.png',
+            'FotoProyecto/PAGINAWEB/4-contacto.png',
+            'FotoProyecto/PAGINAWEB/5-admin.png',
+            'FotoProyecto/PAGINAWEB/6-dash.png',
+            'FotoProyecto/PAGINAWEB/7-anali.png',
+            'FotoProyecto/PAGINAWEB/8-conf.png'
+        ],
+        url: 'https://gravielpv.github.io/Gaby-Dev/'
+    },
+    pomodoro: {
+        title: 'Pomodoro Timer',
+        titleEn: 'Pomodoro Timer',
+        images: [
+            'FotoProyecto/POMODORO/1-principal banco.png',
+            'FotoProyecto/POMODORO/2-principal negro.png',
+            'FotoProyecto/POMODORO/3-tareas.png',
+            'FotoProyecto/POMODORO/4-musica.png',
+            'FotoProyecto/POMODORO/5-preguntas.png',
+            'FotoProyecto/POMODORO/6-personalizar.png'
+        ],
+        url: 'https://gravielpv.github.io/Pomodoro-GabyDev/'
+    },
+    yahve: {
+        title: 'Yahve Nisi Publicaciones',
+        titleEn: 'Yahve Nisi Publications',
+        images: [
+            'FotoProyecto/AGENCIA/1-principal.png',
+            'FotoProyecto/AGENCIA/2-carrusel.png',
+            'FotoProyecto/AGENCIA/3-servicios.png',
+            'FotoProyecto/AGENCIA/4-contacto.png',
+            'FotoProyecto/AGENCIA/5-mapa.png'
+        ],
+        url: 'https://gravielpv.github.io/Yahve-nisi/'
+    }
+};
+
+// Variables globales para el carrusel
+let currentProject = null;
+let currentImageIndex = 0;
+
+function openScreenshot(projectId) {
+    const modal = document.getElementById('screenshotModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const screenshotImage = document.getElementById('screenshotImage');
+    const visitButton = document.getElementById('visitProject');
+    const currentImageNumber = document.getElementById('currentImageNumber');
+    const totalImages = document.getElementById('totalImages');
+    const carouselIndicators = document.getElementById('carouselIndicators');
+    
+    const project = screenshots[projectId];
+    const currentLang = getCurrentLanguage();
+    
+    if (project) {
+        currentProject = project;
+        currentImageIndex = 0;
+        
+        modalTitle.textContent = currentLang === 'en' ? project.titleEn : project.title;
+        visitButton.onclick = () => window.open(project.url, '_blank');
+        
+        // Configurar carrusel
+        if (project.images && project.images.length > 1) {
+            // Múltiples imágenes - mostrar carrusel
+            totalImages.textContent = project.images.length;
+            setupCarousel();
+            updateCarouselImage();
+        } else {
+            // Una sola imagen - modo simple
+            const imageUrl = project.images ? project.images[0] : project.image;
+            screenshotImage.src = imageUrl;
+            screenshotImage.alt = `Screenshot de ${project.title}`;
+            totalImages.textContent = '1';
+            currentImageNumber.textContent = '1';
+            carouselIndicators.innerHTML = '';
+            document.getElementById('prevBtn').style.display = 'none';
+            document.getElementById('nextBtn').style.display = 'none';
+        }
+        
+        modal.style.display = 'flex';
+        setTimeout(() => {
+            modal.classList.add('show');
+        }, 10);
+        
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function setupCarousel() {
+    const carouselIndicators = document.getElementById('carouselIndicators');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    // Mostrar botones de navegación
+    prevBtn.style.display = 'flex';
+    nextBtn.style.display = 'flex';
+    
+    // Crear indicadores
+    carouselIndicators.innerHTML = '';
+    currentProject.images.forEach((_, index) => {
+        const indicator = document.createElement('div');
+        indicator.className = 'indicator';
+        if (index === 0) indicator.classList.add('active');
+        indicator.onclick = () => goToImage(index);
+        carouselIndicators.appendChild(indicator);
+    });
+}
+
+function updateCarouselImage() {
+    const screenshotImage = document.getElementById('screenshotImage');
+    const currentImageNumber = document.getElementById('currentImageNumber');
+    const indicators = document.querySelectorAll('.indicator');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    if (currentProject && currentProject.images) {
+        screenshotImage.src = currentProject.images[currentImageIndex];
+        screenshotImage.alt = `Screenshot ${currentImageIndex + 1} de ${currentProject.title}`;
+        currentImageNumber.textContent = currentImageIndex + 1;
+        
+        // Actualizar indicadores
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentImageIndex);
+        });
+        
+        // Actualizar botones
+        prevBtn.disabled = currentImageIndex === 0;
+        nextBtn.disabled = currentImageIndex === currentProject.images.length - 1;
+    }
+}
+
+function nextImage() {
+    if (currentProject && currentProject.images && currentImageIndex < currentProject.images.length - 1) {
+        currentImageIndex++;
+        updateCarouselImage();
+    }
+}
+
+function prevImage() {
+    if (currentProject && currentProject.images && currentImageIndex > 0) {
+        currentImageIndex--;
+        updateCarouselImage();
+    }
+}
+
+function goToImage(index) {
+    if (currentProject && currentProject.images && index >= 0 && index < currentProject.images.length) {
+        currentImageIndex = index;
+        updateCarouselImage();
+    }
+}
+
+
+function closeScreenshot() {
+    const modal = document.getElementById('screenshotModal');
+    modal.classList.remove('show');
+    setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        currentProject = null;
+        currentImageIndex = 0;
+    }, 300);
+}
+
+// Event listeners para el modal
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('screenshotModal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeScreenshot();
+            }
+        });
+    }
+    
+    document.addEventListener('keydown', function(e) {
+        if (modal && modal.classList.contains('show')) {
+            switch(e.key) {
+                case 'Escape':
+                    closeScreenshot();
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    prevImage();
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    nextImage();
+                    break;
+            }
+        }
+    });
+});
