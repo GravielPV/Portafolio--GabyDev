@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio de proyectos web - Sitios desarrollados por Graviel Peralta">
+    <meta name="keywords" content="proyectos web, portafolio, desarrollo web, ecommerce, aplicaciones, graviel peralta">
+    <meta name="author" content="Graviel Peralta">
+    <title>Proyectos | Graviel Peralta - Desarrollo Web Profesional</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span class="logo-text">Gaby<span class="accent">.</span>Dev</span>
+                </a>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link" data-translate="nav-inicio">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link" data-translate="nav-sobre">Sobre Mí</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html" class="nav-link" data-translate="nav-servicios">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="projects.html" class="nav-link active" data-translate="nav-proyectos">Proyectos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="skills.html" class="nav-link" data-translate="nav-habilidades">Habilidades</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link" data-translate="nav-contacto">Contacto</a>
+                </li>
+            </ul>
+            
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <div class="language-toggle" id="languageToggle">
+                    <span class="current-lang">ES</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="language-dropdown" id="languageDropdown">
+                    <a href="#" class="lang-option active" data-lang="es">
+                        <img src="https://flagcdn.com/w20/es.png" alt="Español">
+                        <span>Español</span>
+                    </a>
+                    <a href="#" class="lang-option" data-lang="en">
+                        <img src="https://flagcdn.com/w20/us.png" alt="English">
+                        <span>English</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="nav-overlay"></div>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects" style="padding-top: 120px;">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle" data-translate="projects-subtitle">Mi trabajo</span>
+                <h2 class="section-title" data-translate="projects-title">Proyectos Destacados</h2>
+                <div class="section-line"></div>
+                <p style="max-width: 600px; margin: 2rem auto 0; color: var(--text-muted); text-align: center; font-size: 1.1rem;" data-translate="projects-description">
+                    Algunos proyectos que destacan mis habilidades técnicas y capacidad de resolución de problemas.
+                </p>
+            </div>
+            
+            <!-- Project Filter -->
+            <div class="project-filters" data-aos="fade-up" data-aos-delay="100">
+                <button class="filter-btn active" data-filter="all" data-translate="filter-all">Todos</button>
+                <button class="filter-btn" data-filter="web" data-translate="filter-web">Sitios Web</button>
+                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                <button class="filter-btn" data-filter="app" data-translate="filter-fullstack">Aplicaciones</button>
+                <button class="filter-btn" data-filter="menu">Menús QR</button>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Proyecto 1 -->
+                <div class="project-card" data-category="ecommerce" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <img src="assets/project1.jpg" alt="Tienda Online Fashion Store" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" data-project="1">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="project-link external" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link github" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">E-commerce</div>
+                        <h3>Fashion Store Online</h3>
+                        <p>E-commerce completo con carrito de compras y sistema de pagos.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 2 -->
+                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-image">
+                        <img src="assets/project2.jpg" alt="Restaurante La Cocina" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" data-project="2">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="project-link external" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link github" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Sitio Web</div>
+                        <h3>Restaurante La Cocina</h3>
+                        <p>Sitio web profesional para restaurante con menú interactivo y reservas online.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 3 -->
+                <div class="project-card" data-category="app" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-image">
+                        <img src="assets/project3.jpg" alt="Sistema de Inventario" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" data-project="3">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="project-link external" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link github" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Aplicación Web</div>
+                        <h3>Sistema de Inventario</h3>
+                        <p>Aplicación web para gestión de inventarios con control de stock y reportes.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                            <span>Express</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 4 -->
+                <div class="project-card" data-category="menu" data-aos="fade-up" data-aos-delay="500">
+                    <div class="project-image">
+                        <img src="assets/project4.jpg" alt="Menú Digital QR" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" data-project="4">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="project-link external" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link github" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Menú QR</div>
+                        <h3>Menú Digital QR</h3>
+                        <p>Menú digital interactivo con código QR y integración con WhatsApp.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>QR API</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 5 -->
+                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="600">
+                    <div class="project-image">
+                        <img src="assets/project5.jpg" alt="Portafolio Fotógrafo" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" data-project="5">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="project-link external" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link github" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Portafolio</div>
+                        <h3>Portafolio Fotógrafo</h3>
+                        <p>Portafolio profesional para fotógrafo con galería optimizada y lightbox.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Lightbox</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 6 -->
+                <div class="project-card" data-category="ecommerce" data-aos="fade-up" data-aos-delay="700">
+                    <div class="project-image">
+                        <img src="assets/project6.jpg" alt="Marketplace Digital" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" data-project="6">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="project-link external" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link github" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">E-commerce</div>
+                        <h3>Marketplace Digital</h3>
+                        <p>Plataforma de ventas multivendedor con sistema de comisiones y chat interno.</p>
+                        <div class="project-tech">
+                            <span>Vue.js</span>
+                            <span>Laravel</span>
+                            <span>MySQL</span>
+                            <span>Socket.io</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Statistics -->
+            <div class="project-stats" style="margin-top: 4rem; padding: 3rem; background: var(--card-bg); border-radius: var(--border-radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);" data-aos="fade-up">
+                <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+                    <div class="stat-item">
+                        <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">25+</div>
+                        <div class="stat-label" style="color: var(--text-muted); font-size: 1.1rem;">Proyectos Completados</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">20+</div>
+                        <div class="stat-label" style="color: var(--text-muted); font-size: 1.1rem;">Clientes Satisfechos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">2+</div>
+                        <div class="stat-label" style="color: var(--text-muted); font-size: 1.1rem;">Años de Experiencia</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="projects-cta" style="text-align: center; margin-top: 4rem; padding: 3rem; background: var(--card-bg); border-radius: var(--border-radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);" data-aos="fade-up">
+                <h3 style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.8rem;">¿Interesado en trabajar conmigo?</h3>
+                <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">
+                    Estos proyectos demuestran mi capacidad técnica y enfoque en resultados.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn btn-primary">
+                        <span>Contactar</span>
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="skills.html" class="btn btn-outline">
+                        <span>Ver Habilidades</span>
+                        <i class="fas fa-code"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="project-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Graviel<span class="accent">.</span>Peralta</h3>
+                    <p data-translate="footer-desc">Desarrollador Web Full Stack especializado en tecnologías modernas.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4 data-translate="footer-services">Servicios</h4>
+                        <ul>
+                            <li><a href="services.html">Desarrollo Web</a></li>
+                            <li><a href="services.html">E-commerce</a></li>
+                            <li><a href="services.html">Aplicaciones Web</a></li>
+                            <li><a href="services.html">Menús Digitales</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4 data-translate="footer-links">Enlaces</h4>
+                        <ul>
+                            <li><a href="about.html" data-translate="nav-sobre">Sobre Mí</a></li>
+                            <li><a href="projects.html" data-translate="nav-proyectos">Proyectos</a></li>
+                            <li><a href="skills.html" data-translate="nav-habilidades">Habilidades</a></li>
+                            <li><a href="contact.html" data-translate="nav-contacto">Contacto</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4 data-translate="footer-contact">Contacto</h4>
+                        <ul>
+                            <li><a href="https://wa.me/18295639556" target="_blank">+1 (829) 563-9556</a></li>
+                            <li><a href="mailto:peraltavasquez100@gmail.com">peraltavasquez100@gmail.com</a></li>
+                            <li>República Dominicana</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Graviel Peralta. Todos los derechos reservados.</p>
+                <div class="footer-social">
+                    <a href="https://github.com/GravielPV" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/graviel-peralta-19356b173/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://wa.me/18295639556" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
