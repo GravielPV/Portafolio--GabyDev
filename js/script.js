@@ -153,13 +153,6 @@ function initTypingAnimation() {
         'Desarrollador de Aplicaciones Web'
     ];
     
-    // En móvil, mostrar solo el primer texto sin animación
-    if (isMobile) {
-        typingElement.textContent = texts[0];
-        // Mantener la clase para el cursor parpadeante
-        return;
-    }
-    
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -175,15 +168,16 @@ function initTypingAnimation() {
             charIndex++;
         }
         
-        let typeSpeed = isDeleting ? 50 : 100;
+        // Velocidad ajustada para móvil pero manteniendo la animación
+        let typeSpeed = isDeleting ? (isMobile ? 30 : 50) : (isMobile ? 80 : 100);
         
         if (!isDeleting && charIndex === currentText.length) {
-            typeSpeed = 2000;
+            typeSpeed = isMobile ? 1500 : 2000;
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             textIndex = (textIndex + 1) % texts.length;
-            typeSpeed = 500;
+            typeSpeed = isMobile ? 300 : 500;
         }
         
         setTimeout(typeText, typeSpeed);
@@ -196,38 +190,136 @@ function initTypingAnimation() {
 // ===== CONTADORES ANIMADOS =====
 function initCounterAnimation() {
     const counters = document.querySelectorAll('[data-count]');
+    console.log('Contadores encontrados:', counters.length);
+    
+    if (counters.length === 0) {
+        console.log('No se encontraron elementos con data-count');
+        return;
+    }
+    
+    // Método 1: IntersectionObserver
     const options = {
-        threshold: 0.7
+        threshold: 0.1,
+        rootMargin: '50px 0px 50px 0px'
     };
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                console.log('Contador visible:', entry.target);
                 const counter = entry.target;
                 const target = parseInt(counter.getAttribute('data-count'));
-                animateCounter(counter, target);
+                console.log('Valor objetivo:', target);
+                
+                // Verificar que el elemento no haya sido animado ya
+                if (!counter.classList.contains('animated')) {
+                    counter.classList.add('animated');
+                    animateCounter(counter, target);
+                }
                 observer.unobserve(counter);
             }
         });
     }, options);
     
-    counters.forEach(counter => observer.observe(counter));
+    counters.forEach(counter => {
+        console.log('Observando contador:', counter);
+        observer.observe(counter);
+    });
+    
+    // Método 2: Scroll event como fallback
+    let hasAnimated = false;
+    
+    function checkCountersOnScroll() {
+        if (hasAnimated) return;
+        
+        counters.forEach(counter => {
+            if (!counter.classList.contains('animated')) {
+                const rect = counter.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                
+                if (isVisible) {
+                    console.log('Contador visible por scroll:', counter);
+                    const target = parseInt(counter.getAttribute('data-count'));
+                    counter.classList.add('animated');
+                    animateCounter(counter, target);
+                }
+            }
+        });
+        
+        // Verificar si todos han sido animados
+        const allAnimated = Array.from(counters).every(counter => 
+            counter.classList.contains('animated')
+        );
+        
+        if (allAnimated) {
+            hasAnimated = true;
+            window.removeEventListener('scroll', checkCountersOnScroll);
+        }
+    }
+    
+    window.addEventListener('scroll', checkCountersOnScroll);
+    
+    // Método 3: Fallback directo después de 2 segundos
+    setTimeout(() => {
+        counters.forEach(counter => {
+            if (!counter.classList.contains('animated')) {
+                console.log('Forzando animación para:', counter);
+                const target = parseInt(counter.getAttribute('data-count'));
+                counter.classList.add('animated');
+                animateCounter(counter, target);
+            }
+        });
+    }, 2000);
 }
 
 function animateCounter(element, target) {
-    let current = 0;
-    const increment = target / 100;
-    const duration = 2000;
-    const stepTime = duration / 100;
+    console.log('Iniciando animación para:', element, 'con objetivo:', target);
     
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            current = target;
-            clearInterval(timer);
+    let current = 0;
+    const duration = 2000; // 2 segundos
+    const frameDuration = 1000 / 60; // 60 FPS
+    const totalFrames = Math.round(duration / frameDuration);
+    const easeOutQuad = t => t * (2 - t); // Función de easing
+    
+    // Agregar clase de animación
+    element.classList.add('animating');
+    
+    let frame = 0;
+    const counter = setInterval(() => {
+        frame++;
+        const progress = easeOutQuad(frame / totalFrames);
+        current = Math.round(target * progress);
+        
+        // Formatear número si es necesario
+        if (target === 100) {
+            element.textContent = current + '%';
+        } else {
+            element.textContent = current;
         }
-        element.textContent = Math.floor(current);
-    }, stepTime);
+        
+        console.log('Frame:', frame, 'Current:', current, 'Target:', target);
+        
+        if (frame === totalFrames) {
+            clearInterval(counter);
+            // Asegurar que termine en el número exacto
+            if (target === 100) {
+                element.textContent = target + '%';
+            } else {
+                element.textContent = target;
+            }
+            
+            console.log('Animación completada para:', element);
+            
+            // Agregar efecto de completado
+            element.classList.remove('animating');
+            element.classList.add('completed');
+            
+            // Remover la clase después de la animación
+            setTimeout(() => {
+                element.classList.remove('completed');
+            }, 500);
+        }
+    }, frameDuration);
 }
 
 // ===== ANIMACIONES DE SCROLL =====
@@ -331,8 +423,6 @@ function handleFormSubmit(e) {
     e.preventDefault();
     
     const form = e.target;
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
     
     // Validar formulario
     if (!validateForm(form)) {
@@ -342,25 +432,130 @@ function handleFormSubmit(e) {
     // Mostrar loading en el botón
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
     submitBtn.disabled = true;
     
-    // Simular envío (aquí integrarías con tu backend)
+    // Obtener datos del formulario
+    const formData = {
+        name: form.name.value,
+        email: form.email.value,
+        company: form.company.value || 'No especificado',
+        projectType: form.subject.options[form.subject.selectedIndex].text,
+        message: form.message.value
+    };
+    
+    // Simular procesamiento
     setTimeout(() => {
-        // Aquí irías tu lógica de envío real
-        showNotification('¡Mensaje enviado exitosamente! Te contactaré pronto.', 'success');
-        form.reset();
-        
         // Restaurar botón
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
         
-        // Redirigir a WhatsApp como alternativa
-        const whatsappMessage = `Hola Graviel! Me interesa tu servicio de ${data.subject}. ${data.message}`;
-        const whatsappUrl = `https://wa.me/18295639556?text=${encodeURIComponent(whatsappMessage)}`;
-        window.open(whatsappUrl, '_blank');
+        // Mostrar opciones de envío
+        showContactOptions(formData);
         
-    }, 2000);
+        // Limpiar formulario
+        form.reset();
+        showNotification('Formulario listo. Elige cómo enviar tu mensaje 📩', 'info');
+        
+    }, 1500);
+}
+
+function showContactOptions(data) {
+    // Crear mensaje estructurado para WhatsApp
+    const whatsappMessage = `🔥 *NUEVO PROYECTO* 🔥
+
+👤 *Nombre:* ${data.name}
+📧 *Email:* ${data.email}
+🏢 *Empresa:* ${data.company}
+🎯 *Tipo de Proyecto:* ${data.projectType}
+
+💬 *Mensaje:*
+${data.message}
+
+---
+Enviado desde el portafolio web 🌐`;
+
+    // Crear mensaje para email
+    const emailSubject = `Nuevo Proyecto: ${data.projectType} - ${data.name}`;
+    const emailBody = `Hola Graviel,
+
+Me pongo en contacto contigo desde tu portafolio web para consultar sobre un proyecto.
+
+INFORMACIÓN DEL CONTACTO:
+- Nombre: ${data.name}
+- Email: ${data.email}
+- Empresa: ${data.company}
+- Tipo de Proyecto: ${data.projectType}
+
+DETALLES DEL PROYECTO:
+${data.message}
+
+Espero tu respuesta.
+
+Saludos,
+${data.name}`;
+
+    // Crear URLs
+    const whatsappUrl = `https://wa.me/18295639556?text=${encodeURIComponent(whatsappMessage)}`;
+    const emailUrl = `mailto:peraltavasquez100@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Mostrar modal de opciones
+    const modal = document.createElement('div');
+    modal.className = 'contact-options-modal';
+    modal.innerHTML = `
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <h3>📩 Envía tu mensaje</h3>
+            <p>Tu información está lista. Elige cómo quieres enviármela:</p>
+            
+            <div class="contact-buttons">
+                <button class="contact-option whatsapp-option" onclick="sendViaWhatsApp('${whatsappUrl}')">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <strong>WhatsApp</strong>
+                        <span>Abre WhatsApp Web</span>
+                    </div>
+                </button>
+                
+                <button class="contact-option email-option" onclick="sendViaEmail('${emailUrl}')">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong>
+                        <span>Abre tu cliente de email</span>
+                    </div>
+                </button>
+            </div>
+            
+            <button class="close-modal" onclick="closeContactModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Mostrar modal con animación
+    setTimeout(() => modal.classList.add('show'), 10);
+}
+
+function sendViaWhatsApp(url) {
+    window.open(url, '_blank');
+    closeContactModal();
+    showNotification('WhatsApp abierto. Envía el mensaje desde la app 📱', 'info');
+}
+
+function sendViaEmail(url) {
+    window.location.href = url;
+    closeContactModal();
+    showNotification('Tu cliente de email se abrió. Revisa y envía el mensaje 📧', 'info');
+}
+
+function closeContactModal() {
+    const modal = document.querySelector('.contact-options-modal');
+    if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.remove(), 300);
+    }
 }
 
 function validateForm(form) {
@@ -1049,7 +1244,10 @@ function translatePage(lang) {
             'footer-rights': 'Todos los derechos reservados.',
             
             // CV Download
-            'cv-download-success': '¡Descarga de CV iniciada! Revisa tu carpeta de descargas.'
+            'cv-download-success': '¡Descarga de CV iniciada! Revisa tu carpeta de descargas.',
+            
+            // Contact Availability
+            'contact-availability': 'Disponible para oportunidades de tiempo completo, proyectos freelance y consultas técnicas.'
         },
         en: {
             // Navigation
@@ -1162,7 +1360,10 @@ function translatePage(lang) {
             'footer-rights': 'All rights reserved.',
             
             // CV Download
-            'cv-download-success': 'CV download started! Check your downloads folder.'
+            'cv-download-success': 'CV download started! Check your downloads folder.',
+            
+            // Contact Availability
+            'contact-availability': 'Available for full-time opportunities, freelance projects and technical consultations.'
         }
     };
 

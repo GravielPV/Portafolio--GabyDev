@@ -510,6 +510,7 @@ body.menu-open {
     color: var(--primary-color);
     font-size: 1.2rem;
     font-weight: 600;
+    margin-top: 2rem;
     margin-bottom: 1rem;
 }
 
@@ -575,6 +576,24 @@ body.menu-open {
     font-weight: 800;
     color: var(--primary-color);
     font-family: var(--font-heading);
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.stat-number.animating {
+    transform: scale(1.1);
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.stat-number.completed {
+    transform: scale(1);
+    animation: pulse 0.5s ease-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
 .stat-label {
@@ -637,9 +656,11 @@ body.menu-open {
 }
 
 .btn-secondary:hover {
-    background: var(--primary-color);
+    background: #25d366; /* Verde WhatsApp */
     color: white;
     transform: translateY(-2px);
+    border-color: #25d366;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
 }
 
 .btn-outline {
@@ -649,8 +670,11 @@ body.menu-open {
 }
 
 .btn-outline:hover {
-    background: var(--primary-color);
+    background: #dc3545; /* Rojo PDF */
     color: white;
+    border-color: #dc3545;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
 }
 
 .hero-image {
@@ -922,10 +946,12 @@ section {
 .code-content {
     padding: 1.5rem;
     background: var(--accent-bg);
-    overflow: hidden;
+    overflow: visible;
     position: relative;
     max-width: 100%;
     box-sizing: border-box;
+    height: auto;
+    min-height: auto;
 }
 
 .code-content pre {
@@ -1952,6 +1978,12 @@ section {
         transform: rotate(-45deg) translate(7px, -6px);
     }
     
+    /* Hero greeting mobile spacing */
+    .hero-greeting {
+        margin-top: 3rem !important;
+        margin-bottom: 1.2rem !important;
+    }
+
     /* Mejoras adicionales para el menú móvil */
     .nav-link:hover {
         background: rgba(59, 130, 246, 0.1);
@@ -2038,6 +2070,12 @@ section {
 }
 
 @media (max-width: 480px) {
+    .hero-greeting {
+        margin-top: 4rem !important;
+        margin-bottom: 1rem !important;
+        font-size: 1.1rem;
+    }
+    
     .hero-title {
         font-size: 2rem;
     }
@@ -2362,6 +2400,72 @@ section {
     border-radius: var(--border-radius);
     font-size: 0.8rem;
     font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+}
+
+.project-tech span:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+    border-color: var(--primary-color);
+}
+
+.project-tech span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.project-tech span:hover::before {
+    left: 100%;
+}
+
+/* Variaciones de colores por tecnología */
+.project-tech span:nth-child(1):hover {
+    background: #61dafb; /* React */
+    border-color: #61dafb;
+    box-shadow: 0 8px 25px rgba(97, 218, 251, 0.3);
+}
+
+.project-tech span:nth-child(2):hover {
+    background: #f7df1e; /* JavaScript */
+    color: #000;
+    border-color: #f7df1e;
+    box-shadow: 0 8px 25px rgba(247, 223, 30, 0.3);
+}
+
+.project-tech span:nth-child(3):hover {
+    background: #e34f26; /* HTML5 */
+    border-color: #e34f26;
+    box-shadow: 0 8px 25px rgba(227, 79, 38, 0.3);
+}
+
+.project-tech span:nth-child(4):hover {
+    background: #1572b6; /* CSS3 */
+    border-color: #1572b6;
+    box-shadow: 0 8px 25px rgba(21, 114, 182, 0.3);
+}
+
+.project-tech span:nth-child(5):hover {
+    background: #06d6a0; /* Responsive */
+    border-color: #06d6a0;
+    box-shadow: 0 8px 25px rgba(6, 214, 160, 0.3);
+}
+
+.project-tech span:nth-child(6):hover {
+    background: #8b5cf6; /* Adicionales */
+    border-color: #8b5cf6;
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
 }
 
 /* Modal de Proyecto */
@@ -2471,6 +2575,209 @@ section {
     transform: translateY(-3px);
     border-color: var(--primary-color);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Contact Item Hover Animations */
+.contact-item {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.2);
+}
+
+.contact-item:hover div:first-child {
+    transform: rotate(10deg) scale(1.1);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+/* Specific colors for each contact method */
+.contact-item:nth-child(1):hover div:first-child {
+    background: linear-gradient(135deg, #ea4335, #c23321) !important; /* Email */
+    box-shadow: 0 8px 25px rgba(234, 67, 53, 0.4);
+}
+
+.contact-item:nth-child(2):hover div:first-child {
+    background: linear-gradient(135deg, #25d366, #128c7e) !important; /* WhatsApp */
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
+.contact-item:nth-child(3):hover div:first-child {
+    background: linear-gradient(135deg, #0077b5, #005885) !important; /* LinkedIn */
+    box-shadow: 0 8px 25px rgba(0, 119, 181, 0.4);
+}
+
+.contact-item:nth-child(4):hover div:first-child {
+    background: linear-gradient(135deg, #333, #000) !important; /* GitHub */
+    box-shadow: 0 8px 25px rgba(51, 51, 51, 0.4);
+}
+
+.contact-item div:first-child {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s;
+    z-index: 1;
+}
+
+.contact-item:hover::before {
+    left: 100%;
+}
+
+.contact-item > div {
+    position: relative;
+    z-index: 2;
+}
+
+/* Contact Options Modal */
+.contact-options-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.contact-options-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.contact-options-modal .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    padding: 3rem;
+    max-width: 500px;
+    width: 90%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.contact-options-modal h3 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.contact-options-modal p {
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-buttons {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.contact-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+    text-align: left;
+}
+
+.contact-option:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.whatsapp-option:hover {
+    border-color: #25d366;
+    background: rgba(37, 211, 102, 0.1);
+}
+
+.email-option:hover {
+    border-color: #ea4335;
+    background: rgba(234, 67, 53, 0.1);
+}
+
+.contact-option i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.whatsapp-option i {
+    color: #25d366;
+}
+
+.email-option i {
+    color: #ea4335;
+}
+
+.contact-option div {
+    flex: 1;
+}
+
+.contact-option strong {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--text-primary);
+}
+
+.contact-option span {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
 }
 
 .faq-item {
@@ -2808,6 +3115,15 @@ section {
         gap: 1rem !important;
     }
     
+    .contact-item:hover {
+        transform: translateY(-3px) scale(1.01) !important;
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15) !important;
+    }
+    
+    .contact-item:hover div:first-child {
+        transform: rotate(5deg) scale(1.05) !important;
+    }
+    
     .contact-item div:first-child {
         width: 40px !important;
         height: 40px !important;
@@ -2964,7 +3280,8 @@ section {
     .code-content {
         padding: 1rem !important;
         overflow-x: hidden !important;
-        overflow-y: hidden !important;
+        overflow-y: visible !important;
+        height: auto !important;
     }
     
     .code-content pre {
@@ -3081,9 +3398,10 @@ section {
     .code-content {
         padding: 0.75rem !important;
         overflow-x: hidden !important;
-        overflow-y: hidden !important;
+        overflow-y: visible !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
+        height: auto !important;
     }
     
     .code-content pre {
@@ -3098,7 +3416,7 @@ section {
         overflow: hidden !important;
     }
     
-    /* Restore typewriter animation but control overflow */
+    /* Restore typewriter animation for mobile with optimized settings */
     .typing-animation {
         border-right: 2px solid var(--primary-color) !important;
         animation: blink 1s infinite !important;
@@ -3197,7 +3515,8 @@ section {
     
     .code-content {
         padding: 0.5rem !important;
-        max-height: 150px !important;
+        height: auto !important;
+        min-height: auto !important;
     }
     
     .code-content pre {
@@ -3321,6 +3640,11 @@ section {
     .project-tech span {
         font-size: 0.75rem !important;
         padding: 0.3rem 0.6rem !important;
+    }
+    
+    .project-tech span:hover {
+        transform: translateY(-1px) scale(1.03) !important;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25) !important;
     }
 }
 
