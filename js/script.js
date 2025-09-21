@@ -156,7 +156,7 @@ function initTypingAnimation() {
     // En móvil, mostrar solo el primer texto sin animación
     if (isMobile) {
         typingElement.textContent = texts[0];
-        typingElement.classList.remove('typing-animation');
+        // Mantener la clase para el cursor parpadeante
         return;
     }
     
@@ -608,7 +608,7 @@ function initCodeTyping() {
            "AWS", "Figma"]
   },
   
-  passion: "Transformar ideas en realidad digital",
+  passion: "Transformar ideas",
   
   getContact() {
     return {
@@ -619,21 +619,18 @@ function initCodeTyping() {
   }
 };
 
-// ¡Listo para crear algo increíble! 🚀`;
-
-    // En móvil, mostrar el código inmediatamente sin animación
-    if (isMobile) {
-        codeElement.textContent = mobileCode;
-        return;
-    }
+// ¡Listo para crear! 🚀`;
 
     let index = 0;
+    const finalCode = isMobile ? mobileCode : code;
     
     function typeCode() {
-        if (index < code.length) {
-            codeElement.textContent = code.substring(0, index + 1);
+        if (index < finalCode.length) {
+            codeElement.textContent = finalCode.substring(0, index + 1);
             index++;
-            setTimeout(typeCode, 20);
+            // Velocidad más rápida en móvil
+            const speed = isMobile ? 15 : 20;
+            setTimeout(typeCode, speed);
         }
     }
     
