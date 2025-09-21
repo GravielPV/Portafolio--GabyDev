@@ -143,12 +143,22 @@ function initTypingAnimation() {
     const typingElement = document.querySelector('.typing-animation');
     if (!typingElement) return;
     
+    // Detectar si es móvil
+    const isMobile = window.innerWidth <= 768;
+    
     const texts = [
         'Desarrollador Web Full Stack',
         'Especialista en Frontend',
         'Creador de Experiencias Digitales',
         'Desarrollador de Aplicaciones Web'
     ];
+    
+    // En móvil, mostrar solo el primer texto sin animación
+    if (isMobile) {
+        typingElement.textContent = texts[0];
+        typingElement.classList.remove('typing-animation');
+        return;
+    }
     
     let textIndex = 0;
     let charIndex = 0;
@@ -549,6 +559,9 @@ function initCodeTyping() {
     const codeElement = document.getElementById('typing-code');
     if (!codeElement) return;
     
+    // Detectar si es móvil
+    const isMobile = window.innerWidth <= 768;
+    
     const code = `const gravielPeralta = {
   name: "Graviel Peralta",
   role: "Full Stack Developer",
@@ -578,6 +591,41 @@ function initCodeTyping() {
 };
 
 // ¡Listo para crear algo increíble juntos! 🚀`;
+
+    const mobileCode = `const graviel = {
+  name: "Graviel Peralta",
+  role: "Full Stack Developer",
+  location: "República Dominicana",
+  
+  skills: {
+    frontend: ["HTML5", "CSS3", 
+              "JavaScript", "React"],
+    backend: ["Node.js", "Python", 
+             "PHP", "Express"],
+    database: ["MySQL", "PostgreSQL", 
+              "MongoDB"],
+    tools: ["Git", "Docker", 
+           "AWS", "Figma"]
+  },
+  
+  passion: "Transformar ideas en realidad digital",
+  
+  getContact() {
+    return {
+      email: "peraltavasquez100@gmail.com",
+      whatsapp: "+1 (829) 563-9556",
+      linkedin: "graviel-peralta"
+    };
+  }
+};
+
+// ¡Listo para crear algo increíble! 🚀`;
+
+    // En móvil, mostrar el código inmediatamente sin animación
+    if (isMobile) {
+        codeElement.textContent = mobileCode;
+        return;
+    }
 
     let index = 0;
     
