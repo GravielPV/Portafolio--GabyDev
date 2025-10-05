@@ -199,15 +199,7 @@
                             Cuéntame sobre tu proyecto y te responderé en 24 horas con los siguientes pasos.
                         </p>
                         
-                        <!-- ✅ FORMULARIO FUNCIONAL con FormSubmit.co - NO requiere backend -->
-                        <form action="https://formsubmit.co/peraltavasquez100@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 2rem;">
-                            <!-- FormSubmit Configuration -->
-                            <input type="hidden" name="_subject" value="🚀 Nuevo Contacto desde Portfolio - Graviel Peralta">
-                            <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_template" value="box">
-                            <input type="hidden" name="_next" value="https://gravielpv.github.io/Portafolio--GabyDev-main/gracias.html">
-                            <input type="hidden" name="_autoresponse" value="¡Gracias por contactarme! He recibido tu mensaje y te responderé en menos de 24 horas. - Graviel Peralta">
-                            
+                        <form id="contactForm" style="display: flex; flex-direction: column; gap: 2rem;">
                             <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                                 <div class="form-group" style="position: relative;">
                                     <label for="name" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500; font-size: 0.95rem;" data-translate="form-name">Nombre Completo</label>
@@ -229,13 +221,13 @@
                                 <label for="subject" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500; font-size: 0.95rem;" data-translate="form-project-type">Tipo de Proyecto</label>
                                 <select id="subject" name="subject" required style="width: 100%; padding: 1rem 1.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: #ffffff; font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box;">
                                     <option value="" style="background: #16213e; color: #ffffff;" data-translate="form-project-select">Selecciona el tipo de proyecto</option>
-                                    <option value="💼 Oportunidad Laboral Full-Time" style="background: #16213e; color: #ffffff;" data-translate="form-employment">Oportunidad Laboral</option>
-                                    <option value="🌐 Desarrollo Web" style="background: #16213e; color: #ffffff;" data-translate="form-web-dev">Desarrollo Web</option>
-                                    <option value="⚡ Aplicación Full-Stack" style="background: #16213e; color: #ffffff;" data-translate="form-fullstack">Aplicación Full-Stack</option>
-                                    <option value="🎨 Desarrollo Frontend" style="background: #16213e; color: #ffffff;" data-translate="form-frontend">Desarrollo Frontend</option>
-                                    <option value="🔧 Desarrollo Backend y APIs" style="background: #16213e; color: #ffffff;" data-translate="form-backend">Desarrollo Backend y APIs</option>
-                                    <option value="💡 Consulta Técnica" style="background: #16213e; color: #ffffff;" data-translate="form-consultation">Consulta Técnica</option>
-                                    <option value="📝 Otro" style="background: #16213e; color: #ffffff;" data-translate="form-other">Otro</option>
+                                    <option value="web-development" style="background: #16213e; color: #ffffff;" data-translate="form-web-dev">Desarrollo Web</option>
+                                    <option value="full-stack-app" style="background: #16213e; color: #ffffff;" data-translate="form-fullstack">Aplicación Full-Stack</option>
+                                    <option value="frontend-development" style="background: #16213e; color: #ffffff;" data-translate="form-frontend">Desarrollo Frontend</option>
+                                    <option value="backend-api" style="background: #16213e; color: #ffffff;" data-translate="form-backend">Desarrollo Backend y APIs</option>
+                                    <option value="consultation" style="background: #16213e; color: #ffffff;" data-translate="form-consultation">Consulta Técnica</option>
+                                    <option value="employment" style="background: #16213e; color: #ffffff;" data-translate="form-employment">Oportunidad Laboral</option>
+                                    <option value="other" style="background: #16213e; color: #ffffff;" data-translate="form-other">Otro</option>
                                 </select>
                             </div>
                             

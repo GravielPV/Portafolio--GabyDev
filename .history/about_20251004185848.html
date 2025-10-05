@@ -157,25 +157,6 @@
                             </div>
                         </div>
                         
-                        <div class="education-section" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-                            <h4 style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.3rem; font-weight: 700;">
-                                <i class="fas fa-graduation-cap" style="color: var(--primary-color); margin-right: 0.5rem;"></i>
-                                Formación Académica
-                            </h4>
-                            <div class="education-list">
-                                <div class="education-item" style="margin-bottom: 1.5rem; padding-left: 1rem; border-left: 3px solid var(--primary-color);">
-                                    <h5 style="color: var(--text-primary); font-weight: 600; margin-bottom: 0.3rem;">Tecnólogo en Desarrollo de Software</h5>
-                                    <p style="color: var(--primary-color); font-size: 0.95rem; margin-bottom: 0.3rem;">Instituto Especializado de Estudios Superiores Loyola</p>
-                                    <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Formación integral en desarrollo de software, bases de datos y metodologías ágiles</p>
-                                </div>
-                                <div class="education-item" style="margin-bottom: 1rem; padding-left: 1rem; border-left: 3px solid var(--primary-color);">
-                                    <h5 style="color: var(--text-primary); font-weight: 600; margin-bottom: 0.3rem;">Carrera Técnica en Desarrollo de Software</h5>
-                                    <p style="color: var(--primary-color); font-size: 0.95rem; margin-bottom: 0.3rem;">Talendig</p>
-                                    <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Fundamentos de programación y algoritmos</p>
-                                </div>
-                            </div>
-                        </div>
-                        
                         <div class="about-buttons">
                             <button onclick="downloadCV()" class="btn btn-outline">
                                 <i class="fas fa-download"></i>
@@ -287,77 +268,6 @@
     <button id="backToTop" class="back-to-top" aria-label="Volver arriba">
         <i class="fas fa-chevron-up"></i>
     </button>
-
-    <!-- Floating Contact Button -->
-    <button id="floatingContact" class="floating-contact-btn" aria-label="Contáctame">
-        <i class="fas fa-comment-dots"></i>
-    </button>
-
-    <!-- Contact Modal -->
-    <div id="contactModal" class="contact-modal">
-        <div class="contact-modal-content">
-            <button class="modal-close" id="closeContactModal" aria-label="Cerrar">
-                <i class="fas fa-times"></i>
-            </button>
-            
-            <div class="modal-header">
-                <h3><i class="fas fa-paper-plane" style="margin-right: 0.5rem; color: var(--primary-color);"></i>Envía un Mensaje</h3>
-                <p style="color: var(--text-muted); margin-top: 0.5rem;">Cuéntame sobre tu proyecto y te responderé en 24 horas</p>
-            </div>
-            
-            <div class="modal-body">
-                <form action="https://formsubmit.co/peraltavasquez100@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 1.5rem;">
-                    <!-- FormSubmit Configuration -->
-                    <input type="hidden" name="_subject" value="🚀 Nuevo Contacto desde Portfolio - Graviel Peralta">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="box">
-                    <input type="hidden" name="_next" value="https://gravielpv.github.io/Portafolio--GabyDev-main/gracias.html">
-                    <input type="hidden" name="_autoresponse" value="¡Gracias por contactarme! He recibido tu mensaje y te responderé en menos de 24 horas. - Graviel Peralta">
-                    
-                    <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                        <div class="form-group">
-                            <label for="modal-name">Nombre Completo</label>
-                            <input type="text" id="modal-name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="modal-email">Correo Electrónico</label>
-                            <input type="email" id="modal-email" name="email" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="modal-company">Empresa / Organización</label>
-                        <input type="text" id="modal-company" name="company">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="modal-subject">Tipo de Proyecto</label>
-                        <select id="modal-subject" name="subject" required>
-                            <option value="">Selecciona el tipo de proyecto</option>
-                            <option value="💼 Oportunidad Laboral Full-Time">Oportunidad Laboral</option>
-                            <option value="🌐 Desarrollo Web">Desarrollo Web</option>
-                            <option value="⚡ Aplicación Full-Stack">Aplicación Full-Stack</option>
-                            <option value="🎨 Desarrollo Frontend">Desarrollo Frontend</option>
-                            <option value="🔧 Desarrollo Backend y APIs">Desarrollo Backend y APIs</option>
-                            <option value="💡 Consulta Técnica">Consulta Técnica</option>
-                            <option value="📝 Otro">Otro</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="modal-message">Detalles del Proyecto</label>
-                        <textarea id="modal-message" name="message" rows="5" placeholder="Describe tu proyecto, requisitos, cronograma y cualquier tecnología específica..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">
-                        <span>Enviar Mensaje</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

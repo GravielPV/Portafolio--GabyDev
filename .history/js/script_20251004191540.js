@@ -1150,6 +1150,8 @@ function translatePage(lang) {
             'work-remote': 'Trabajo Remoto',
             'work-flexible': 'Horario Flexible',
             'work-timezone': 'GMT-4 (EDT)',
+            'cta-title': '🎯 Buscando Oportunidad Full-Time Remota',
+            'cta-subtitle': '<strong>Stack:</strong> React • Node.js • Python • PostgreSQL • MongoDB<br><strong>Disponibilidad:</strong> Incorporación inmediata • Zona horaria GMT-4 (US-friendly)',
             'btn-work': 'Ver Mi Trabajo',
             'btn-contact': 'Contáctame',
             'btn-cv': 'Descargar CV',
@@ -1704,68 +1706,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-});
-
-// ===== FLOATING CONTACT MODAL =====
-function initFloatingContact() {
-    const floatingBtn = document.getElementById('floatingContact');
-    const contactModal = document.getElementById('contactModal');
-    const closeModalBtn = document.getElementById('closeContactModal');
-    const backToTopBtn = document.getElementById('backToTop');
-    
-    if (!floatingBtn || !contactModal) return;
-    
-    // Control de visibilidad del botón flotante según scroll
-    function handleFloatingButtonVisibility() {
-        if (window.scrollY > 300) {
-            // Cuando aparece el botón "Volver arriba", ocultar el botón flotante
-            floatingBtn.classList.add('hide');
-        } else {
-            // Cuando no hay scroll suficiente, mostrar el botón flotante
-            floatingBtn.classList.remove('hide');
-        }
-    }
-    
-    // Escuchar el scroll
-    window.addEventListener('scroll', handleFloatingButtonVisibility);
-    
-    // Verificar al cargar la página
-    handleFloatingButtonVisibility();
-    
-    // Abrir modal
-    floatingBtn.addEventListener('click', () => {
-        contactModal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-    });
-    
-    // Cerrar modal con botón X
-    if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', () => {
-            closeContactModal();
-        });
-    }
-    
-    // Cerrar modal al hacer click fuera
-    contactModal.addEventListener('click', (e) => {
-        if (e.target === contactModal) {
-            closeContactModal();
-        }
-    });
-    
-    // Cerrar modal con tecla ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && contactModal.classList.contains('show')) {
-            closeContactModal();
-        }
-    });
-    
-    function closeContactModal() {
-        contactModal.classList.remove('show');
-        document.body.style.overflow = 'auto';
-    }
-}
-
-// Inicializar el botón flotante cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-    initFloatingContact();
 });

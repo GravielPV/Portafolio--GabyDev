@@ -1711,26 +1711,8 @@ function initFloatingContact() {
     const floatingBtn = document.getElementById('floatingContact');
     const contactModal = document.getElementById('contactModal');
     const closeModalBtn = document.getElementById('closeContactModal');
-    const backToTopBtn = document.getElementById('backToTop');
     
     if (!floatingBtn || !contactModal) return;
-    
-    // Control de visibilidad del botón flotante según scroll
-    function handleFloatingButtonVisibility() {
-        if (window.scrollY > 300) {
-            // Cuando aparece el botón "Volver arriba", ocultar el botón flotante
-            floatingBtn.classList.add('hide');
-        } else {
-            // Cuando no hay scroll suficiente, mostrar el botón flotante
-            floatingBtn.classList.remove('hide');
-        }
-    }
-    
-    // Escuchar el scroll
-    window.addEventListener('scroll', handleFloatingButtonVisibility);
-    
-    // Verificar al cargar la página
-    handleFloatingButtonVisibility();
     
     // Abrir modal
     floatingBtn.addEventListener('click', () => {

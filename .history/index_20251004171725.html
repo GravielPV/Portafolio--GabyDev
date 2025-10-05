@@ -154,6 +154,12 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text" data-aos="fade-up" data-aos-delay="200">
+                    <!-- Badge de Disponibilidad -->
+                    <div class="availability-badge">
+                        <span class="status-dot"></span>
+                        <span data-translate="hero-available">Disponible para contratación</span>
+                    </div>
+                    
                     <span class="hero-greeting" data-translate="hero-greeting">¡Hola! Soy</span>
                     <h1 class="hero-title">
                         <span class="name-animation">Graviel Peralta</span>
@@ -161,31 +167,32 @@
                     <div class="hero-subtitle">
                         <span class="typing-animation" data-translate="hero-role">Desarrollador Web Full Stack</span>
                     </div>
-                    
-                    <!-- Badge de Disponibilidad - Movido aquí para mejor visibilidad mobile -->
-                    <div class="availability-badge" style="margin-top: 1.5rem;">
-                        <span class="status-dot"></span>
-                        <span data-translate="hero-available">Disponible para contratación</span>
-                    </div>
-                    
                     <p class="hero-description" data-translate="hero-description">
                         Desarrollo aplicaciones web modernas y escalables. 
                         Especializado en React, Node.js y arquitecturas cloud.
                         <strong>Busco oportunidades remotas o híbridas.</strong>
                     </p>
                     
+                    <!-- Elevator Pitch -->
+                    <div class="hero-pitch" data-aos="fade-up" data-aos-delay="300">
+                        <p data-translate="hero-pitch">
+                            <i class="fas fa-check-circle"></i>
+                            +2 años transformando ideas en aplicaciones funcionales que resuelven problemas reales de negocio.
+                        </p>
+                    </div>
+                    
                     <div class="hero-stats">
                         <div class="stat-item">
                             <span class="stat-number" data-count="25">0</span>
-                            <span class="stat-label" data-translate="stat-projects">Proyectos Completados</span>
+                            <span class="stat-label">Proyectos Completados</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-number" data-count="2">0</span>
-                            <span class="stat-label" data-translate="stat-experience">Años Experiencia</span>
+                            <span class="stat-label">Años Experiencia</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-number" data-count="100">0</span>
-                            <span class="stat-label" data-translate="stat-code">% Código Limpio</span>
+                            <span class="stat-label">% Código Limpio</span>
                         </div>
                     </div>
                     
@@ -202,22 +209,6 @@
                             <span data-translate="btn-cv">Descargar CV</span>
                             <i class="fas fa-download"></i>
                         </button>
-                    </div>
-                    
-                    <!-- Work Mode Info -->
-                    <div class="work-mode-info" data-aos="fade-up" data-aos-delay="400">
-                        <div class="work-mode-item">
-                            <i class="fas fa-laptop-house"></i>
-                            <span data-translate="work-remote">Trabajo Remoto</span>
-                        </div>
-                        <div class="work-mode-item">
-                            <i class="fas fa-clock"></i>
-                            <span data-translate="work-flexible">Horario Flexible</span>
-                        </div>
-                        <div class="work-mode-item">
-                            <i class="fas fa-globe-americas"></i>
-                            <span data-translate="work-timezone">GMT-4 (EDT)</span>
-                        </div>
                     </div>
                 </div>
                 
@@ -294,87 +285,18 @@
             <div class="footer-bottom">
                 <p>&copy; 2025 Graviel Peralta. Todos los derechos reservados.</p>
                 <div class="footer-social">
-                    <a href="https://github.com/GravielPV" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/graviel-peralta-19356b173/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://wa.me/18295639556" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://github.com/GravielPV" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/graviel-peralta-19356b173/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://wa.me/18295639556" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" class="back-to-top" aria-label="Volver arriba">
+    <button id="backToTop" class="back-to-top">
         <i class="fas fa-chevron-up"></i>
     </button>
-
-    <!-- Floating Contact Button -->
-    <button id="floatingContact" class="floating-contact-btn" aria-label="Contáctame">
-        <i class="fas fa-comment-dots"></i>
-    </button>
-
-    <!-- Contact Modal -->
-    <div id="contactModal" class="contact-modal">
-        <div class="contact-modal-content">
-            <button class="modal-close" id="closeContactModal" aria-label="Cerrar">
-                <i class="fas fa-times"></i>
-            </button>
-            
-            <div class="modal-header">
-                <h3><i class="fas fa-paper-plane" style="margin-right: 0.5rem; color: var(--primary-color);"></i>Envía un Mensaje</h3>
-                <p style="color: var(--text-muted); margin-top: 0.5rem;">Cuéntame sobre tu proyecto y te responderé en 24 horas</p>
-            </div>
-            
-            <div class="modal-body">
-                <form action="https://formsubmit.co/peraltavasquez100@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 1.5rem;">
-                    <input type="hidden" name="_subject" value="🚀 Nuevo Contacto desde Portfolio - Graviel Peralta">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="box">
-                    <input type="hidden" name="_next" value="https://gravielpv.github.io/Portafolio--GabyDev-main/gracias.html">
-                    <input type="hidden" name="_autoresponse" value="¡Gracias por contactarme! He recibido tu mensaje y te responderé en menos de 24 horas. - Graviel Peralta">
-                    
-                    <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                        <div class="form-group">
-                            <label for="modal-name">Nombre Completo</label>
-                            <input type="text" id="modal-name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="modal-email">Correo Electrónico</label>
-                            <input type="email" id="modal-email" name="email" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="modal-company">Empresa / Organización</label>
-                        <input type="text" id="modal-company" name="company">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="modal-subject">Tipo de Proyecto</label>
-                        <select id="modal-subject" name="subject" required>
-                            <option value="">Selecciona el tipo de proyecto</option>
-                            <option value="💼 Oportunidad Laboral Full-Time">Oportunidad Laboral</option>
-                            <option value="🌐 Desarrollo Web">Desarrollo Web</option>
-                            <option value="⚡ Aplicación Full-Stack">Aplicación Full-Stack</option>
-                            <option value="🎨 Desarrollo Frontend">Desarrollo Frontend</option>
-                            <option value="🔧 Desarrollo Backend y APIs">Desarrollo Backend y APIs</option>
-                            <option value="💡 Consulta Técnica">Consulta Técnica</option>
-                            <option value="📝 Otro">Otro</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="modal-message">Detalles del Proyecto</label>
-                        <textarea id="modal-message" name="message" rows="5" placeholder="Describe tu proyecto, requisitos, cronograma y cualquier tecnología específica..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">
-                        <span>Enviar Mensaje</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
