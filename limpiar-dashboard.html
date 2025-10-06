@@ -1,0 +1,188 @@
+<!-- Script de Limpieza del Dashboard -->
+<!-- 
+  Para limpiar los mensajes de ejemplo:
+  1. Abre el navegador
+  2. Presiona F12 para abrir las Developer Tools
+  3. Ve a la pestaña "Console"
+  4. Pega el siguiente código y presiona Enter:
+  
+  localStorage.removeItem('contactMessages');
+  console.log('✅ Mensajes limpiados correctamente');
+  
+  O simplemente abre este archivo en tu navegador y haz clic en el botón.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpiar Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            background: rgba(30, 30, 48, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 16px 64px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        p {
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .btn-clear {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+
+        .btn-clear:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+        }
+
+        .btn-back {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-back:hover {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6;
+        }
+
+        .status {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+        }
+
+        .status.success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+            display: block;
+        }
+
+        .status.info {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #3b82f6;
+            display: block;
+        }
+
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🧹</div>
+        <h1>Limpiar Dashboard</h1>
+        <p>Esta herramienta eliminará todos los mensajes de prueba del dashboard. Los mensajes reales del formulario de contacto no se verán afectados después de la limpieza.</p>
+        
+        <div class="button-group">
+            <button class="btn-clear" onclick="clearMessages()">
+                <i class="fas fa-trash-alt"></i>
+                Limpiar Mensajes de Ejemplo
+            </button>
+            <button class="btn-back" onclick="window.location.href='login.html'">
+                <i class="fas fa-arrow-left"></i>
+                Ir al Dashboard
+            </button>
+        </div>
+
+        <div id="status" class="status"></div>
+    </div>
+
+    <script>
+        function clearMessages() {
+            const confirmed = confirm('¿Estás seguro de que quieres limpiar todos los mensajes de ejemplo?');
+            
+            if (confirmed) {
+                // Limpiar mensajes
+                localStorage.removeItem('contactMessages');
+                
+                // Mostrar mensaje de éxito
+                const status = document.getElementById('status');
+                status.className = 'status success';
+                status.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensajes limpiados correctamente! El dashboard está listo para recibir mensajes reales.';
+                
+                // Cambiar el botón
+                const btnClear = document.querySelector('.btn-clear');
+                btnClear.innerHTML = '<i class="fas fa-check"></i> Limpieza Completada';
+                btnClear.disabled = true;
+                btnClear.style.opacity = '0.6';
+                btnClear.style.cursor = 'not-allowed';
+            }
+        }
+
+        // Verificar estado al cargar
+        window.addEventListener('load', () => {
+            const messages = localStorage.getItem('contactMessages');
+            const status = document.getElementById('status');
+            
+            if (!messages || messages === '[]') {
+                status.className = 'status info';
+                status.innerHTML = '<i class="fas fa-info-circle"></i> El dashboard ya está limpio. No hay mensajes almacenados.';
+            }
+        });
+    </script>
+</body>
+</html>

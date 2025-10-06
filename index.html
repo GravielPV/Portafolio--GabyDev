@@ -297,6 +297,10 @@
                     <a href="https://github.com/GravielPV" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/graviel-peralta-19356b173/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     <a href="https://wa.me/18295639556" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <!-- Hidden Dashboard Access Button -->
+                    <a href="login.html" class="secret-dashboard-btn" aria-label="Dashboard" title="Dashboard">
+                        <i class="fas fa-chart-line"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -325,13 +329,7 @@
             </div>
             
             <div class="modal-body">
-                <form action="https://formsubmit.co/peraltavasquez100@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 1.5rem;">
-                    <input type="hidden" name="_subject" value="🚀 Nuevo Contacto desde Portfolio - Graviel Peralta">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="box">
-                    <input type="hidden" name="_next" value="https://gravielpv.github.io/Portafolio--GabyDev-main/gracias.html">
-                    <input type="hidden" name="_autoresponse" value="¡Gracias por contactarme! He recibido tu mensaje y te responderé en menos de 24 horas. - Graviel Peralta">
-                    
+                <form id="modalContactForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
                     <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div class="form-group">
                             <label for="modal-name">Nombre Completo</label>
@@ -371,6 +369,11 @@
                         <span>Enviar Mensaje</span>
                         <i class="fas fa-paper-plane"></i>
                     </button>
+                    
+                    <div id="successMessage" style="display: none; padding: 1rem; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; color: #10b981; text-align: center;">
+                        <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                        ¡Mensaje enviado correctamente! Te responderé pronto.
+                    </div>
                 </form>
             </div>
         </div>

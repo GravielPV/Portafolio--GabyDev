@@ -196,18 +196,11 @@
                     <div style="position: relative; z-index: 1;">
                         <h3 style="color: var(--text-primary); margin-bottom: 1rem; font-family: var(--font-heading); font-size: 1.8rem; font-weight: 600;" data-translate="contact-form-title">Envía un Mensaje</h3>
                         <p style="color: var(--text-muted); margin-bottom: 3rem; line-height: 1.6;" data-translate="contact-form-desc">
-                            Cuéntame sobre tu proyecto y te responderé en 24 horas con los siguientes pasos.
+                            Cuéntame sobre tu proyecto y te responderé en menos de 24 horas con los siguientes pasos.
                         </p>
                         
-                        <!-- ✅ FORMULARIO FUNCIONAL con FormSubmit.co - NO requiere backend -->
-                        <form action="https://formsubmit.co/peraltavasquez100@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 2rem;">
-                            <!-- FormSubmit Configuration -->
-                            <input type="hidden" name="_subject" value="🚀 Nuevo Contacto desde Portfolio - Graviel Peralta">
-                            <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_template" value="box">
-                            <input type="hidden" name="_next" value="https://gravielpv.github.io/Portafolio--GabyDev-main/gracias.html">
-                            <input type="hidden" name="_autoresponse" value="¡Gracias por contactarme! He recibido tu mensaje y te responderé en menos de 24 horas. - Graviel Peralta">
-                            
+                        <!-- FORMULARIO DE CONTACTO -->
+                        <form id="contactForm" style="display: flex; flex-direction: column; gap: 2rem;">
                             <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                                 <div class="form-group" style="position: relative;">
                                     <label for="name" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500; font-size: 0.95rem;" data-translate="form-name">Nombre Completo</label>
@@ -302,6 +295,10 @@
                     <a href="https://github.com/GravielPV" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/graviel-peralta-19356b173/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     <a href="https://wa.me/18295639556" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <!-- Hidden Dashboard Access Button -->
+                    <a href="login.html" class="secret-dashboard-btn" aria-label="Dashboard" title="Dashboard">
+                        <i class="fas fa-chart-line"></i>
+                    </a>
                 </div>
             </div>
         </div>

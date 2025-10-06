@@ -16,7 +16,7 @@ function initializeApp() {
     initScrollAnimations();
     initSkillBars();
     initProjectFilters();
-    initContactForm();
+    initContactForm(); // Para el modal flotante (index.html)
     initBackToTop();
     initAOS();
     initLanguageSelector();
@@ -404,18 +404,48 @@ function filterProjects(filter) {
     });
 }
 
-// ===== FORMULARIO DE CONTACTO =====
+// ===== FORMULARIO DE CONTACTO (MODAL) =====
 function initContactForm() {
-    const form = document.getElementById('contactForm');
+    const form = document.getElementById('modalContactForm');
     if (!form) return;
     
-    form.addEventListener('submit', handleFormSubmit);
-    
-    // Validación en tiempo real
-    const inputs = form.querySelectorAll('input, textarea, select');
-    inputs.forEach(input => {
-        input.addEventListener('blur', () => validateField(input));
-        input.addEventListener('input', () => clearFieldError(input));
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Obtener datos del formulario
+        const formData = {
+            name: document.getElementById('modal-name').value,
+            email: document.getElementById('modal-email').value,
+            company: document.getElementById('modal-company').value || 'N/A',
+            subject: document.getElementById('modal-subject').value,
+            message: document.getElementById('modal-message').value,
+            date: new Date().toISOString()
+        };
+        
+        // Guardar en localStorage
+        let messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+        messages.push(formData);
+        localStorage.setItem('contactMessages', JSON.stringify(messages));
+        
+        // Crear mensaje de éxito visual
+        const button = form.querySelector('button[type="submit"]');
+        const originalHTML = button.innerHTML;
+        
+        // Cambiar botón a estado de éxito
+        button.innerHTML = '<i class="fas fa-check"></i> <span>¡Mensaje Enviado Correctamente!</span>';
+        button.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        button.disabled = true;
+        
+        // Limpiar formulario
+        form.reset();
+        
+        // Restaurar botón y cerrar modal después de 3 segundos
+        setTimeout(() => {
+            button.innerHTML = originalHTML;
+            button.style.background = 'var(--gradient-primary)';
+            button.disabled = false;
+            closeContactModal();
+        }, 3000);
     });
 }
 
@@ -460,82 +490,11 @@ function handleFormSubmit(e) {
     }, 1500);
 }
 
+// ===== FUNCIONES ANTIGUAS DESHABILITADAS =====
+// Estas funciones ya no se usan porque ahora todo se guarda en localStorage
+/*
 function showContactOptions(data) {
-    // Crear mensaje estructurado para WhatsApp
-    const whatsappMessage = `🔥 *NUEVO PROYECTO* 🔥
-
-👤 *Nombre:* ${data.name}
-📧 *Email:* ${data.email}
-🏢 *Empresa:* ${data.company}
-🎯 *Tipo de Proyecto:* ${data.projectType}
-
-💬 *Mensaje:*
-${data.message}
-
----
-Enviado desde el portafolio web 🌐`;
-
-    // Crear mensaje para email
-    const emailSubject = `Nuevo Proyecto: ${data.projectType} - ${data.name}`;
-    const emailBody = `Hola Graviel,
-
-Me pongo en contacto contigo desde tu portafolio web para consultar sobre un proyecto.
-
-INFORMACIÓN DEL CONTACTO:
-- Nombre: ${data.name}
-- Email: ${data.email}
-- Empresa: ${data.company}
-- Tipo de Proyecto: ${data.projectType}
-
-DETALLES DEL PROYECTO:
-${data.message}
-
-Espero tu respuesta.
-
-Saludos,
-${data.name}`;
-
-    // Crear URLs
-    const whatsappUrl = `https://wa.me/18295639556?text=${encodeURIComponent(whatsappMessage)}`;
-    const emailUrl = `mailto:peraltavasquez100@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-    
-    // Mostrar modal de opciones
-    const modal = document.createElement('div');
-    modal.className = 'contact-options-modal';
-    modal.innerHTML = `
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <h3>📩 Envía tu mensaje</h3>
-            <p>Tu información está lista. Elige cómo quieres enviármela:</p>
-            
-            <div class="contact-buttons">
-                <button class="contact-option whatsapp-option" onclick="sendViaWhatsApp('${whatsappUrl}')">
-                    <i class="fab fa-whatsapp"></i>
-                    <div>
-                        <strong>WhatsApp</strong>
-                        <span>Abre WhatsApp Web</span>
-                    </div>
-                </button>
-                
-                <button class="contact-option email-option" onclick="sendViaEmail('${emailUrl}')">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <strong>Email</strong>
-                        <span>Abre tu cliente de email</span>
-                    </div>
-                </button>
-            </div>
-            
-            <button class="close-modal" onclick="closeContactModal()">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-    `;
-    
-    document.body.appendChild(modal);
-    
-    // Mostrar modal con animación
-    setTimeout(() => modal.classList.add('show'), 10);
+    // ... código antiguo comentado ...
 }
 
 function sendViaWhatsApp(url) {
@@ -549,12 +508,13 @@ function sendViaEmail(url) {
     closeContactModal();
     showNotification('Tu cliente de email se abrió. Revisa y envía el mensaje 📧', 'info');
 }
+*/
 
 function closeContactModal() {
-    const modal = document.querySelector('.contact-options-modal');
+    const modal = document.getElementById('contactModal');
     if (modal) {
         modal.classList.remove('show');
-        setTimeout(() => modal.remove(), 300);
+        document.body.style.overflow = '';
     }
 }
 
@@ -1763,9 +1723,94 @@ function initFloatingContact() {
         contactModal.classList.remove('show');
         document.body.style.overflow = 'auto';
     }
+    
+    // Manejar envío del formulario de contacto
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener datos del formulario
+            const formData = {
+                name: document.getElementById('modal-name').value,
+                email: document.getElementById('modal-email').value,
+                company: document.getElementById('modal-company').value,
+                subject: document.getElementById('modal-subject').value,
+                message: document.getElementById('modal-message').value,
+                date: new Date().toISOString()
+            };
+            
+            // Guardar en localStorage
+            let messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+            messages.push(formData);
+            localStorage.setItem('contactMessages', JSON.stringify(messages));
+            
+            // Mostrar mensaje de éxito
+            const successMessage = document.getElementById('successMessage');
+            if (successMessage) {
+                successMessage.style.display = 'block';
+            }
+            
+            // Limpiar formulario
+            contactForm.reset();
+            
+            // Ocultar mensaje y cerrar modal después de 3 segundos
+            setTimeout(() => {
+                if (successMessage) {
+                    successMessage.style.display = 'none';
+                }
+                closeContactModal();
+            }, 3000);
+        });
+    }
+}
+
+// Manejar el formulario de la página de contacto (contact.html)
+function initContactPageForm() {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+    
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Obtener datos del formulario
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            company: document.getElementById('company').value || 'N/A',
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value,
+            date: new Date().toISOString()
+        };
+        
+        // Guardar en localStorage
+        let messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+        messages.push(formData);
+        localStorage.setItem('contactMessages', JSON.stringify(messages));
+        
+        // Crear mensaje de éxito visual
+        const button = contactForm.querySelector('button[type="submit"]');
+        const originalHTML = button.innerHTML;
+        
+        // Cambiar botón a estado de éxito
+        button.innerHTML = '<i class="fas fa-check"></i> <span>¡Mensaje Enviado Correctamente!</span>';
+        button.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        button.disabled = true;
+        
+        // Limpiar formulario
+        contactForm.reset();
+        
+        // Restaurar botón después de 3 segundos
+        setTimeout(() => {
+            button.innerHTML = originalHTML;
+            button.style.background = 'var(--gradient-primary)';
+            button.disabled = false;
+        }, 3000);
+    });
 }
 
 // Inicializar el botón flotante cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
     initFloatingContact();
+    initContactPageForm(); // Inicializar formulario de contact.html
 });
