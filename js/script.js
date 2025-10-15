@@ -1813,4 +1813,66 @@ function initContactPageForm() {
 document.addEventListener('DOMContentLoaded', function() {
     initFloatingContact();
     initContactPageForm(); // Inicializar formulario de contact.html
+    initTechColors(); // Inicializar colores de tecnologías
 });
+
+// ===== COLORES DE TECNOLOGÍAS =====
+function initTechColors() {
+    // Obtener todos los spans de tecnologías
+    const techSpans = document.querySelectorAll('.project-tech span');
+    
+    // Mapa de tecnologías y sus clases
+    const techColors = {
+        'JavaScript': 'tech-javascript',
+        'React': 'tech-react',
+        'HTML5': 'tech-html',
+        'HTML': 'tech-html',
+        'CSS3': 'tech-css',
+        'CSS': 'tech-css',
+        'Node.js': 'tech-node',
+        'Node': 'tech-node',
+        'Python': 'tech-python',
+        'MySQL': 'tech-mysql',
+        'WordPress': 'tech-wordpress',
+        'WooCommerce': 'tech-woocommerce',
+        'PHP': 'tech-php',
+        'Git': 'tech-git',
+        'GitHub': 'tech-github',
+        'Bootstrap': 'tech-bootstrap',
+        'Tailwind': 'tech-tailwind',
+        'MongoDB': 'tech-mongodb',
+        'Express': 'tech-express',
+        'TypeScript': 'tech-typescript',
+        'Vue': 'tech-vue',
+        'Docker': 'tech-docker',
+        'API': 'tech-api',
+        'REST': 'tech-api',
+        'SEO': 'tech-seo',
+        'Analytics': 'tech-analytics',
+        'Google Analytics': 'tech-analytics',
+        'Responsive': 'tech-responsive',
+        'PWA': 'tech-pwa',
+        'WhatsApp': 'tech-whatsapp',
+        'WhatsApp API': 'tech-whatsapp',
+        'Firebase': 'tech-firebase',
+        'Sass': 'tech-sass',
+        'SCSS': 'tech-sass',
+        'Redux': 'tech-redux',
+        'jQuery': 'tech-jquery',
+        'Local Storage': 'tech-storage',
+        'Storage': 'tech-storage',
+        'Netlify': 'tech-netlify',
+        'Vercel': 'tech-vercel',
+        'GitHub Pages': 'tech-github-pages',
+        'Pages': 'tech-github-pages'
+    };
+    
+    // Asignar clases basadas en el texto
+    techSpans.forEach(span => {
+        const techName = span.textContent.trim();
+        const techClass = techColors[techName];
+        if (techClass) {
+            span.classList.add(techClass);
+        }
+    });
+}

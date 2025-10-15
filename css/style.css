@@ -2519,42 +2519,249 @@ section {
     left: 100%;
 }
 
-/* Variaciones de colores por tecnología */
-.project-tech span:nth-child(1):hover {
-    background: #61dafb; /* React */
-    border-color: #61dafb;
-    box-shadow: 0 8px 25px rgba(97, 218, 251, 0.3);
+/* ===== COLORES ESPECÍFICOS POR TECNOLOGÍA ===== */
+
+/* JavaScript */
+.project-tech span.tech-javascript:hover {
+    background: #f7df1e !important;
+    color: #000 !important;
+    border-color: #f7df1e !important;
+    box-shadow: 0 8px 25px rgba(247, 223, 30, 0.4) !important;
 }
 
-.project-tech span:nth-child(2):hover {
-    background: #f7df1e; /* JavaScript */
-    color: #000;
-    border-color: #f7df1e;
-    box-shadow: 0 8px 25px rgba(247, 223, 30, 0.3);
+/* React */
+.project-tech span.tech-react:hover {
+    background: #61dafb !important;
+    color: #000 !important;
+    border-color: #61dafb !important;
+    box-shadow: 0 8px 25px rgba(97, 218, 251, 0.4) !important;
 }
 
-.project-tech span:nth-child(3):hover {
-    background: #e34f26; /* HTML5 */
-    border-color: #e34f26;
-    box-shadow: 0 8px 25px rgba(227, 79, 38, 0.3);
+/* HTML5 */
+.project-tech span.tech-html:hover {
+    background: #e34f26 !important;
+    color: white !important;
+    border-color: #e34f26 !important;
+    box-shadow: 0 8px 25px rgba(227, 79, 38, 0.4) !important;
 }
 
-.project-tech span:nth-child(4):hover {
-    background: #1572b6; /* CSS3 */
-    border-color: #1572b6;
-    box-shadow: 0 8px 25px rgba(21, 114, 182, 0.3);
+/* CSS3 */
+.project-tech span.tech-css:hover {
+    background: #1572b6 !important;
+    color: white !important;
+    border-color: #1572b6 !important;
+    box-shadow: 0 8px 25px rgba(21, 114, 182, 0.4) !important;
 }
 
-.project-tech span:nth-child(5):hover {
-    background: #06d6a0; /* Responsive */
-    border-color: #06d6a0;
-    box-shadow: 0 8px 25px rgba(6, 214, 160, 0.3);
+/* Node.js */
+.project-tech span.tech-node:hover {
+    background: #68a063 !important;
+    color: white !important;
+    border-color: #68a063 !important;
+    box-shadow: 0 8px 25px rgba(104, 160, 99, 0.4) !important;
 }
 
-.project-tech span:nth-child(6):hover {
-    background: #8b5cf6; /* Adicionales */
-    border-color: #8b5cf6;
-    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+/* Python */
+.project-tech span.tech-python:hover {
+    background: #3776ab !important;
+    color: white !important;
+    border-color: #3776ab !important;
+    box-shadow: 0 8px 25px rgba(55, 118, 171, 0.4) !important;
+}
+
+/* MySQL / Database */
+.project-tech span.tech-mysql:hover {
+    background: #00758f !important;
+    color: white !important;
+    border-color: #00758f !important;
+    box-shadow: 0 8px 25px rgba(0, 117, 143, 0.4) !important;
+}
+
+/* WordPress */
+.project-tech span.tech-wordpress:hover {
+    background: #21759b !important;
+    color: white !important;
+    border-color: #21759b !important;
+    box-shadow: 0 8px 25px rgba(33, 117, 155, 0.4) !important;
+}
+
+/* WooCommerce */
+.project-tech span.tech-woocommerce:hover {
+    background: #96588a !important;
+    color: white !important;
+    border-color: #96588a !important;
+    box-shadow: 0 8px 25px rgba(150, 88, 138, 0.4) !important;
+}
+
+/* PHP */
+.project-tech span.tech-php:hover {
+    background: #777bb4 !important;
+    color: white !important;
+    border-color: #777bb4 !important;
+    box-shadow: 0 8px 25px rgba(119, 123, 180, 0.4) !important;
+}
+
+/* Git / GitHub */
+.project-tech span.tech-git:hover,
+.project-tech span.tech-github:hover {
+    background: #f05032 !important;
+    color: white !important;
+    border-color: #f05032 !important;
+    box-shadow: 0 8px 25px rgba(240, 80, 50, 0.4) !important;
+}
+
+/* Bootstrap */
+.project-tech span.tech-bootstrap:hover {
+    background: #7952b3 !important;
+    color: white !important;
+    border-color: #7952b3 !important;
+    box-shadow: 0 8px 25px rgba(121, 82, 179, 0.4) !important;
+}
+
+/* Tailwind */
+.project-tech span.tech-tailwind:hover {
+    background: #06b6d4 !important;
+    color: white !important;
+    border-color: #06b6d4 !important;
+    box-shadow: 0 8px 25px rgba(6, 182, 212, 0.4) !important;
+}
+
+/* MongoDB */
+.project-tech span.tech-mongodb:hover {
+    background: #47a248 !important;
+    color: white !important;
+    border-color: #47a248 !important;
+    box-shadow: 0 8px 25px rgba(71, 162, 72, 0.4) !important;
+}
+
+/* Express */
+.project-tech span.tech-express:hover {
+    background: #000000 !important;
+    color: white !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* TypeScript */
+.project-tech span.tech-typescript:hover {
+    background: #3178c6 !important;
+    color: white !important;
+    border-color: #3178c6 !important;
+    box-shadow: 0 8px 25px rgba(49, 120, 198, 0.4) !important;
+}
+
+/* Vue.js */
+.project-tech span.tech-vue:hover {
+    background: #42b883 !important;
+    color: white !important;
+    border-color: #42b883 !important;
+    box-shadow: 0 8px 25px rgba(66, 184, 131, 0.4) !important;
+}
+
+/* Docker */
+.project-tech span.tech-docker:hover {
+    background: #2496ed !important;
+    color: white !important;
+    border-color: #2496ed !important;
+    box-shadow: 0 8px 25px rgba(36, 150, 237, 0.4) !important;
+}
+
+/* API REST */
+.project-tech span.tech-api:hover {
+    background: #ff6c37 !important;
+    color: white !important;
+    border-color: #ff6c37 !important;
+    box-shadow: 0 8px 25px rgba(255, 108, 55, 0.4) !important;
+}
+
+/* SEO / Analytics */
+.project-tech span.tech-seo:hover,
+.project-tech span.tech-analytics:hover {
+    background: #e37400 !important;
+    color: white !important;
+    border-color: #e37400 !important;
+    box-shadow: 0 8px 25px rgba(227, 116, 0, 0.4) !important;
+}
+
+/* Responsive / PWA */
+.project-tech span.tech-responsive:hover,
+.project-tech span.tech-pwa:hover {
+    background: #06d6a0 !important;
+    color: white !important;
+    border-color: #06d6a0 !important;
+    box-shadow: 0 8px 25px rgba(6, 214, 160, 0.4) !important;
+}
+
+/* WhatsApp */
+.project-tech span.tech-whatsapp:hover {
+    background: #25d366 !important;
+    color: white !important;
+    border-color: #25d366 !important;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4) !important;
+}
+
+/* Firebase */
+.project-tech span.tech-firebase:hover {
+    background: #ffca28 !important;
+    color: #000 !important;
+    border-color: #ffca28 !important;
+    box-shadow: 0 8px 25px rgba(255, 202, 40, 0.4) !important;
+}
+
+/* Sass / SCSS */
+.project-tech span.tech-sass:hover {
+    background: #cc6699 !important;
+    color: white !important;
+    border-color: #cc6699 !important;
+    box-shadow: 0 8px 25px rgba(204, 102, 153, 0.4) !important;
+}
+
+/* Redux */
+.project-tech span.tech-redux:hover {
+    background: #764abc !important;
+    color: white !important;
+    border-color: #764abc !important;
+    box-shadow: 0 8px 25px rgba(118, 74, 188, 0.4) !important;
+}
+
+/* jQuery */
+.project-tech span.tech-jquery:hover {
+    background: #0769ad !important;
+    color: white !important;
+    border-color: #0769ad !important;
+    box-shadow: 0 8px 25px rgba(7, 105, 173, 0.4) !important;
+}
+
+/* Local Storage */
+.project-tech span.tech-storage:hover {
+    background: #8b5cf6 !important;
+    color: white !important;
+    border-color: #8b5cf6 !important;
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4) !important;
+}
+
+/* Netlify */
+.project-tech span.tech-netlify:hover {
+    background: #00c7b7 !important;
+    color: white !important;
+    border-color: #00c7b7 !important;
+    box-shadow: 0 8px 25px rgba(0, 199, 183, 0.4) !important;
+}
+
+/* Vercel */
+.project-tech span.tech-vercel:hover {
+    background: #000000 !important;
+    color: white !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* GitHub Pages */
+.project-tech span.tech-github-pages:hover {
+    background: #222222 !important;
+    color: white !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3) !important;
 }
 
 /* Modal de Proyecto */

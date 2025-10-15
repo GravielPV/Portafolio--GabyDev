@@ -66,6 +66,7 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stars.css">
 </head>
 <body>
     <!-- Loading Screen -->
@@ -140,13 +141,15 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-background">
+            <!-- Estrellas brillantes -->
+            <div class="stars-container"></div>
             <div class="hero-particles"></div>
             <div class="floating-shapes">
                 <div class="shape shape-1"></div>
                 <div class="shape shape-2"></div>
                 <div class="shape shape-3"></div>
                 <div class="profile-circle">
-                    <img src="Foto.jpeg" alt="Graviel Peralta - Desarrollador Full Stack" class="profile-image">
+                    <img src="assets/profile-photo.jpeg" alt="Graviel Peralta - Desarrollador Full Stack" class="profile-image">
                 </div>
             </div>
         </div>
@@ -382,5 +385,69 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/script.js"></script>
+    
+    <!-- Script para generar estrellas -->
+    <script>
+        // Generar estrellas brillantes
+        function createStars() {
+            const starsContainer = document.querySelector('.stars-container');
+            if (!starsContainer) return;
+            
+            const numberOfStars = window.innerWidth < 768 ? 20 : 40;
+            const sizes = ['small', 'medium', 'large'];
+            const colors = ['', 'blue', 'purple', 'cyan']; // '' para blanco
+            const animations = ['anim-1', 'anim-2', 'anim-3', 'anim-4', 'anim-5', 'anim-6', 'anim-7', 'anim-8'];
+            
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Asignar tamaño aleatorio
+                const size = sizes[Math.floor(Math.random() * sizes.length)];
+                star.classList.add(size);
+                
+                // Algunas estrellas tendrán colores especiales (20% de probabilidad)
+                if (Math.random() < 0.2) {
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    if (color) star.classList.add(color);
+                }
+                
+                // Asignar animación aleatoria
+                const animation = animations[Math.floor(Math.random() * animations.length)];
+                star.classList.add(animation);
+                
+                // Posición aleatoria
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                star.style.left = x + '%';
+                star.style.top = y + '%';
+                
+                // Opacidad inicial aleatoria
+                star.style.opacity = Math.random() * 0.5;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Crear estrellas cuando el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', createStars);
+        } else {
+            createStars();
+        }
+        
+        // Recrear estrellas al redimensionar la ventana (con debounce)
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                const starsContainer = document.querySelector('.stars-container');
+                if (starsContainer) {
+                    starsContainer.innerHTML = '';
+                    createStars();
+                }
+            }, 500);
+        });
+    </script>
 </body>
 </html>
