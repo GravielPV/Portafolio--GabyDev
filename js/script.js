@@ -1400,10 +1400,10 @@ function downloadCV() {
     let cvPath, fileName;
     
     if (currentLang === 'en') {
-        cvPath = 'assets/CV_Graviel_Peralta_Harvard_EN.pdf';
+        cvPath = 'assets/CV_Graviel_Peralta-English.pdf';
         fileName = 'CV_Graviel_Peralta_English.pdf';
     } else {
-        cvPath = 'assets/CV_Graviel_Peralta- Español-ESTILO HARVAR.pdf';
+        cvPath = 'assets/Graviel_Peralta.pdf';
         fileName = 'CV_Graviel_Peralta_Español.pdf';
     }
     
