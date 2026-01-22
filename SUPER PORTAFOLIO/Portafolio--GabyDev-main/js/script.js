@@ -1122,8 +1122,6 @@ function translatePage(lang) {
             // Real Projects
             'project-crm-title': 'CRM para Doctores',
             'project-crm-desc': 'Sistema completo de gestión médica para doctores. Incluye gestión de pacientes, citas, expedientes médicos y reportes. Interfaz moderna y segura desarrollada en React.',
-            'project-leyni-title': 'Las Informaciones con Leyni',
-            'project-leyni-desc': 'Plataforma de noticias independiente y responsable. Cubre política, economía, sociedad y más en la República Dominicana.',
             'project-picante-title': 'La Mañana Picante',
             'project-picante-desc': 'Plataforma informativa y periódico digital. Ofrece noticias actualizadas, transmisión en vivo y contenido variado de interés general.',
             'project-restaurant-title': 'Pasteles en Hoja Margarita',
@@ -1244,8 +1242,6 @@ function translatePage(lang) {
             // Real Projects
             'project-crm-title': 'CRM for Doctors',
             'project-crm-desc': 'Complete medical management system for doctors. Includes patient management, appointments, medical records and reports. Modern and secure interface developed in React.',
-            'project-leyni-title': 'Las Informaciones con Leyni',
-            'project-leyni-desc': 'Independent and responsible news platform. Covers politics, economy, society and more in the Dominican Republic.',
             'project-picante-title': 'La Mañana Picante',
             'project-picante-desc': 'Informative platform and digital newspaper. Offers up-to-date news, live streaming, and varied content of general interest.',
             'project-restaurant-title': 'Pasteles en Hoja Margarita',
@@ -1422,14 +1418,6 @@ const screenshots = {
             'FotoProyecto/CRM/8-reportes.png'
         ],
         url: 'https://crm-gaby-dev.netlify.app/'
-    },
-    leyni: {
-        title: 'Las Informaciones con Leyni',
-        titleEn: 'Las Informaciones con Leyni',
-        images: [
-            'FotoProyecto/LEYNI/preview.png'
-        ],
-        url: 'https://lasinformacionesconleyni.com/'
     },
     picante: {
         title: 'La Mañana Picante',
