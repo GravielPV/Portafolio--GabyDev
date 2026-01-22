@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Proyectos reales desarrollados por Graviel Peralta | CRM médico, tiendas online, menús digitales y más | Portfolio Full Stack | React, Node.js, Python">
+    <meta name="keywords" content="proyectos web, desarrollo, portfolio, graviel peralta, crm, ecommerce, menu digital, React projects, Full Stack portfolio">
+    <meta name="author" content="Graviel Peralta">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tudominio.com/projects.html">
+    <meta property="og:title" content="Proyectos Reales | Graviel Peralta - Portfolio Full Stack">
+    <meta property="og:description" content="Explora mis proyectos: CRM médico, tiendas e-commerce, menús digitales y aplicaciones web desarrolladas para clientes reales.">
+    <meta property="og:image" content="https://tudominio.com/assets/profile-photo.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tudominio.com/projects.html">
+    <meta property="twitter:title" content="Proyectos Reales | Graviel Peralta - Portfolio">
+    <meta property="twitter:description" content="CRM médico, tiendas e-commerce, menús digitales y más. +25 proyectos reales completados.">
+    <meta property="twitter:image" content="https://tudominio.com/assets/profile-photo.jpg">
+    
+    <title>Proyectos | Graviel Peralta - Portfolio Full Stack Developer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animated-background.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
+            <div class="shape shape-7"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span class="logo-text">Gaby<span class="accent">.</span>Dev</span>
+                </a>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link" data-translate="nav-inicio">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link" data-translate="nav-sobre">Sobre Mí</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html" class="nav-link" data-translate="nav-servicios">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="projects.html" class="nav-link active" data-translate="nav-proyectos">Proyectos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="skills.html" class="nav-link" data-translate="nav-habilidades">Habilidades</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link" data-translate="nav-contacto">Contacto</a>
+                </li>
+            </ul>
+            
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <div class="language-toggle" id="languageToggle">
+                    <span class="current-lang">ES</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="language-dropdown" id="languageDropdown">
+                    <a href="#" role="button" class="lang-option active" data-lang="es">
+                        <img src="https://flagcdn.com/w20/es.png" alt="Español">
+                        <span>ES</span>
+                    </a>
+                    <a href="#" role="button" class="lang-option" data-lang="en">
+                        <img src="https://flagcdn.com/w20/us.png" alt="English">
+                        <span>EN</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="nav-overlay"></div>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects" style="padding-top: 120px;">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+             
+                <h2 class="section-title" data-translate="projects-title">Proyectos</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <!-- Project Filter -->
+            <div class="project-filters" data-aos="fade-up" data-aos-delay="100">
+                <button class="filter-btn active" data-filter="all" data-translate="filter-all">Todos</button>
+                <button class="filter-btn" data-filter="web" data-translate="filter-web">Sitios Web</button>
+                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                <button class="filter-btn" data-filter="app" data-translate="filter-fullstack">Aplicaciones</button>
+                <button class="filter-btn" data-filter="menu">Menús QR</button>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Proyecto 1: CRM para Doctores -->
+                <div class="project-card" data-category="app" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <img src="FotoProyecto/CRM/2-pagina principal.png" alt="CRM para Doctores - Sistema de Gestión Médica" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <button class="project-link preview" onclick="openScreenshot('crm')" title="Ver Screenshot">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <a href="https://crm-gaby-dev.netlify.app/" class="project-link external" target="_blank" title="Ver Proyecto">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Aplicación Web</div>
+                        <h3 data-translate="project-crm-title">CRM para Doctores</h3>
+                        <p data-translate="project-crm-desc">Sistema completo de gestión médica para doctores. Incluye gestión de pacientes, citas, expedientes médicos y reportes. Interfaz moderna y segura desarrollada en React.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>JavaScript</span>
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>Responsive</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 2: Las Informaciones con Leyni -->
+                <div class="project-card" data-category="webapp" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-image">
+                        <img src="FotoProyecto/LEYNI/preview.png" alt="Las Informaciones con Leyni" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <button class="project-link preview" onclick="openScreenshot('leyni')" title="Ver Screenshot">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <a href="https://lasinformacionesconleyni.com/" class="project-link external" target="_blank" title="Ver Sitio">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Noticias</div>
+                        <h3 data-translate="project-leyni-title">Las Informaciones con Leyni</h3>
+                        <p data-translate="project-leyni-desc">Plataforma de noticias independiente y responsable. Cubre política, economía, sociedad y más en la República Dominicana.</p>
+                        <div class="project-tech">
+                            <span>Next.js</span>
+                            <span>React</span>
+                            <span>Responsive</span>
+                            <span>API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto: La Mañana Picante -->
+                <div class="project-card" data-category="webapp" data-aos="fade-up" data-aos-delay="350">
+                    <div class="project-image">
+                        <img src="FotoProyecto/PICANTE/2.png" alt="La Mañana Picante" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <button class="project-link preview" onclick="openScreenshot('picante')" title="Ver Screenshot">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <a href="https://lamananapicante.com/" class="project-link external" target="_blank" title="Ver Sitio">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Noticias</div>
+                        <h3 data-translate="project-picante-title">La Mañana Picante</h3>
+                        <p data-translate="project-picante-desc">Plataforma informativa y periódico digital. Ofrece noticias actualizadas, transmisión en vivo y contenido variado de interés general.</p>
+                        <div class="project-tech">
+                            <span>Next.js</span>
+                            <span>React</span>
+                            <span>Responsive</span>
+                            <span>Streaming</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 3: Pasteles en Hoja Margarita -->
+                <div class="project-card" data-category="menu" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-image">
+                        <img src="FotoProyecto/RESTAURANTE/1-PRINCIPAL.png" alt="Pasteles en Hoja Margarita - Menú Digital" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <button class="project-link preview" onclick="openScreenshot('restaurant')" title="Ver Screenshot">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <a href="https://pasteles-en-hoja-margarita.netlify.app/" class="project-link external" target="_blank" title="Ver Menú">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Menú Digital</div>
+                        <h3 data-translate="project-restaurant-title">Pasteles en Hoja Margarita</h3>
+                        <p data-translate="project-restaurant-desc">Menú digital interactivo para restaurante dominicano. Incluye catálogo de platos, información de contacto, horarios y sistema de pedidos directos por WhatsApp. Perfecto para mostrar la gastronomía local.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Responsive</span>
+                            <span>WhatsApp API</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 4: Gaby Dev Portfolio -->
+                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="500">
+                    <div class="project-image">
+                        <img src="FotoProyecto/PAGINAWEB/1-Principal.png" alt="Gaby Dev - Página de Servicios Web" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <button class="project-link preview" onclick="openScreenshot('gabydev')" title="Ver Screenshot">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <a href="https://gravielpv.github.io/Gaby-Dev/" class="project-link external" target="_blank" title="Ver Página">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Landing Page</div>
+                        <h3 data-translate="project-gabydev-title">Gaby Dev - Servicios Web</h3>
+                        <p data-translate="project-gabydev-desc">Landing page profesional para servicios de desarrollo web. Incluye portafolio de trabajos, proceso de contratación, paquetes de precios y formulario de contacto optimizado para conversión.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>GitHub Pages</span>
+                            <span>SEO</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 5: Pomodoro Timer -->
+                <div class="project-card" data-category="app" data-aos="fade-up" data-aos-delay="600">
+                    <div class="project-image">
+                        <img src="FotoProyecto/POMODORO/1-principal banco.png" alt="Pomodoro Timer - Aplicación de Productividad" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <button class="project-link preview" onclick="openScreenshot('pomodoro')" title="Ver Screenshot">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <a href="https://gravielpv.github.io/Pomodoro-GabyDev/" class="project-link external" target="_blank" title="Usar App">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Aplicación Web</div>
+                        <h3 data-translate="project-pomodoro-title">Pomodoro Timer</h3>
+                        <p data-translate="project-pomodoro-desc">Aplicación web de productividad basada en la técnica Pomodoro. Incluye temporizador personalizable, lista de tareas, música de fondo y estadísticas de sesiones. Perfecta para mejorar el enfoque y la productividad.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Local Storage</span>
+                            <span>PWA</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 6: Yahve Nisi Publicaciones -->
+                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="700">
+                    <div class="project-image">
+                        <img src="FotoProyecto/AGENCIA/1-principal.png" alt="Yahve Nisi - Agencia de Impresión" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <button class="project-link preview" onclick="openScreenshot('yahve')" title="Ver Screenshot">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <a href="https://gravielpv.github.io/Yahve-nisi/" class="project-link external" target="_blank" title="Ver Página">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Sitio Corporativo</div>
+                        <h3 data-translate="project-yahve-title">Yahve Nisi Publicaciones</h3>
+                        <p data-translate="project-yahve-desc">Sitio web corporativo para agencia de impresión. Incluye portafolio de trabajos, servicios de impresión digital, galería de proyectos, formulario de contacto y integración con redes sociales.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Cloudinary</span>
+                            <span>GitHub Pages</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="cta-section" data-aos="fade-up" data-aos-delay="800">
+                <h3 data-translate="projects-cta-title">¿Te interesa algún proyecto?</h3>
+                <p data-translate="projects-cta-desc">Conversemos sobre cómo podemos crear algo increíble juntos.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">
+                        <span data-translate="btn-contact">Contactar</span>
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="skills.html" class="btn btn-outline">
+                        <span data-translate="btn-skills">Ver Habilidades</span>
+                        <i class="fas fa-code"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshot Modal -->
+    <div id="screenshotModal" class="screenshot-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeScreenshot()">&times;</span>
+            <div class="modal-header">
+                <h3 id="modalTitle">Vista Previa del Proyecto</h3>
+                <div class="image-counter">
+                    <span id="currentImageNumber">1</span> / <span id="totalImages">1</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="screenshot-carousel">
+                    <button class="carousel-btn prev-btn" onclick="prevImage()" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="screenshot-container">
+                        <img id="screenshotImage" src="" alt="Screenshot del proyecto" loading="lazy">
+                    </div>
+                    <button class="carousel-btn next-btn" onclick="nextImage()" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="carousel-indicators" id="carouselIndicators">
+                    <!-- Los indicadores se generan dinámicamente -->
+                </div>
+                <div class="modal-actions">
+                    <button id="visitProject" class="btn btn-primary" target="_blank">
+                        <span data-translate="btn-visit">Visitar Proyecto</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Graviel<span class="accent">.</span>Peralta</h3>
+                    <p data-translate="footer-desc">Desarrollador Web Full Stack especializado en tecnologías modernas.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4 data-translate="footer-services">Servicios</h4>
+                        <ul>
+                            <li><a href="services.html">Desarrollo Web</a></li>
+                            <li><a href="services.html">E-commerce</a></li>
+                            <li><a href="services.html">Aplicaciones Web</a></li>
+                            <li><a href="services.html">Menús Digitales</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4 data-translate="footer-links">Enlaces</h4>
+                        <ul>
+                            <li><a href="about.html" data-translate="nav-sobre">Sobre Mí</a></li>
+                            <li><a href="projects.html" data-translate="nav-proyectos">Proyectos</a></li>
+                            <li><a href="skills.html" data-translate="nav-habilidades">Habilidades</a></li>
+                            <li><a href="contact.html" data-translate="nav-contacto">Contacto</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4 data-translate="footer-contact">Contacto</h4>
+                        <ul>
+                            <li><a href="https://wa.me/18295639556" target="_blank">+1 (829) 563-9556</a></li>
+                            <li><a href="mailto:peraltavasquez100@gmail.com">peraltavasquez100@gmail.com</a></li>
+                            <li>República Dominicana</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Graviel Peralta. Todos los derechos reservados.</p>
+                <div class="footer-social">
+                    <a href="https://github.com/GravielPV" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/graviel-peralta-19356b173/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://wa.me/18295639556" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <!-- Hidden Dashboard Access Button -->
+                    <a href="login.html" class="secret-dashboard-btn" aria-label="Dashboard" title="Dashboard">
+                        <i class="fas fa-chart-line"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Volver arriba">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Floating Contact Button -->
+    <button id="floatingContact" class="floating-contact-btn" aria-label="Contáctame">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-modal-content">
+            <button class="modal-close" id="closeContactModal" aria-label="Cerrar">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <h3><i class="fas fa-paper-plane" style="margin-right: 0.5rem; color: var(--primary-color);"></i>Envía un Mensaje</h3>
+                <p style="color: var(--text-muted); margin-top: 0.5rem;">Cuéntame sobre tu proyecto y te responderé en 24 horas</p>
+            </div>
+            
+            <div class="modal-body">
+                <form action="https://formsubmit.co/peraltavasquez100@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <input type="hidden" name="_subject" value="🚀 Nuevo Contacto desde Portfolio - Graviel Peralta">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="box">
+                    <input type="hidden" name="_next" value="https://gravielpv.github.io/Portafolio--GabyDev-main/gracias.html">
+                    <input type="hidden" name="_autoresponse" value="¡Gracias por contactarme! He recibido tu mensaje y te responderé en menos de 24 horas. - Graviel Peralta">
+                    
+                    <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label for="modal-name">Nombre Completo</label>
+                            <input type="text" id="modal-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="modal-email">Correo Electrónico</label>
+                            <input type="email" id="modal-email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modal-company">Empresa / Organización</label>
+                        <input type="text" id="modal-company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modal-subject">Tipo de Proyecto</label>
+                        <select id="modal-subject" name="subject" required>
+                            <option value="">Selecciona el tipo de proyecto</option>
+                            <option value="💼 Oportunidad Laboral Full-Time">Oportunidad Laboral</option>
+                            <option value="🌐 Desarrollo Web">Desarrollo Web</option>
+                            <option value="⚡ Aplicación Full-Stack">Aplicación Full-Stack</option>
+                            <option value="🎨 Desarrollo Frontend">Desarrollo Frontend</option>
+                            <option value="🔧 Desarrollo Backend y APIs">Desarrollo Backend y APIs</option>
+                            <option value="💡 Consulta Técnica">Consulta Técnica</option>
+                            <option value="📝 Otro">Otro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modal-message">Detalles del Proyecto</label>
+                        <textarea id="modal-message" name="message" rows="5" placeholder="Describe tu proyecto, requisitos, cronograma y cualquier tecnología específica..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <span>Enviar Mensaje</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
