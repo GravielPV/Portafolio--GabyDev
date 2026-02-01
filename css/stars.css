@@ -1,0 +1,145 @@
+/* ===== ESTRELLAS BRILLANTES EN EL ESPACIO ===== */
+.stars-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle linear infinite;
+}
+
+/* Diferentes tamaños de estrellas */
+.star.small {
+    width: 1px;
+    height: 1px;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+.star.medium {
+    width: 2px;
+    height: 2px;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.9),
+                0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.star.large {
+    width: 3px;
+    height: 3px;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 1),
+                0 0 12px rgba(255, 255, 255, 0.7),
+                0 0 18px rgba(255, 255, 255, 0.4);
+}
+
+/* Estrellas con colores especiales */
+.star.blue {
+    background: #3b82f6;
+    box-shadow: 0 0 4px rgba(59, 130, 246, 0.9),
+                0 0 8px rgba(59, 130, 246, 0.6);
+}
+
+.star.purple {
+    background: #8b5cf6;
+    box-shadow: 0 0 4px rgba(139, 92, 246, 0.9),
+                0 0 8px rgba(139, 92, 246, 0.6);
+}
+
+.star.cyan {
+    background: #06b6d4;
+    box-shadow: 0 0 4px rgba(6, 182, 212, 0.9),
+                0 0 8px rgba(6, 182, 212, 0.6);
+}
+
+/* Animación de brillo/parpadeo */
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animación más lenta para estrellas específicas */
+@keyframes twinkleSlow {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Animación rápida para estrellas específicas */
+@keyframes twinkleFast {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Pulso suave */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Diferentes duraciones de animación */
+.star.anim-1 { animation: twinkle 3s ease-in-out infinite; }
+.star.anim-2 { animation: twinkle 4s ease-in-out infinite; }
+.star.anim-3 { animation: twinkleSlow 5s ease-in-out infinite; }
+.star.anim-4 { animation: twinkleFast 2s ease-in-out infinite; }
+.star.anim-5 { animation: pulse 6s ease-in-out infinite; }
+.star.anim-6 { animation: twinkle 3.5s ease-in-out infinite; }
+.star.anim-7 { animation: twinkleSlow 4.5s ease-in-out infinite; }
+.star.anim-8 { animation: twinkleFast 2.5s ease-in-out infinite; }
+
+/* Delays para que no parpadeen todas al mismo tiempo */
+.star:nth-child(1) { animation-delay: 0s; }
+.star:nth-child(2) { animation-delay: 0.3s; }
+.star:nth-child(3) { animation-delay: 0.6s; }
+.star:nth-child(4) { animation-delay: 0.9s; }
+.star:nth-child(5) { animation-delay: 1.2s; }
+.star:nth-child(6) { animation-delay: 1.5s; }
+.star:nth-child(7) { animation-delay: 1.8s; }
+.star:nth-child(8) { animation-delay: 2.1s; }
+.star:nth-child(9) { animation-delay: 2.4s; }
+.star:nth-child(10) { animation-delay: 2.7s; }
+.star:nth-child(11) { animation-delay: 3s; }
+.star:nth-child(12) { animation-delay: 0.5s; }
+.star:nth-child(13) { animation-delay: 1s; }
+.star:nth-child(14) { animation-delay: 1.4s; }
+.star:nth-child(15) { animation-delay: 1.7s; }
+.star:nth-child(16) { animation-delay: 2s; }
+.star:nth-child(17) { animation-delay: 2.3s; }
+.star:nth-child(18) { animation-delay: 2.6s; }
+.star:nth-child(19) { animation-delay: 2.9s; }
+.star:nth-child(20) { animation-delay: 0.2s; }
+
+/* Responsive - menos estrellas en móviles */
+@media (max-width: 768px) {
+    .star.large {
+        width: 2px;
+        height: 2px;
+    }
+}

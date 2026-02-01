@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Graviel Peralta - Desarrollador Web Full Stack | React, Node.js, Python | Disponible para contratación | Portfolio profesional con proyectos reales">
+    <meta name="keywords" content="desarrollador web, programador full stack, React developer, Node.js, Python, freelance, contratación, portfolio, República Dominicana">
+    <meta name="author" content="Graviel Peralta">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tudominio.com/">
+    <meta property="og:title" content="Graviel Peralta - Desarrollador Web Full Stack | Disponible para Contratación">
+    <meta property="og:description" content="Desarrollador Full Stack con 2+ años de experiencia. Especializado en React, Node.js y Python. Portfolio con +25 proyectos reales.">
+    <meta property="og:image" content="https://tudominio.com/assets/profile-photo.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tudominio.com/">
+    <meta property="twitter:title" content="Graviel Peralta - Desarrollador Web Full Stack">
+    <meta property="twitter:description" content="Desarrollador Full Stack disponible para contratación. React, Node.js, Python.">
+    <meta property="twitter:image" content="https://tudominio.com/assets/profile-photo.jpg">
+    
+    <!-- Schema.org for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Person",
+      "name": "Graviel Peralta",
+      "url": "https://tudominio.com",
+      "image": "https://tudominio.com/assets/profile-photo.jpg",
+      "jobTitle": "Full Stack Web Developer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "DO"
+      },
+      "email": "peraltavasquez100@gmail.com",
+      "telephone": "+18295639556",
+      "sameAs": [
+        "https://github.com/GravielPV",
+        "https://www.linkedin.com/in/graviel-peralta-19356b173/"
+      ],
+      "knowsAbout": ["Web Development", "React", "Node.js", "Python", "JavaScript", "Full Stack Development"]
+    }
+    </script>
+    
+    <title>Graviel Peralta | Desarrollador Full Stack - Disponible para Contratación</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stars.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="loader-inner">
+                <span>G</span>
+                <span>P</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">
+                    <span class="logo-text">Gaby<span class="accent">.</span>Dev</span>
+                </a>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active" data-translate="nav-inicio">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link" data-translate="nav-sobre">Sobre Mí</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html" class="nav-link" data-translate="nav-servicios">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="projects.html" class="nav-link" data-translate="nav-proyectos">Proyectos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="skills.html" class="nav-link" data-translate="nav-habilidades">Habilidades</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link" data-translate="nav-contacto">Contacto</a>
+                </li>
+            </ul>
+            
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <div class="language-toggle" id="languageToggle">
+                    <span class="current-lang">ES</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="language-dropdown" id="languageDropdown">
+                    <a href="#" role="button" class="lang-option active" data-lang="es">
+                        <img src="https://flagcdn.com/w20/es.png" alt="Español">
+                        <span>ES</span>
+                    </a>
+                    <a href="#" role="button" class="lang-option" data-lang="en">
+                        <img src="https://flagcdn.com/w20/us.png" alt="English">
+                        <span>EN</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="nav-overlay"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <!-- Estrellas brillantes -->
+            <div class="stars-container"></div>
+            <div class="hero-particles"></div>
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="profile-circle">
+                    <img src="assets/profile-photo.jpeg" alt="Graviel Peralta - Desarrollador Full Stack" class="profile-image">
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-up" data-aos-delay="200">
+                    <span class="hero-greeting" data-translate="hero-greeting">¡Hola! Soy</span>
+                    <h1 class="hero-title">
+                        <span class="name-animation">Graviel Peralta</span>
+                    </h1>
+                    <div class="hero-subtitle">
+                        <span class="typing-animation" data-translate="hero-role">Desarrollador Web Full Stack</span>
+                    </div>
+                    
+                    <!-- Badge de Disponibilidad - Movido aquí para mejor visibilidad mobile -->
+                    <div class="availability-badge" style="margin-top: 1.5rem;">
+                        <span class="status-dot"></span>
+                        <span data-translate="hero-available">Disponible para contratación</span>
+                    </div>
+                    
+                    <p class="hero-description" data-translate="hero-description">
+                        Desarrollo aplicaciones web modernas y escalables. 
+                        Especializado en React, Node.js y arquitecturas cloud.
+                        <strong>Busco oportunidades remotas o híbridas.</strong>
+                    </p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="25">0</span>
+                            <span class="stat-label" data-translate="stat-projects">Proyectos Completados</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="2">0</span>
+                            <span class="stat-label" data-translate="stat-experience">Años Experiencia</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="100">0</span>
+                            <span class="stat-label" data-translate="stat-code">% Código Limpio</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-buttons">
+                        <a href="projects.html" class="btn btn-primary">
+                            <span data-translate="btn-work">Ver Mi Trabajo</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="contact.html" class="btn btn-secondary">
+                            <span data-translate="btn-contact">Contáctame</span>
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <button onclick="downloadCV()" class="btn btn-outline">
+                            <span data-translate="btn-cv">Descargar CV</span>
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Work Mode Info -->
+                    <div class="work-mode-info" data-aos="fade-up" data-aos-delay="400">
+                        <div class="work-mode-item">
+                            <i class="fas fa-laptop-house"></i>
+                            <span data-translate="work-remote">Trabajo Remoto</span>
+                        </div>
+                        <div class="work-mode-item">
+                            <i class="fas fa-clock"></i>
+                            <span data-translate="work-flexible">Horario Flexible</span>
+                        </div>
+                        <div class="work-mode-item">
+                            <i class="fas fa-globe-americas"></i>
+                            <span data-translate="work-timezone">GMT-4 (EDT)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image" data-aos="fade-left" data-aos-delay="400">
+                    <div class="image-container">
+                        <div class="floating-card card-1">
+                            <i class="fab fa-js-square"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fab fa-react"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="fab fa-node-js"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="floating-card card-4">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Graviel<span class="accent">.</span>Peralta</h3>
+                    <p data-translate="footer-desc">Desarrollador Web Full Stack especializado en tecnologías modernas.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4 data-translate="footer-services">Servicios</h4>
+                        <ul>
+                            <li><a href="services.html">Desarrollo Web</a></li>
+                            <li><a href="services.html">E-commerce</a></li>
+                            <li><a href="services.html">Aplicaciones Web</a></li>
+                            <li><a href="services.html">Menús Digitales</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4 data-translate="footer-links">Enlaces</h4>
+                        <ul>
+                            <li><a href="about.html" data-translate="nav-sobre">Sobre Mí</a></li>
+                            <li><a href="projects.html" data-translate="nav-proyectos">Proyectos</a></li>
+                            <li><a href="skills.html" data-translate="nav-habilidades">Habilidades</a></li>
+                            <li><a href="contact.html" data-translate="nav-contacto">Contacto</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4 data-translate="footer-contact">Contacto</h4>
+                        <ul>
+                            <li><a href="https://wa.me/18295639556" target="_blank">+1 (829) 563-9556</a></li>
+                            <li><a href="mailto:peraltavasquez100@gmail.com">peraltavasquez100@gmail.com</a></li>
+                            <li>República Dominicana</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Graviel Peralta. Todos los derechos reservados.</p>
+                <div class="footer-social">
+                    <a href="https://github.com/GravielPV" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/graviel-peralta-19356b173/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://wa.me/18295639556" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <!-- Hidden Dashboard Access Button -->
+                    <a href="login.html" class="secret-dashboard-btn" aria-label="Dashboard" title="Dashboard">
+                        <i class="fas fa-chart-line"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Volver arriba">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Floating Contact Button -->
+    <button id="floatingContact" class="floating-contact-btn" aria-label="Contáctame">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-modal-content">
+            <button class="modal-close" id="closeContactModal" aria-label="Cerrar">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <h3><i class="fas fa-paper-plane" style="margin-right: 0.5rem; color: var(--primary-color);"></i>Envía un Mensaje</h3>
+                <p style="color: var(--text-muted); margin-top: 0.5rem;">Cuéntame sobre tu proyecto y te responderé en 24 horas</p>
+            </div>
+            
+            <div class="modal-body">
+                <form id="modalContactForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label for="modal-name">Nombre Completo</label>
+                            <input type="text" id="modal-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="modal-email">Correo Electrónico</label>
+                            <input type="email" id="modal-email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modal-company">Empresa / Organización</label>
+                        <input type="text" id="modal-company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modal-subject">Tipo de Proyecto</label>
+                        <select id="modal-subject" name="subject" required>
+                            <option value="">Selecciona el tipo de proyecto</option>
+                            <option value="💼 Oportunidad Laboral Full-Time">Oportunidad Laboral</option>
+                            <option value="🌐 Desarrollo Web">Desarrollo Web</option>
+                            <option value="⚡ Aplicación Full-Stack">Aplicación Full-Stack</option>
+                            <option value="🎨 Desarrollo Frontend">Desarrollo Frontend</option>
+                            <option value="🔧 Desarrollo Backend y APIs">Desarrollo Backend y APIs</option>
+                            <option value="💡 Consulta Técnica">Consulta Técnica</option>
+                            <option value="📝 Otro">Otro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modal-message">Detalles del Proyecto</label>
+                        <textarea id="modal-message" name="message" rows="5" placeholder="Describe tu proyecto, requisitos, cronograma y cualquier tecnología específica..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <span>Enviar Mensaje</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    
+                    <div id="successMessage" style="display: none; padding: 1rem; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; color: #10b981; text-align: center;">
+                        <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                        ¡Mensaje enviado correctamente! Te responderé pronto.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+    
+    <!-- Script para generar estrellas -->
+    <script>
+        // Generar estrellas brillantes
+        function createStars() {
+            const starsContainer = document.querySelector('.stars-container');
+            if (!starsContainer) return;
+            
+            const numberOfStars = window.innerWidth < 768 ? 20 : 40;
+            const sizes = ['small', 'medium', 'large'];
+            const colors = ['', 'blue', 'purple', 'cyan']; // '' para blanco
+            const animations = ['anim-1', 'anim-2', 'anim-3', 'anim-4', 'anim-5', 'anim-6', 'anim-7', 'anim-8'];
+            
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Asignar tamaño aleatorio
+                const size = sizes[Math.floor(Math.random() * sizes.length)];
+                star.classList.add(size);
+                
+                // Algunas estrellas tendrán colores especiales (20% de probabilidad)
+                if (Math.random() < 0.2) {
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    if (color) star.classList.add(color);
+                }
+                
+                // Asignar animación aleatoria
+                const animation = animations[Math.floor(Math.random() * animations.length)];
+                star.classList.add(animation);
+                
+                // Posición aleatoria
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                star.style.left = x + '%';
+                star.style.top = y + '%';
+                
+                // Opacidad inicial aleatoria
+                star.style.opacity = Math.random() * 0.5;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Crear estrellas cuando el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', createStars);
+        } else {
+            createStars();
+        }
+        
+        // Recrear estrellas al redimensionar la ventana (con debounce)
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                const starsContainer = document.querySelector('.stars-container');
+                if (starsContainer) {
+                    starsContainer.innerHTML = '';
+                    createStars();
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>

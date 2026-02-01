@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Permitir indexación de todas las páginas
+Allow: /index.html
+Allow: /about.html
+Allow: /projects.html
+Allow: /services.html
+Allow: /skills.html
+Allow: /contact.html
+
+# No indexar archivos de documentación
+Disallow: /README.md
+Disallow: /HIRING_CHECKLIST.md
+Disallow: /SEO_OPTIMIZATION.md
+Disallow: /EMAIL_SETUP.md
+
+# Sitemap location
+Sitemap: https://tudominio.com/sitemap.xml
+
+# Crawl-delay (opcional, para evitar sobrecarga)
+Crawl-delay: 10

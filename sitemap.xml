@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Página Principal -->
+  <url>
+    <loc>https://tudominio.com/</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Sobre Mí -->
+  <url>
+    <loc>https://tudominio.com/about.html</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Proyectos (Alta prioridad - muestra tu trabajo) -->
+  <url>
+    <loc>https://tudominio.com/projects.html</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Servicios -->
+  <url>
+    <loc>https://tudominio.com/services.html</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Habilidades -->
+  <url>
+    <loc>https://tudominio.com/skills.html</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Contacto (Alta prioridad - objetivo de conversión) -->
+  <url>
+    <loc>https://tudominio.com/contact.html</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+</urlset>
