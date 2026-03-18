@@ -148,9 +148,9 @@ function initTypingAnimation() {
     
     const texts = [
         'Desarrollador Web Full Stack',
-        'Especialista en Frontend',
-        'Creador de Experiencias Digitales',
-        'Desarrollador de Aplicaciones Web'
+        'Creo apps web que generan resultados',
+        'React | Node.js | JavaScript',
+        'Disponible para trabajo remoto'
     ];
     
     let textIndex = 0;
@@ -1076,37 +1076,37 @@ function translatePage(lang) {
             'nav-contacto': 'Contacto',
             
             // Hero Section (Index)
-            'hero-available': 'Disponible para contratación',
+            'hero-available': 'Disponible para proyectos y contratación',
             'hero-greeting': '¡Hola! Soy',
             'hero-role': 'Desarrollador Web Full Stack',
-            'hero-description': 'Desarrollo aplicaciones web modernas y escalables. Especializado en React, Node.js y arquitecturas cloud. Busco oportunidades remotas o híbridas.',
+            'hero-description': 'Ayudo a negocios y emprendedores a convertir sus ideas en aplicaciones web rápidas, modernas y que generan resultados. De la idea al producto: React, Node.js y soluciones a medida.',
             'work-remote': 'Trabajo Remoto',
             'work-flexible': 'Horario Flexible',
             'work-timezone': 'GMT-4 (EDT)',
             'btn-work': 'Ver Mi Trabajo',
             'btn-contact': 'Contáctame',
             'btn-cv': 'Descargar CV',
-            'stat-projects': 'Proyectos Completados',
-            'stat-experience': 'Años Experiencia',
-            'stat-code': '% Código Limpio',
+            'stat-projects': 'Proyectos Entregados',
+            'stat-experience': 'Clientes Satisfechos',
+            'stat-code': '+ Tecnologías',
             
             // About Page
             'about-title': 'Sobre Mí',
-            'about-subtitle': 'Mi Historia',
-            'about-description': 'Desarrollador Full Stack apasionado por crear soluciones innovadoras',
-            'about-intro': 'Soy un desarrollador web especializado en tecnologías modernas con más de 2 años de experiencia creando aplicaciones escalables.',
+            'about-subtitle': 'Conoce más',
+            'about-description': 'Desarrollador Full Stack con Propósito',
+            'about-intro': 'Soy Graviel Peralta, desarrollador web apasionado por crear soluciones digitales que realmente impactan. Mi enfoque es simple: entender lo que tu negocio necesita y construir aplicaciones web rápidas, funcionales y con diseño profesional.',
             'about-tech-focus': 'Mi enfoque principal está en el desarrollo de aplicaciones web usando JavaScript, React, Node.js y tecnologías cloud.',
             
             // Services Page
-            'services-title': 'Servicios',
-            'services-subtitle': 'Lo Que Ofrezco',
-            'services-description': 'Soluciones tecnológicas profesionales adaptadas a tus necesidades',
-            'service-frontend': 'Desarrollo Frontend',
-            'service-frontend-desc': 'Interfaces modernas y responsivas con React, Vue.js y tecnologías actuales',
-            'service-backend': 'Desarrollo Backend',
-            'service-backend-desc': 'APIs robustas y escalables con Node.js, Python y bases de datos',
-            'service-database': 'Gestión de Bases de Datos',
-            'service-database-desc': 'Diseño y optimización de bases de datos SQL y NoSQL',
+            'services-title': 'Mis Servicios',
+            'services-subtitle': 'Lo que ofrezco',
+            'services-description': 'Soluciones web diseñadas para resolver problemas reales de tu negocio y generar resultados medibles',
+            'service-frontend': 'Sitios Web & Landing Pages',
+            'service-frontend-desc': 'Tu negocio necesita presencia digital que convierta visitantes en clientes. Creo sitios web rápidos, responsivos y optimizados para SEO.',
+            'service-backend': 'Aplicaciones Web Full Stack',
+            'service-backend-desc': '¿Necesitas un sistema a medida? Desarrollo aplicaciones completas con panel de administración, bases de datos y APIs.',
+            'service-database': 'E-commerce & Menús Digitales',
+            'service-database-desc': 'Tiendas online y menús QR con pedidos directos por WhatsApp que aumentan tus ventas.',
             
             // Projects Page
             'projects-title': 'Proyectos Reales',
@@ -1146,13 +1146,13 @@ function translatePage(lang) {
             'skills-tools-title': 'Herramientas',
             
             // Contact Page
-            'contact-title': 'Contacto',
-            'contact-subtitle': 'Trabajemos Juntos',
-            'contact-description': 'Actualmente estoy disponible para nuevas oportunidades y proyectos interesantes. Conversemos sobre cómo podemos dar vida a tus ideas.',
-            'contact-info-title': 'Información de Contacto',
-            'contact-info-desc': '¿Prefieres un enfoque directo? Contáctame a través de cualquiera de estos canales y te responderé en un plazo de 24 horas.',
-            'contact-form-title': 'Envía un Mensaje',
-            'contact-form-desc': 'Cuéntame sobre tu proyecto y te responderé en 24 horas con los siguientes pasos.',
+            'contact-title': 'Hablémos de tu Proyecto',
+            'contact-subtitle': '¿Listo para empezar?',
+            'contact-description': '¿Tienes una idea o proyecto? Cuéntame y te respondo con una propuesta clara y sin compromiso.',
+            'contact-info-title': '¿Cómo prefieres contactarme?',
+            'contact-info-desc': 'Elige el canal que te sea más cómodo. Respondo en menos de 24 horas — normalmente mucho antes.',
+            'contact-form-title': 'Cuéntame tu idea',
+            'contact-form-desc': 'Describe brevemente lo que necesitas y te respondo con una propuesta clara y sin compromiso.',
             'form-name': 'Nombre Completo',
             'form-email': 'Correo Electrónico',
             'form-company': 'Empresa / Organización',
@@ -1174,7 +1174,7 @@ function translatePage(lang) {
             'btn-email': 'Envíame un Email',
             
             // Footer
-            'footer-desc': 'Desarrollador Web Full Stack especializado en tecnologías modernas.',
+            'footer-desc': 'Ayudo a negocios a crecer con aplicaciones web modernas y funcionales.',
             'footer-services': 'Servicios',
             'footer-links': 'Enlaces',
             'footer-contact': 'Contacto',
@@ -1184,7 +1184,7 @@ function translatePage(lang) {
             'cv-download-success': '¡Descarga de CV iniciada! Revisa tu carpeta de descargas.',
             
             // Contact Availability
-            'contact-availability': 'Disponible para oportunidades de tiempo completo, proyectos freelance y consultas técnicas.'
+            'contact-availability': 'Disponible para trabajo remoto, freelance y contratación. Zona horaria: GMT-4 (República Dominicana).'
         },
         en: {
             // Navigation
@@ -1196,19 +1196,19 @@ function translatePage(lang) {
             'nav-contacto': 'Contact',
             
             // Hero Section (Index)
-            'hero-available': 'Available for hire',
+            'hero-available': 'Available for projects & hiring',
             'hero-greeting': 'Hello! I\'m',
             'hero-role': 'Full Stack Web Developer',
-            'hero-description': 'I develop modern and scalable web applications. Specialized in React, Node.js and cloud architectures. Looking for remote or hybrid opportunities.',
+            'hero-description': 'I help businesses and entrepreneurs turn their ideas into fast, modern web applications that drive results. From idea to product: React, Node.js and custom solutions.',
             'work-remote': 'Remote Work',
             'work-flexible': 'Flexible Schedule',
             'work-timezone': 'GMT-4 (EDT)',
             'btn-work': 'View My Work',
             'btn-contact': 'Contact Me',
             'btn-cv': 'Download CV',
-            'stat-projects': 'Completed Projects',
-            'stat-experience': 'Years Experience',
-            'stat-code': '% Clean Code',
+            'stat-projects': 'Projects Delivered',
+            'stat-experience': 'Happy Clients',
+            'stat-code': '+ Technologies',
             
             // About Page
             'about-title': 'About Me',
@@ -1218,15 +1218,15 @@ function translatePage(lang) {
             'about-tech-focus': 'My main focus is on developing web applications using JavaScript, React, Node.js and cloud technologies.',
             
             // Services Page
-            'services-title': 'Services',
+            'services-title': 'My Services',
             'services-subtitle': 'What I Offer',
-            'services-description': 'Professional technology solutions tailored to your needs',
-            'service-frontend': 'Frontend Development',
-            'service-frontend-desc': 'Modern and responsive interfaces with React, Vue.js and current technologies',
-            'service-backend': 'Backend Development',
-            'service-backend-desc': 'Robust and scalable APIs with Node.js, Python and databases',
-            'service-database': 'Database Management',
-            'service-database-desc': 'Design and optimization of SQL and NoSQL databases',
+            'services-description': 'Web solutions designed to solve real business problems and drive measurable results',
+            'service-frontend': 'Websites & Landing Pages',
+            'service-frontend-desc': 'Your business needs a digital presence that converts visitors into customers. Fast, responsive, SEO-optimized.',
+            'service-backend': 'Full Stack Web Apps',
+            'service-backend-desc': 'Custom systems with admin panels, databases and APIs to automate your business.',
+            'service-database': 'E-commerce & Digital Menus',
+            'service-database-desc': 'Online stores and QR menus with direct WhatsApp ordering that boost your sales.',
             
             // Projects Page
             'projects-title': 'Real Projects',
@@ -1252,8 +1252,8 @@ function translatePage(lang) {
             'project-pomodoro-desc': 'Productivity web application based on the Pomodoro technique. Includes customizable timer, task list, background music and session statistics. Perfect for improving focus and productivity.',
             'project-yahve-title': 'Yahve Nisi Publications',
             'project-yahve-desc': 'Corporate website for printing agency. Includes portfolio of work, digital printing services, project gallery, contact form and social media integration.',
-            'projects-cta-title': 'Interested in any project?',
-            'projects-cta-desc': 'Let\'s talk about how we can create something amazing together.',
+            'projects-cta-title': 'Want something similar for your business?',
+            'projects-cta-desc': 'Tell me your idea and I\'ll show you how I can help make it happen.',
             'btn-skills': 'View Skills',
             
             // Skills Page
@@ -1266,13 +1266,13 @@ function translatePage(lang) {
             'skills-tools-title': 'Tools',
             
             // Contact Page
-            'contact-title': 'Contact',
-            'contact-subtitle': 'Let\'s Work Together',
-            'contact-description': 'I\'m currently available for new opportunities and interesting projects. Let\'s discuss how we can bring your ideas to life.',
-            'contact-info-title': 'Contact Information',
-            'contact-info-desc': 'Prefer a direct approach? Reach out through any of these channels and I\'ll get back to you within 24 hours.',
-            'contact-form-title': 'Send a Message',
-            'contact-form-desc': 'Tell me about your project and I\'ll respond within 24 hours with next steps.',
+            'contact-title': 'Let\'s Talk About Your Project',
+            'contact-subtitle': 'Ready to start?',
+            'contact-description': 'Have an idea or project? Tell me about it and I\'ll respond with a clear, no-commitment proposal.',
+            'contact-info-title': 'How do you prefer to reach me?',
+            'contact-info-desc': 'Choose the channel that works best for you. I respond in less than 24 hours — usually much sooner.',
+            'contact-form-title': 'Tell me your idea',
+            'contact-form-desc': 'Briefly describe what you need and I\'ll respond with a clear, no-commitment proposal.',
             'form-name': 'Full Name',
             'form-email': 'Email Address',
             'form-company': 'Company / Organization',
@@ -1294,7 +1294,7 @@ function translatePage(lang) {
             'btn-email': 'Email Me',
             
             // Footer
-            'footer-desc': 'Full Stack Web Developer specialized in modern technologies.',
+            'footer-desc': 'I help businesses grow with modern, functional web applications.',
             'footer-services': 'Services',
             'footer-links': 'Links',
             'footer-contact': 'Contact',
