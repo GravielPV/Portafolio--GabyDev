@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Servicios de desarrollo web profesional | Sitios web, aplicaciones Full Stack, e-commerce y menús digitales | React, Node.js, JavaScript | Graviel Peralta">
+    <meta name="keywords" content="servicios web, desarrollo web, ecommerce, aplicaciones web, graviel peralta, React developer, Node.js, freelance, contratación">
+    <meta name="author" content="Graviel Peralta">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tudominio.com/services.html">
+    <meta property="og:title" content="Servicios de Desarrollo Web | Graviel Peralta - Full Stack Developer">
+    <meta property="og:description" content="Desarrollo web profesional: Sitios web, E-commerce, Aplicaciones Full Stack, APIs y más. Contratación disponible.">
+    <meta property="og:image" content="https://tudominio.com/assets/profile-photo.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tudominio.com/services.html">
+    <meta property="twitter:title" content="Servicios de Desarrollo Web | Graviel Peralta">
+    <meta property="twitter:description" content="Desarrollo web profesional: Sitios web, E-commerce, Aplicaciones Full Stack, APIs y más.">
+    <meta property="twitter:image" content="https://tudominio.com/assets/profile-photo.jpg">
+    
+    <title>Servicios | Graviel Peralta - Desarrollo Web Full Stack Profesional</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animated-background.css">
+</head>
+<body>
+    <!-- Barra de progreso de scroll -->
+    <div id="scrollProgress"></div>
+
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
+            <div class="shape shape-7"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span class="logo-text">Gaby<span class="accent">.</span>Dev</span>
+                </a>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link" data-translate="nav-inicio">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link" data-translate="nav-sobre">Sobre Mí</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html" class="nav-link active" data-translate="nav-servicios">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="projects.html" class="nav-link" data-translate="nav-proyectos">Proyectos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="skills.html" class="nav-link" data-translate="nav-habilidades">Habilidades</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link" data-translate="nav-contacto">Contacto</a>
+                </li>
+            </ul>
+            
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <div class="language-toggle" id="languageToggle">
+                    <span class="current-lang">ES</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="language-dropdown" id="languageDropdown">
+                    <a href="#" role="button" class="lang-option active" data-lang="es">
+                        <img src="https://flagcdn.com/w20/es.png" alt="Español">
+                        <span>ES</span>
+                    </a>
+                    <a href="#" role="button" class="lang-option" data-lang="en">
+                        <img src="https://flagcdn.com/w20/us.png" alt="English">
+                        <span>EN</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="nav-overlay"></div>
+
+    <!-- Services Section -->
+    <section id="services" class="services" style="padding-top: 120px;">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle" data-translate="services-subtitle">Lo que ofrezco</span>
+                <h2 class="section-title" data-translate="services-title">Mis Servicios</h2>
+                <div class="section-line"></div>
+                <p class="section-description" data-translate="services-description">
+                    Soluciones web diseñadas para resolver problemas reales de tu negocio y generar resultados medibles.
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 data-translate="service-frontend">Sitios Web & Landing Pages</h3>
+                    <p data-translate="service-frontend-desc">Tu negocio necesita presencia digital que convierta visitantes en clientes. Creo sitios web rápidos, responsivos y optimizados para SEO.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Diseño moderno y profesional</li>
+                        <li><i class="fas fa-check"></i> Optimizado para móviles</li>
+                        <li><i class="fas fa-check"></i> Carga rápida y SEO incluido</li>
+                        <li><i class="fas fa-check"></i> React, HTML5, CSS3, JavaScript</li>
+                    </ul>
+                    <div style="margin-top: 1rem; padding: 0.8rem; background: rgba(16, 185, 129, 0.1); border-radius: 8px; border-left: 3px solid #10b981;">
+                        <p style="margin: 0; color: #10b981; font-size: 0.85rem; font-weight: 500;"><i class="fas fa-chart-line" style="margin-right: 0.3rem;"></i> Resultado: Más visibilidad online y captación de clientes</p>
+                    </div>
+                    <a href="projects.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">
+                        <span data-translate="btn-work">Ver Proyectos</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card featured" data-aos="fade-up" data-aos-delay="200">
+                    <div class="featured-badge">Más Solicitado</div>
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 data-translate="service-backend">Aplicaciones Web Full Stack</h3>
+                    <p data-translate="service-backend-desc">¿Necesitas un sistema a medida? Desarrollo aplicaciones completas con panel de administración, bases de datos y APIs para que tu negocio funcione de forma automatizada.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> React + Node.js + Express</li>
+                        <li><i class="fas fa-check"></i> APIs RESTful seguras</li>
+                        <li><i class="fas fa-check"></i> Base de datos (MongoDB, PostgreSQL)</li>
+                        <li><i class="fas fa-check"></i> Panel de administración incluido</li>
+                    </ul>
+                    <div style="margin-top: 1rem; padding: 0.8rem; background: rgba(16, 185, 129, 0.1); border-radius: 8px; border-left: 3px solid #10b981;">
+                        <p style="margin: 0; color: #10b981; font-size: 0.85rem; font-weight: 500;"><i class="fas fa-chart-line" style="margin-right: 0.3rem;"></i> Resultado: Procesos automatizados y control total de tu negocio</p>
+                    </div>
+                    <a href="projects.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">
+                        <span data-translate="btn-work">Ver Aplicaciones</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3 data-translate="service-database">E-commerce & Menús Digitales</h3>
+                    <p data-translate="service-database-desc">Lleva tu catálogo o restaurante al mundo digital. Tiendas online y menús QR con pedidos directos por WhatsApp que aumentan tus ventas.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Catálogo de productos interactivo</li>
+                        <li><i class="fas fa-check"></i> Pedidos por WhatsApp integrado</li>
+                        <li><i class="fas fa-check"></i> Diseño atractivo y fácil de usar</li>
+                        <li><i class="fas fa-check"></i> JavaScript, React, Códigos QR</li>
+                    </ul>
+                    <div style="margin-top: 1rem; padding: 0.8rem; background: rgba(16, 185, 129, 0.1); border-radius: 8px; border-left: 3px solid #10b981;">
+                        <p style="margin: 0; color: #10b981; font-size: 0.85rem; font-weight: 500;"><i class="fas fa-chart-line" style="margin-right: 0.3rem;"></i> Resultado: Más pedidos y ventas directas desde el celular</p>
+                    </div>
+                    <a href="projects.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">
+                        <span data-translate="btn-work">Ver Ejemplos</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="services-cta" style="text-align: center; margin-top: 4rem; padding: 3rem; background: var(--card-bg); border-radius: var(--border-radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);" data-aos="fade-up">
+                <h3 style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.8rem;">¿Tienes un proyecto en mente?</h3>
+                <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">
+                    Cuéntame tu idea y te propongo una solución técnica adaptada a tu presupuesto y necesidades.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn btn-primary">
+                        <span data-translate="nav-contacto">Contactar</span>
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="skills.html" class="btn btn-outline">
+                        <span data-translate="nav-habilidades">Ver Habilidades</span>
+                        <i class="fas fa-code"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Graviel<span class="accent">.</span>Peralta</h3>
+                    <p data-translate="footer-desc">Ayudo a negocios a crecer con aplicaciones web modernas y funcionales.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4 data-translate="footer-services">Servicios</h4>
+                        <ul>
+                            <li><a href="services.html">Desarrollo Web</a></li>
+                            <li><a href="services.html">E-commerce</a></li>
+                            <li><a href="services.html">Aplicaciones Web</a></li>
+                            <li><a href="services.html">Menús Digitales</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4 data-translate="footer-links">Enlaces</h4>
+                        <ul>
+                            <li><a href="about.html" data-translate="nav-sobre">Sobre Mí</a></li>
+                            <li><a href="projects.html" data-translate="nav-proyectos">Proyectos</a></li>
+                            <li><a href="skills.html" data-translate="nav-habilidades">Habilidades</a></li>
+                            <li><a href="contact.html" data-translate="nav-contacto">Contacto</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4 data-translate="footer-contact">Contacto</h4>
+                        <ul>
+                            <li><a href="https://wa.me/18295639556" target="_blank">+1 (829) 563-9556</a></li>
+                            <li><a href="mailto:peraltavasquez100@gmail.com">peraltavasquez100@gmail.com</a></li>
+                            <li>República Dominicana</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Graviel Peralta. Todos los derechos reservados.</p>
+                <div class="footer-social">
+                    <a href="https://github.com/GravielPV" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/graviel-peralta-19356b173/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://wa.me/18295639556" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <!-- Hidden Dashboard Access Button -->
+                    <a href="login.html" class="secret-dashboard-btn" aria-label="Dashboard" title="Dashboard">
+                        <i class="fas fa-chart-line"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Volver arriba">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Floating Contact Button -->
+    <button id="floatingContact" class="floating-contact-btn" aria-label="Contáctame">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-modal-content">
+            <button class="modal-close" id="closeContactModal" aria-label="Cerrar">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <h3><i class="fas fa-paper-plane" style="margin-right: 0.5rem; color: var(--primary-color);"></i>Envía un Mensaje</h3>
+                <p style="color: var(--text-muted); margin-top: 0.5rem;">Cuéntame sobre tu proyecto y te responderé en 24 horas</p>
+            </div>
+            
+            <div class="modal-body">
+                <form action="https://formsubmit.co/peraltavasquez100@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <input type="hidden" name="_subject" value="🚀 Nuevo Contacto desde Portfolio - Graviel Peralta">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="box">
+                    <input type="hidden" name="_next" value="https://gravielpv.github.io/Portafolio--GabyDev-main/gracias.html">
+                    <input type="hidden" name="_autoresponse" value="¡Gracias por contactarme! He recibido tu mensaje y te responderé en menos de 24 horas. - Graviel Peralta">
+                    
+                    <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label for="modal-name">Nombre Completo</label>
+                            <input type="text" id="modal-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="modal-email">Correo Electrónico</label>
+                            <input type="email" id="modal-email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modal-company">Empresa / Organización</label>
+                        <input type="text" id="modal-company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modal-subject">Tipo de Proyecto</label>
+                        <select id="modal-subject" name="subject" required>
+                            <option value="">Selecciona el tipo de proyecto</option>
+                            <option value="💼 Oportunidad Laboral Full-Time">Oportunidad Laboral</option>
+                            <option value="🌐 Desarrollo Web">Desarrollo Web</option>
+                            <option value="⚡ Aplicación Full-Stack">Aplicación Full-Stack</option>
+                            <option value="🎨 Desarrollo Frontend">Desarrollo Frontend</option>
+                            <option value="🔧 Desarrollo Backend y APIs">Desarrollo Backend y APIs</option>
+                            <option value="💡 Consulta Técnica">Consulta Técnica</option>
+                            <option value="📝 Otro">Otro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modal-message">Detalles del Proyecto</label>
+                        <textarea id="modal-message" name="message" rows="5" placeholder="Describe tu proyecto, requisitos, cronograma y cualquier tecnología específica..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <span>Enviar Mensaje</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

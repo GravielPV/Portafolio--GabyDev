@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Graviel Peralta</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .dashboard-container {
+            min-height: 100vh;
+            padding: 2rem;
+            background: var(--primary-bg);
+            position: relative;
+        }
+
+        .dashboard-container::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: var(--shadow-lg);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .dashboard-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .dashboard-title i {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dashboard-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .dashboard-back-btn, .logout-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: var(--border-radius);
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition-normal);
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .dashboard-back-btn:hover, .logout-btn:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .logout-btn {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .logout-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: #ef4444;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(30, 30, 48, 0.6) 0%, rgba(26, 26, 46, 0.8) 100%);
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-card:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .stat-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.25rem;
+            background: var(--gradient-primary);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: var(--font-heading);
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Mensajes de Contacto */
+        .messages-section {
+            background: linear-gradient(135deg, rgba(30, 30, 48, 0.6) 0%, rgba(26, 26, 46, 0.8) 100%);
+            padding: 2.5rem;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .message-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-primary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .message-card:hover {
+            background: rgba(59, 130, 246, 0.05);
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateX(8px);
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15);
+        }
+
+        .message-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .message-info h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .message-info h4::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary-color);
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .message-info p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0.375rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .message-info p i {
+            color: var(--primary-color);
+            width: 16px;
+        }
+
+        .message-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .message-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 24px;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .message-date {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.75rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+        }
+
+        .message-date i {
+            color: var(--primary-color);
+        }
+
+        .message-body {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            padding: 1.25rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-body::before {
+            content: '"';
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            font-size: 4rem;
+            color: rgba(59, 130, 246, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .message-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-small {
+            padding: 0.625rem 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .btn-small:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-delete {
+            color: #ef4444;
+        }
+
+        .btn-delete:hover {
+            background: rgba(239, 68, 68, 0.15);
+            border-color: #ef4444;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+
+        .no-messages {
+            text-align: center;
+            padding: 5rem 2rem;
+            color: var(--text-muted);
+        }
+
+        .no-messages i {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            opacity: 0.2;
+            display: block;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .no-messages p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .no-messages p strong {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .message-count-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            padding: 0 0.625rem;
+            background: var(--gradient-primary);
+            border-radius: 14px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: white;
+            margin-left: 0.75rem;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            animation: pulse-badge 2s infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .dashboard-title {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .message-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="container">
+            <div class="dashboard-header">
+                <div>
+                    <div id="dynamicGreeting" style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <i id="greetingIcon" class="fas fa-sun"></i>
+                        <span id="greetingText">Buenos días</span>
+                    </div>
+                    <h1 class="dashboard-title">
+                        <i class="fas fa-chart-line"></i>
+                        Dashboard Admin
+                    </h1>
+                </div>
+                <div class="dashboard-actions">
+                    <a href="index.html" class="dashboard-back-btn">
+                        <i class="fas fa-home"></i>
+                        Inicio
+                    </a>
+                    <button class="logout-btn" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Summary -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="stat-value" id="totalMessages">0</div>
+                    <div class="stat-label">Mensajes Totales</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-envelope-open"></i>
+                    </div>
+                    <div class="stat-value" id="todayMessages">0</div>
+                    <div class="stat-label">Mensajes Hoy</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-value" id="lastMessageTime">--</div>
+                    <div class="stat-label">Último Mensaje</div>
+                </div>
+            </div>
+
+            <!-- Mensajes de Contacto -->
+            <div class="messages-section">
+                <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                    <h2 class="section-title" style="margin-bottom: 0;">
+                        <i class="fas fa-inbox"></i>
+                        Mensajes de Contacto
+                        <span class="message-count-badge" id="messageBadge">0</span>
+                    </h2>
+                    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                        <button class="btn-small" onclick="exportMessages()" style="background: rgba(59, 130, 246, 0.1); border-color: var(--primary-color); color: var(--primary-color);">
+                            <i class="fas fa-download"></i>
+                            Exportar
+                        </button>
+                        <button class="btn-small btn-delete" onclick="clearAllMessages()" style="background: rgba(239, 68, 68, 0.1);">
+                            <i class="fas fa-trash-alt"></i>
+                            Limpiar Todo
+                        </button>
+                    </div>
+                </div>
+                <div id="messagesContainer">
+                    <!-- Los mensajes se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Verificar autenticación
+        function checkAuth() {
+            const isAuth = localStorage.getItem('dashboardAuth');
+            const authTime = localStorage.getItem('authTime');
+            
+            if (!isAuth || isAuth !== 'true') {
+                window.location.href = 'login.html';
+                return false;
+            }
+
+            // Verificar si la sesión expiró (24 horas)
+            if (authTime) {
+                const currentTime = new Date().getTime();
+                const hoursPassed = (currentTime - authTime) / (1000 * 60 * 60);
+                
+                if (hoursPassed >= 24) {
+                    logout();
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // Cerrar sesión
+        function logout() {
+            localStorage.removeItem('dashboardAuth');
+            localStorage.removeItem('authTime');
+            window.location.href = 'login.html';
+        }
+
+        // Event listener para el botón de logout
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+
+        // Función para actualizar el saludo según la hora
+        function updateGreeting() {
+            const now = new Date();
+            const hour = now.getHours();
+            const greetingText = document.getElementById('greetingText');
+            const greetingIcon = document.getElementById('greetingIcon');
+            
+            let greeting = '';
+            let icon = '';
+            let color = '';
+            
+            if (hour >= 6 && hour < 12) {
+                greeting = '¡Buenos días!';
+                icon = 'fa-sun';
+                color = '#f59e0b'; // Amarillo/naranja para la mañana
+            } else if (hour >= 12 && hour < 20) {
+                greeting = '¡Buenas tardes!';
+                icon = 'fa-cloud-sun';
+                color = '#f97316'; // Naranja para la tarde
+            } else {
+                greeting = '¡Buenas noches!';
+                icon = 'fa-moon';
+                color = '#8b5cf6'; // Morado para la noche
+            }
+            
+            if (greetingText && greetingIcon) {
+                greetingText.textContent = greeting;
+                greetingIcon.className = `fas ${icon}`;
+                greetingIcon.style.color = color;
+            }
+        }
+
+        // Verificar autenticación al cargar
+        if (!checkAuth()) {
+            // Si no está autenticado, el checkAuth() redirigirá
+        }
+        
+        // Actualizar saludo según la hora
+        updateGreeting();
+
+        // Función para cargar mensajes desde localStorage
+        function loadMessages() {
+            const messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+            const container = document.getElementById('messagesContainer');
+            const totalMessagesEl = document.getElementById('totalMessages');
+            const todayMessagesEl = document.getElementById('todayMessages');
+            const lastMessageTimeEl = document.getElementById('lastMessageTime');
+            const messageBadge = document.getElementById('messageBadge');
+
+            // Total de mensajes
+            totalMessagesEl.textContent = messages.length;
+            messageBadge.textContent = messages.length;
+
+            // Mensajes de hoy
+            const today = new Date().toDateString();
+            const todayCount = messages.filter(msg => {
+                const msgDate = new Date(msg.date).toDateString();
+                return msgDate === today;
+            }).length;
+            todayMessagesEl.textContent = todayCount;
+
+            // Último mensaje
+            if (messages.length > 0) {
+                const sortedMessages = [...messages].sort((a, b) => new Date(b.date) - new Date(a.date));
+                lastMessageTimeEl.textContent = formatDate(sortedMessages[0].date);
+            } else {
+                lastMessageTimeEl.textContent = '--';
+            }
+
+            if (messages.length === 0) {
+                container.innerHTML = `
+                    <div class="no-messages">
+                        <i class="fas fa-inbox"></i>
+                        <p><strong>No hay mensajes todavía</strong></p>
+                        <p style="margin-top: 0.5rem; font-size: 0.95rem;">Los mensajes del formulario de contacto aparecerán aquí automáticamente.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Ordenar mensajes por fecha (más reciente primero)
+            messages.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            container.innerHTML = messages.map((msg, index) => {
+                // Encontrar el índice original en el array sin ordenar
+                const originalMessages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+                const originalIndex = originalMessages.findIndex(m => 
+                    m.email === msg.email && m.date === msg.date && m.message === msg.message
+                );
+                
+                return `
+                <div class="message-card" data-index="${originalIndex}">
+                    <div class="message-header">
+                        <div class="message-info">
+                            <h4>${escapeHtml(msg.name)}</h4>
+                            <p><i class="fas fa-envelope"></i> ${escapeHtml(msg.email)}</p>
+                            ${msg.company ? `<p><i class="fas fa-building"></i> ${escapeHtml(msg.company)}</p>` : ''}
+                        </div>
+                        <div class="message-meta">
+                            <span class="message-tag">
+                                <i class="fas fa-tag"></i>
+                                ${escapeHtml(msg.subject || 'General')}
+                            </span>
+                            <span class="message-date">
+                                <i class="fas fa-clock"></i>
+                                ${formatDate(msg.date)}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="message-body">
+                        ${escapeHtml(msg.message)}
+                    </div>
+                    <div class="message-actions">
+                        <a href="mailto:${msg.email}?subject=Re: ${encodeURIComponent(msg.subject || 'Contacto')}" class="btn-small">
+                            <i class="fas fa-reply"></i>
+                            Responder
+                        </a>
+                        <button class="btn-small btn-delete" onclick="deleteMessage(${originalIndex})">
+                            <i class="fas fa-trash"></i>
+                            Eliminar
+                        </button>
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        // Función para escapar HTML y prevenir XSS
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        // Función para formatear fecha
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+
+            if (diffMins < 1) return 'Hace un momento';
+            if (diffMins < 60) return `Hace ${diffMins} min`;
+            if (diffHours < 24) return `Hace ${diffHours}h`;
+            if (diffDays < 7) return `Hace ${diffDays} días`;
+            
+            return date.toLocaleDateString('es-ES', { 
+                day: 'numeric', 
+                month: 'short', 
+                year: 'numeric' 
+            });
+        }
+
+        // Función para eliminar mensaje
+        function deleteMessage(index) {
+            if (confirm('¿Estás seguro de que quieres eliminar este mensaje?')) {
+                const messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+                messages.splice(index, 1);
+                localStorage.setItem('contactMessages', JSON.stringify(messages));
+                loadMessages();
+            }
+        }
+
+        // Función para limpiar todos los mensajes
+        function clearAllMessages() {
+            if (confirm('⚠️ ¿Estás seguro de que quieres eliminar TODOS los mensajes?\n\nEsta acción no se puede deshacer.')) {
+                if (confirm('¿Estás COMPLETAMENTE seguro? Todos los mensajes se perderán permanentemente.')) {
+                    localStorage.removeItem('contactMessages');
+                    loadMessages();
+                }
+            }
+        }
+
+        // Función para exportar mensajes a JSON
+        function exportMessages() {
+            const messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+            
+            if (messages.length === 0) {
+                alert('No hay mensajes para exportar.');
+                return;
+            }
+
+            const dataStr = JSON.stringify(messages, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `mensajes-contacto-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+
+        // Cargar mensajes al iniciar
+        loadMessages();
+
+        // Variable para rastrear el número anterior de mensajes
+        let previousMessageCount = JSON.parse(localStorage.getItem('contactMessages') || '[]').length;
+
+        // Recargar mensajes cada 30 segundos y notificar si hay nuevos
+        setInterval(() => {
+            const currentMessages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+            const currentCount = currentMessages.length;
+            
+            if (currentCount > previousMessageCount) {
+                // Hay nuevos mensajes
+                showNotification(`¡${currentCount - previousMessageCount} nuevo(s) mensaje(s)!`);
+                // Reproducir sonido de notificación (opcional)
+                playNotificationSound();
+            }
+            
+            previousMessageCount = currentCount;
+            loadMessages();
+        }, 30000);
+
+        // Función para mostrar notificación
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--gradient-primary);
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 12px;
+                box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4);
+                z-index: 10000;
+                animation: slideInRight 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                font-weight: 600;
+            `;
+            notification.innerHTML = `<i class="fas fa-envelope" style="font-size: 1.2rem;"></i>${message}`;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 4000);
+        }
+
+        // Función para reproducir sonido de notificación
+        function playNotificationSound() {
+            // Crear un tono suave
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 800;
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.5);
+            } catch (e) {
+                console.log('Audio no disponible');
+            }
+        }
+
+        // Agregar estilos para las animaciones
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOutRight {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
