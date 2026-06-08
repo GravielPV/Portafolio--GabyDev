@@ -6,59 +6,7 @@
 
     const isTouchDevice = window.matchMedia('(hover: none)').matches;
 
-    /* ===== CUSTOM CURSOR ===== */
-    function initCursor() {
-        if (isTouchDevice) return;
-
-        const dot = document.createElement('div');
-        dot.className = 'cursor-dot';
-        const ring = document.createElement('div');
-        ring.className = 'cursor-ring';
-        document.body.appendChild(dot);
-        document.body.appendChild(ring);
-
-        let mx = -100, my = -100, rx = -100, ry = -100;
-
-        document.addEventListener('mousemove', (e) => {
-            mx = e.clientX;
-            my = e.clientY;
-            dot.style.left = mx + 'px';
-            dot.style.top  = my + 'px';
-        });
-
-        (function animateRing() {
-            rx += (mx - rx) * 0.13;
-            ry += (my - ry) * 0.13;
-            ring.style.left = rx + 'px';
-            ring.style.top  = ry + 'px';
-            requestAnimationFrame(animateRing);
-        })();
-
-        function addHoverListeners() {
-            const targets = document.querySelectorAll(
-                'a, button, .btn, .skill-tab, .project-link, .nav-link, ' +
-                '.lang-option, .floating-card, .project-card, .service-card, ' +
-                '.skill-card-modern, .back-to-top, .floating-contact-btn'
-            );
-            targets.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    dot.classList.add('cursor-hover');
-                    ring.classList.add('cursor-hover');
-                });
-                el.addEventListener('mouseleave', () => {
-                    dot.classList.remove('cursor-hover');
-                    ring.classList.remove('cursor-hover');
-                });
-            });
-        }
-
-        addHoverListeners();
-
-        // Re-run after AOS / dynamic content
-        setTimeout(addHoverListeners, 2000);
-    }
-
-    /* ===== AURORA BACKGROUND IN HERO ===== */
+/* ===== AURORA BACKGROUND IN HERO ===== */
     function initAurora() {
         const hero = document.querySelector('.hero');
         if (!hero) return;
@@ -168,7 +116,6 @@
 
     /* ===== INIT ===== */
     function init() {
-        initCursor();
         initAurora();
         initProfileRings();
         initTilt();

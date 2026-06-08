@@ -3,56 +3,6 @@
    Extra layer of polish on top of style.css
    =================================================== */
 
-/* ===== CUSTOM CURSOR ===== */
-@media (hover: hover) and (pointer: fine) {
-    *, *::before, *::after {
-        cursor: none !important;
-    }
-}
-
-.cursor-dot {
-    width: 8px;
-    height: 8px;
-    background: #3b82f6;
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 999999;
-    transform: translate(-50%, -50%);
-    transition: width 0.15s ease, height 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
-    box-shadow: 0 0 8px #3b82f6, 0 0 20px rgba(59, 130, 246, 0.6);
-    will-change: left, top;
-}
-
-.cursor-ring {
-    width: 34px;
-    height: 34px;
-    border: 1.5px solid rgba(59, 130, 246, 0.7);
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 999998;
-    transform: translate(-50%, -50%);
-    transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
-    will-change: left, top;
-}
-
-.cursor-dot.cursor-hover {
-    width: 10px;
-    height: 10px;
-    background: #a78bfa;
-    box-shadow: 0 0 12px #a78bfa, 0 0 28px rgba(167, 139, 250, 0.7);
-}
-
-.cursor-ring.cursor-hover {
-    width: 52px;
-    height: 52px;
-    border-color: rgba(139, 92, 246, 0.8);
-}
 
 /* ===== AURORA HERO ORBS ===== */
 .hero-aurora {
@@ -418,10 +368,3 @@
     transform: translateY(-2px);
 }
 
-/* ===== DISABLE CURSOR ON TOUCH DEVICES ===== */
-@media (hover: none) {
-    .cursor-dot,
-    .cursor-ring {
-        display: none !important;
-    }
-}
