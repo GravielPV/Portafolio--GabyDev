@@ -1,0 +1,39 @@
+# Archivos de desarrollo
+.vscode/
+.history/
+*.ps1
+
+# Archivos temporales y de backup
+*_backup.*
+*backup*
+limpiar-*.html
+DASHBOARD-README.md
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs y archivos temporales
+*.log
+*.tmp
+*.temp
+
+# Archivos de IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# Archivos de Node (si llegas a usar npm en el futuro)
+node_modules/
+package-lock.json
+
+# Archivos personales sueltos en la raíz (no en carpetas de proyecto)
+/*.jpeg
+/*.jpg
+/*.png
+
+# Mantener las imágenes importantes del proyecto
+!assets/**
+!FotoProyecto/**

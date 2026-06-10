@@ -1,0 +1,370 @@
+/* ===================================================
+   WOW VISUAL ENHANCEMENTS
+   Extra layer of polish on top of style.css
+   =================================================== */
+
+
+/* ===== AURORA HERO ORBS ===== */
+.hero-aurora {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.aurora-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    animation: aurora-drift 12s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+.aurora-orb-1 {
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.35), transparent 70%);
+    top: -120px;
+    left: -80px;
+    animation-duration: 13s;
+}
+
+.aurora-orb-2 {
+    width: 580px;
+    height: 580px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.3), transparent 70%);
+    top: 40%;
+    right: -120px;
+    animation-duration: 17s;
+    animation-delay: -4s;
+}
+
+.aurora-orb-3 {
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.28), transparent 70%);
+    bottom: -100px;
+    left: 25%;
+    animation-duration: 20s;
+    animation-delay: -8s;
+}
+
+.aurora-orb-4 {
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.22), transparent 70%);
+    top: 15%;
+    left: 45%;
+    animation-duration: 22s;
+    animation-delay: -11s;
+}
+
+@keyframes aurora-drift {
+    0%   { transform: translate(0px, 0px) scale(1); }
+    25%  { transform: translate(30px, -25px) scale(1.08); }
+    50%  { transform: translate(-20px, 35px) scale(0.94); }
+    75%  { transform: translate(40px, 15px) scale(1.05); }
+    100% { transform: translate(-10px, -30px) scale(1.02); }
+}
+
+/* ===== PROFILE IMAGE SPINNING RINGS ===== */
+.wow-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    pointer-events: none;
+    top: 50%;
+    left: 50%;
+}
+
+.wow-ring-1 {
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    margin-top: calc(-50% - 10px);
+    margin-left: calc(-50% - 10px);
+    border-top-color: rgba(59, 130, 246, 0.8);
+    border-right-color: rgba(59, 130, 246, 0.3);
+    animation: ring-spin 3.5s linear infinite;
+}
+
+.wow-ring-2 {
+    width: calc(100% + 38px);
+    height: calc(100% + 38px);
+    margin-top: calc(-50% - 19px);
+    margin-left: calc(-50% - 19px);
+    border-bottom-color: rgba(139, 92, 246, 0.8);
+    border-left-color: rgba(139, 92, 246, 0.3);
+    animation: ring-spin 5.5s linear infinite reverse;
+}
+
+@keyframes ring-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== LOGO TEXT GRADIENT ===== */
+.logo-text {
+    background: linear-gradient(135deg, #ffffff 0%, #93c5fd 40%, #a78bfa 80%, #ffffff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: logo-shimmer 5s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.4));
+}
+
+.logo-text .accent {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@keyframes logo-shimmer {
+    0%   { background-position: 0% center; }
+    50%  { background-position: 100% center; }
+    100% { background-position: 0% center; }
+}
+
+/* ===== SECTION TITLE SHIMMER ===== */
+.section-title {
+    background-image: linear-gradient(
+        90deg,
+        #3b82f6 0%,
+        #6366f1 25%,
+        #a78bfa 50%,
+        #6366f1 75%,
+        #3b82f6 100%
+    ) !important;
+    background-size: 200% auto !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    animation: title-shimmer 5s ease-in-out infinite !important;
+}
+
+@keyframes title-shimmer {
+    0%   { background-position: 0% center; }
+    50%  { background-position: 100% center; }
+    100% { background-position: 0% center; }
+}
+
+/* ===== SECTION LINE SHIMMER ===== */
+.section-line {
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #3b82f6) !important;
+    background-size: 200% auto !important;
+    animation: line-shimmer 3s linear infinite !important;
+    box-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+}
+
+@keyframes line-shimmer {
+    0%   { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+/* ===== SCROLL PROGRESS BAR ===== */
+#scrollProgress {
+    background: linear-gradient(90deg, #3b82f6, #6366f1, #8b5cf6, #3b82f6) !important;
+    background-size: 200% auto !important;
+    box-shadow: 0 0 8px rgba(99, 102, 241, 0.7) !important;
+    height: 3px !important;
+    animation: progress-shimmer 3s linear infinite;
+}
+
+@keyframes progress-shimmer {
+    0%   { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+/* ===== NAVBAR GLOW ON SCROLL ===== */
+.navbar.scrolled {
+    box-shadow:
+        0 4px 30px rgba(59, 130, 246, 0.12),
+        0 1px 0 rgba(59, 130, 246, 0.15) !important;
+    border-bottom-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+.nav-link.active {
+    text-shadow: 0 0 18px rgba(59, 130, 246, 0.7);
+}
+
+/* ===== AVAILABILITY BADGE GLOW ===== */
+.availability-badge {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.12), inset 0 0 20px rgba(34, 197, 94, 0.04) !important;
+}
+
+.status-dot {
+    box-shadow: 0 0 6px #22c55e, 0 0 14px rgba(34, 197, 94, 0.7) !important;
+}
+
+/* ===== HERO STATS ITEMS ===== */
+.stat-item {
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    background: rgba(59, 130, 246, 0.06);
+    border: 1px solid rgba(59, 130, 246, 0.12);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    background: rgba(59, 130, 246, 0.12) !important;
+    border-color: rgba(59, 130, 246, 0.35) !important;
+    transform: translateY(-3px);
+}
+
+.stat-number {
+    text-shadow: 0 0 18px rgba(59, 130, 246, 0.5) !important;
+}
+
+/* ===== FLOATING TECH CARDS ===== */
+.floating-card {
+    background: rgba(20, 20, 40, 0.75) !important;
+    backdrop-filter: blur(20px) saturate(1.5) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(1.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.floating-card:hover {
+    border-color: rgba(59, 130, 246, 0.5) !important;
+    box-shadow:
+        0 16px 40px rgba(59, 130, 246, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ===== CARD 3D TILT (style hook) ===== */
+.project-card,
+.service-card,
+.skill-card-modern {
+    will-change: transform;
+    transform-style: preserve-3d;
+}
+
+/* ===== PROJECT CARD ENHANCED GLOW ===== */
+.project-card:hover {
+    box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(59, 130, 246, 0.45),
+        0 0 35px rgba(59, 130, 246, 0.18) !important;
+    border-color: rgba(59, 130, 246, 0.5) !important;
+}
+
+/* ===== SERVICE CARD ENHANCED GLOW ===== */
+.service-card:hover {
+    box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(99, 102, 241, 0.5),
+        0 0 35px rgba(99, 102, 241, 0.2) !important;
+    border-color: rgba(99, 102, 241, 0.5) !important;
+}
+
+/* ===== SKILL PROGRESS CIRCLES GLOW ===== */
+.progress-circle {
+    filter: drop-shadow(0 0 4px currentColor);
+}
+
+/* ===== BUTTONS ENHANCED ===== */
+.btn-primary {
+    box-shadow: 0 4px 18px rgba(59, 130, 246, 0.35) !important;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 8px 35px rgba(59, 130, 246, 0.55) !important;
+}
+
+/* ===== BUTTON RIPPLE SPAN ===== */
+.btn .ripple-wave {
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.28);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: ripple-expand 0.65s ease-out forwards;
+}
+
+@keyframes ripple-expand {
+    to {
+        width: 320px;
+        height: 320px;
+        opacity: 0;
+    }
+}
+
+/* ===== FLOATING CONTACT BUTTON PULSE ===== */
+.floating-contact-btn {
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.45) !important;
+    animation: fab-pulse 2.4s ease-in-out infinite !important;
+}
+
+@keyframes fab-pulse {
+    0%, 100% {
+        box-shadow: 0 4px 20px rgba(59, 130, 246, 0.45), 0 0 0 0 rgba(59, 130, 246, 0.35);
+    }
+    55% {
+        box-shadow: 0 4px 20px rgba(59, 130, 246, 0.45), 0 0 0 14px rgba(59, 130, 246, 0);
+    }
+}
+
+/* ===== BACK TO TOP GLOW ===== */
+.back-to-top {
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4) !important;
+}
+
+.back-to-top:hover {
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.65) !important;
+}
+
+/* ===== FOOTER SOCIAL ICONS ===== */
+.footer-social a {
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    transform: translateY(-5px) scale(1.2) !important;
+    filter: drop-shadow(0 0 8px currentColor);
+}
+
+/* ===== FOOTER TOP GRADIENT BORDER ===== */
+.footer {
+    border-top: 1px solid transparent !important;
+    background-image: linear-gradient(var(--secondary-bg), var(--secondary-bg)),
+                      linear-gradient(90deg, #3b82f6, #6366f1, #8b5cf6, #6366f1, #3b82f6) !important;
+    background-origin: border-box !important;
+    background-clip: padding-box, border-box !important;
+    background-size: auto, 300% auto !important;
+    animation: footer-border 6s linear infinite;
+}
+
+@keyframes footer-border {
+    0%   { background-position: 0 0, 0% center; }
+    100% { background-position: 0 0, 300% center; }
+}
+
+/* ===== LOADING SCREEN ENHANCEMENT ===== */
+.loader-inner span {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5) !important;
+}
+
+/* ===== SECTION SUBTITLE UPPERCASE GLOW ===== */
+.section-subtitle {
+    text-shadow: 0 0 16px rgba(59, 130, 246, 0.5);
+    letter-spacing: 2px !important;
+}
+
+/* ===== TECH TAGS IN PROJECTS ===== */
+.project-tech span {
+    transition: all 0.25s ease;
+}
+
+.project-tech span:hover {
+    background: rgba(59, 130, 246, 0.25) !important;
+    border-color: rgba(59, 130, 246, 0.6) !important;
+    color: #93c5fd !important;
+    transform: translateY(-2px);
+}
+
